@@ -76,7 +76,7 @@ const Projects: React.FC = () => {
                   x: { type: "spring", stiffness: 300, damping: 30 },
                   opacity: { duration: 0.2 }
                 }}
-                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
+                className="flex gap-8 justify-center"
               >
                 {getCurrentProjects().map((project, index) => (
                   <motion.div
@@ -84,7 +84,7 @@ const Projects: React.FC = () => {
                     initial={{ opacity: 0, y: 50 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: index * 0.1 }}
-                    className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+                    className="w-full max-w-sm flex-shrink-0 bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
                   >
                     <div className="h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
                       <project.icon className="text-6xl text-white" />
