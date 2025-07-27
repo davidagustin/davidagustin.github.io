@@ -14,7 +14,7 @@ const Contact: React.FC = () => {
 
   // Initialize EmailJS
   useEffect(() => {
-    emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+    emailjs.init("q2ic3TavT5Sv1CTEP");
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -34,10 +34,10 @@ const Contact: React.FC = () => {
 
       // Send email using EmailJS
       const result = await emailjs.send(
-        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
-        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        'service_vdkx6od',
+        'template_8u7ryea',
         templateParams,
-        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+        'q2ic3TavT5Sv1CTEP'
       );
 
       if (result.status === 200) {
