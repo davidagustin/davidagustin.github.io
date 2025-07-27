@@ -3,49 +3,78 @@ import type React from 'react';
 
 const About: React.FC = () => {
   const technologies = [
-    // Frontend
-    { name: 'Next.js', color: 'bg-black text-white' },
+    // Frontend Frameworks & Libraries
+    { name: 'Next.js 14/15', color: 'bg-black text-white' },
+    { name: 'React 18/19', color: 'bg-blue-600 text-white' },
+    { name: 'Angular 17', color: 'bg-red-600 text-white' },
+    { name: 'Vue.js 3', color: 'bg-green-600 text-white' },
+    { name: 'Astro.js', color: 'bg-purple-600 text-white' },
+    { name: 'Gatsby', color: 'bg-purple-100 text-purple-700' },
+    
+    // Languages & Type Safety
     { name: 'TypeScript', color: 'bg-blue-600 text-white' },
     { name: 'JavaScript', color: 'bg-yellow-100 text-yellow-800' },
     { name: 'HTML5', color: 'bg-orange-100 text-orange-700' },
     { name: 'CSS3', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Tailwind CSS', color: 'bg-cyan-100 text-cyan-700' },
-    { name: 'Sass', color: 'bg-pink-100 text-pink-700' },
+    { name: 'Python', color: 'bg-blue-100 text-blue-700' },
     
-    // Backend
+    // Styling & UI
+    { name: 'Tailwind CSS 3/4', color: 'bg-cyan-100 text-cyan-700' },
+    { name: 'Material-UI 5', color: 'bg-blue-600 text-white' },
+    { name: 'Sass', color: 'bg-pink-100 text-pink-700' },
+    { name: 'Google Fonts', color: 'bg-gray-100 text-gray-700' },
+    
+    // Backend & APIs
     { name: 'Node.js', color: 'bg-green-100 text-green-700' },
     { name: 'Express.js', color: 'bg-gray-100 text-gray-700' },
-    { name: 'Python', color: 'bg-blue-100 text-blue-700' },
+    { name: 'REST APIs', color: 'bg-gray-100 text-gray-700' },
+    { name: 'React Hooks', color: 'bg-blue-100 text-blue-700' },
+    
+    // State Management & Routing
+    { name: 'Pinia 2', color: 'bg-yellow-100 text-yellow-800' },
+    { name: 'Vue Router 4', color: 'bg-green-100 text-green-700' },
+    
+    // Build Tools & Development
+    { name: 'Vite 4', color: 'bg-purple-100 text-purple-700' },
+    { name: 'Webpack', color: 'bg-blue-100 text-blue-700' },
+    
+    // AI/ML & Data Science
+    { name: 'Scikit-learn', color: 'bg-orange-100 text-orange-700' },
+    { name: 'XGBoost', color: 'bg-green-100 text-green-700' },
+    { name: 'LightGBM', color: 'bg-blue-100 text-blue-700' },
+    { name: 'Machine Learning', color: 'bg-purple-100 text-purple-700' },
+    { name: 'Deep Learning', color: 'bg-indigo-100 text-indigo-700' },
+    { name: 'TensorFlow', color: 'bg-orange-100 text-orange-700' },
+    { name: 'PyTorch', color: 'bg-red-100 text-red-700' },
+    { name: 'OpenAI API', color: 'bg-green-100 text-green-700' },
     
     // Databases
     { name: 'MongoDB', color: 'bg-green-100 text-green-700' },
     { name: 'PostgreSQL', color: 'bg-blue-100 text-blue-700' },
     { name: 'MySQL', color: 'bg-blue-600 text-white' },
     
-    // Cloud & DevOps
+    // Cloud & Deployment
+    { name: 'Vercel', color: 'bg-black text-white' },
+    { name: 'Netlify', color: 'bg-green-100 text-green-700' },
+    { name: 'Surge.sh', color: 'bg-purple-100 text-purple-700' },
+    { name: 'Render', color: 'bg-blue-100 text-blue-700' },
+    { name: 'Digital Ocean', color: 'bg-blue-600 text-white' },
     { name: 'AWS', color: 'bg-orange-100 text-orange-700' },
+    
+    // DevOps & Tools
     { name: 'Docker', color: 'bg-blue-100 text-blue-700' },
     { name: 'Kubernetes', color: 'bg-blue-600 text-white' },
     { name: 'Git', color: 'bg-orange-100 text-orange-700' },
     { name: 'GitHub', color: 'bg-gray-800 text-white' },
     { name: 'CI/CD', color: 'bg-purple-100 text-purple-700' },
     
-    // AI/ML
-    { name: 'TensorFlow', color: 'bg-orange-100 text-orange-700' },
-    { name: 'PyTorch', color: 'bg-red-100 text-red-700' },
-    { name: 'OpenAI API', color: 'bg-green-100 text-green-700' },
-    { name: 'Machine Learning', color: 'bg-purple-100 text-purple-700' },
-    { name: 'Deep Learning', color: 'bg-indigo-100 text-indigo-700' },
-    
-    // Tools & Libraries
-    { name: 'Webpack', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Vite', color: 'bg-purple-100 text-purple-700' },
+    // Testing & Quality
     { name: 'Jest', color: 'bg-red-100 text-red-700' },
     { name: 'Cypress', color: 'bg-green-100 text-green-700' },
     { name: 'Storybook', color: 'bg-pink-100 text-pink-700' },
     
-    // Additional
-    { name: 'REST APIs', color: 'bg-gray-100 text-gray-700' },
+    // Additional Skills
+    { name: 'SEO Optimized', color: 'bg-green-100 text-green-700' },
     { name: 'Responsive Design', color: 'bg-cyan-100 text-cyan-700' },
     { name: 'Performance', color: 'bg-orange-100 text-orange-700' },
   ];

@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-2xl font-bold mb-4">David Agustin</h3>
               <p className="text-gray-400 mb-4">
@@ -74,26 +74,6 @@ const Footer: React.FC = () => {
                   </a>
                 </li>
               </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Technologies</h4>
-              <div className="flex flex-wrap gap-2">
-                <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">
-                  React
-                </span>
-                <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">
-                  Next.js
-                </span>
-                <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">
-                  TypeScript
-                </span>
-                <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">
-                  Node.js
-                </span>
-                <span className="px-3 py-1 bg-gray-800 rounded-full text-sm">
-                  AI/ML
-                </span>
-              </div>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8">
