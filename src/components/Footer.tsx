@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import type React from 'react';
-import { FaEnvelope, FaMapMarkerAlt, FaPhone } from 'react-icons/fa';
+import { FaEnvelope, FaMapMarkerAlt, FaPhone, FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
@@ -28,23 +28,21 @@ const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <span className="text-2xl">📱</span>
+                  <FaGithub className="text-2xl" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/davidagustin"
+                  href="https://linkedin.com/in/davidsyagustin"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <span className="text-2xl">💼</span>
+                  <FaLinkedin className="text-2xl" />
                 </a>
                 <a
-                  href="https://twitter.com/davidagustin"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="mailto:davidsyagustin@gmail.com"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <span className="text-2xl">🐦</span>
+                  <FaEnvelope className="text-2xl" />
                 </a>
               </div>
             </div>
@@ -176,7 +174,7 @@ const Footer: React.FC = () => {
                       <span>Location: San Francisco, CA</span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <FaPhone className="text-primary-400" />
+                      <FaLinkedin className="text-primary-400" />
                       <span>LinkedIn: linkedin.com/in/davidsyagustin</span>
                     </div>
                   </div>

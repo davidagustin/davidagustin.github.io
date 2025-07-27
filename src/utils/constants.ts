@@ -18,6 +18,8 @@ import {
   FaRocket,
   FaSearch,
   FaShoppingCart,
+  FaCog,
+  FaServer,
 } from 'react-icons/fa';
 
 import type {
@@ -37,8 +39,8 @@ export const NAV_ITEMS = [
 
 export const TECH_STACK: TechStack[] = [
   { icon: FaReact, name: 'React', color: '#61DAFB' },
-  { icon: FaNodeJs, name: 'Node.js', color: '#339933' },
-  { icon: FaBrain, name: 'AI/ML', color: '#FF6B6B' },
+  { icon: FaServer, name: 'Node.js', color: '#339933' },
+  { icon: FaCog, name: 'AI/ML', color: '#FF6B6B' },
   { icon: FaJs, name: 'JavaScript', color: '#F7DF1E' },
 ];
 
