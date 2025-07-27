@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import Snackbar from './Snackbar';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,7 +11,11 @@ const Contact: React.FC = () => {
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [snackbar, setSnackbar] = useState({
+    isOpen: false,
+    message: '',
+    type: 'success' as 'success' | 'error',
+  });
 
   // Initialize EmailJS
   useEffect(() => {
@@ -26,19 +31,26 @@ const Contact: React.FC = () => {
     
     // Basic validation
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setSubmitStatus('error');
+      setSnackbar({
+        isOpen: true,
+        message: 'Please fill in all fields.',
+        type: 'error',
+      });
       return;
     }
     
     // Email validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
-      setSubmitStatus('error');
+      setSnackbar({
+        isOpen: true,
+        message: 'Please enter a valid email address.',
+        type: 'error',
+      });
       return;
     }
     
     setIsSubmitting(true);
-    setSubmitStatus('idle');
 
     try {
       // EmailJS template parameters
@@ -61,7 +73,11 @@ const Contact: React.FC = () => {
       console.log('EmailJS result:', result);
 
       if (result.status === 200 || result.text === 'OK') {
-        setSubmitStatus('success');
+        setSnackbar({
+          isOpen: true,
+          message: 'Message sent successfully! I\'ll get back to you soon.',
+          type: 'success',
+        });
         
         // Reset form
         setFormData({
@@ -71,11 +87,19 @@ const Contact: React.FC = () => {
         });
       } else {
         console.error('EmailJS returned non-success status:', result);
-        setSubmitStatus('error');
+        setSnackbar({
+          isOpen: true,
+          message: 'Failed to send message. Please try again.',
+          type: 'error',
+        });
       }
     } catch (error) {
       console.error('Error sending email:', error);
-      setSubmitStatus('error');
+      setSnackbar({
+        isOpen: true,
+        message: 'Network error. Please check your connection and try again.',
+        type: 'error',
+      });
       
       // Log additional error details for debugging
       if (error instanceof Error) {
@@ -86,11 +110,6 @@ const Contact: React.FC = () => {
       }
     } finally {
       setIsSubmitting(false);
-      
-      // Reset status after 5 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 5000);
     }
   };
 
@@ -212,18 +231,14 @@ const Contact: React.FC = () => {
                   />
                 </div>
                 
-                {/* Status Messages */}
-                {submitStatus === 'success' && (
-                  <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                    ✅ Perfect! Your message has been sent successfully. I'll get back to you as soon as possible!
-                  </div>
-                )}
-                
-                {submitStatus === 'error' && (
-                  <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-                    ❌ There was an error sending your message. Please check your internet connection and try again, or email me directly at davidsyagustin@gmail.com
-                  </div>
-                )}
+                {/* Snackbar Component */}
+                <Snackbar
+                  isOpen={snackbar.isOpen}
+                  message={snackbar.message}
+                  type={snackbar.type}
+                  onClose={() => setSnackbar({ ...snackbar, isOpen: false })}
+                  duration={5000}
+                />
                 
                 <button 
                   type="submit" 
