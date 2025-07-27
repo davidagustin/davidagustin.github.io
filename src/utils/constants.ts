@@ -41,7 +41,9 @@ export const NAV_ITEMS = [
 
 export const TECH_STACK: TechStack[] = [
   { icon: FaReact, name: 'React', color: '#61DAFB' },
+  { icon: FaBolt, name: 'Svelte', color: '#FF3E00' },
   { icon: FaServer, name: 'Node.js', color: '#339933' },
+  { icon: FaCloud, name: 'Azure', color: '#0078D4' },
   { icon: FaCog, name: 'AI/ML', color: '#FF6B6B' },
   { icon: FaJs, name: 'JavaScript', color: '#F7DF1E' },
 ];
@@ -89,6 +91,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       'Next.js',
       'Angular',
       'Vue.js',
+      'Svelte',
       'SvelteKit',
       'TypeScript',
       'Tailwind CSS',
@@ -126,6 +129,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
     icon: FaRocket,
     skills: [
       'Git/GitHub',
+      'Azure',
       'Vercel',
       'Netlify',
       'Surge.sh',
