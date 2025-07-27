@@ -11,6 +11,7 @@ A modern, responsive portfolio website showcasing **9+ diverse projects** and **
 - **Framer Motion**: Smooth animations and transitions
 - **GitHub Pages**: Deployed on GitHub Pages
 - **Performance Optimized**: Fast loading and optimized for performance
+- **Reliable Contact Form**: EmailJS integration for cross-browser email functionality
 - **Diverse Tech Stack**: Showcases projects built with React, Angular, Vue.js, Astro.js, and AI/ML technologies
 - **AI/ML Focus**: Specialized in machine learning applications and AI integration
 
@@ -19,6 +20,7 @@ A modern, responsive portfolio website showcasing **9+ diverse projects** and **
 - **Frontend**: React 18, TypeScript, Tailwind CSS
 - **Animations**: Framer Motion
 - **Icons**: React Icons
+- **Email Service**: EmailJS (reliable contact form functionality)
 - **Build Tool**: Create React App
 - **Linting**: Biome
 - **Deployment**: GitHub Pages
@@ -207,6 +209,9 @@ This portfolio demonstrates expertise across **50+ modern web technologies**:
 - **Astro.js** - Static site generation for performance
 - **Gatsby** - React-based static site generator
 
+### Email & Communication
+- **EmailJS** - Frontend email service for contact forms
+
 ### Languages & Type Safety
 - **TypeScript** - Type-safe JavaScript development
 - **JavaScript** - Modern ES6+ features
@@ -291,6 +296,7 @@ This project is open source and available under the [MIT License](LICENSE).
 - **Email**: davidsyagustin@gmail.com
 - **LinkedIn**: [David Agustin](https://www.linkedin.com/in/davidsyagustin/)
 - **GitHub**: [davidagustin](https://github.com/davidagustin)
+- **Portfolio**: [https://davidagustin.github.io](https://davidagustin.github.io) (with working contact form)
 
 ---
 
