@@ -10,6 +10,7 @@ const About: React.FC = () => {
     { name: 'Vue.js', color: 'bg-green-600 text-white' },
     { name: 'Astro.js', color: 'bg-purple-600 text-white' },
     { name: 'Gatsby', color: 'bg-purple-100 text-purple-700' },
+    { name: 'Hugo', color: 'bg-pink-100 text-pink-700' },
     
     // Languages & Type Safety
     { name: 'TypeScript', color: 'bg-blue-600 text-white' },
@@ -60,6 +61,7 @@ const About: React.FC = () => {
     { name: 'Render', color: 'bg-blue-100 text-blue-700' },
     { name: 'Digital Ocean', color: 'bg-blue-600 text-white' },
     { name: 'AWS', color: 'bg-orange-100 text-orange-700' },
+    { name: 'GitLab Pages', color: 'bg-orange-100 text-orange-700' },
     
     // DevOps & Tools
     { name: 'Docker', color: 'bg-blue-100 text-blue-700' },
@@ -101,7 +103,7 @@ const About: React.FC = () => {
                 problems and deliver exceptional user experiences.
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                With experience across 9+ diverse projects and 50+ technologies including React, Next.js, Node.js, Python, and various AI/ML frameworks, I bring ideas to life through clean, efficient, and scalable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development and AI innovation.
+                With experience across 10+ diverse projects and 50+ technologies including React, Next.js, Node.js, Python, Hugo, and various AI/ML frameworks, I bring ideas to life through clean, efficient, and scalable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development and AI innovation.
               </p>
               
               {/* Technology Chips */}
