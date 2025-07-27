@@ -10,6 +10,8 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+  const [showEmailFallback, setShowEmailFallback] = useState(false);
+  const [emailContent, setEmailContent] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,8 +41,33 @@ This message was sent from your portfolio contact form at https://davidagustin.g
       // Create mailto link
       const mailtoLink = `mailto:davidsyagustin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
-      // Open default email client
-      window.open(mailtoLink, '_blank');
+      // Try multiple methods to open email client (works across all browsers)
+      let emailOpened = false;
+      
+      try {
+        // Method 1: Direct window.open
+        const emailWindow = window.open(mailtoLink, '_blank');
+        
+        // Method 2: If window.open fails, try location.href
+        if (!emailWindow || emailWindow.closed || typeof emailWindow.closed === 'undefined') {
+          window.location.href = mailtoLink;
+          emailOpened = true;
+        } else {
+          emailOpened = true;
+        }
+      } catch (windowError) {
+        // Method 3: Fallback to location.href
+        window.location.href = mailtoLink;
+        emailOpened = true;
+      }
+      
+      // If email client didn't open, show fallback
+      setTimeout(() => {
+        if (!emailOpened) {
+          setEmailContent(body);
+          setShowEmailFallback(true);
+        }
+      }, 1000);
       
       // Show success message
       setSubmitStatus('success');
@@ -198,6 +225,57 @@ This message was sent from your portfolio contact form at https://davidagustin.g
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
                     ❌ There was an error sending your message. Please try again or email me directly at davidsyagustin@gmail.com
+                  </div>
+                )}
+                
+                {/* Email Fallback Modal */}
+                {showEmailFallback && (
+                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
+                    <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+                      <div className="flex justify-between items-center mb-4">
+                        <h3 className="text-xl font-bold text-gray-800">Email Client Not Found</h3>
+                        <button
+                          onClick={() => setShowEmailFallback(false)}
+                          className="text-gray-500 hover:text-gray-700 text-2xl"
+                        >
+                          ×
+                        </button>
+                      </div>
+                      <p className="text-gray-600 mb-4">
+                        Your email client didn't open automatically. Here's your formatted message - you can copy and paste it into your email client:
+                      </p>
+                      <div className="bg-gray-50 p-4 rounded-lg border">
+                        <div className="mb-2">
+                          <strong>To:</strong> davidsyagustin@gmail.com
+                        </div>
+                        <div className="mb-2">
+                          <strong>Subject:</strong> Portfolio Contact from {formData.name}
+                        </div>
+                        <div className="mb-4">
+                          <strong>Message:</strong>
+                        </div>
+                        <pre className="whitespace-pre-wrap text-sm text-gray-700 font-mono bg-white p-3 rounded border">
+                          {emailContent}
+                        </pre>
+                      </div>
+                      <div className="mt-4 flex gap-2">
+                        <button
+                          onClick={() => {
+                            navigator.clipboard.writeText(emailContent);
+                            alert('Email content copied to clipboard!');
+                          }}
+                          className="btn btn-primary"
+                        >
+                          Copy to Clipboard
+                        </button>
+                        <a
+                          href={`mailto:davidsyagustin@gmail.com?subject=${encodeURIComponent(`Portfolio Contact from ${formData.name}`)}&body=${encodeURIComponent(emailContent)}`}
+                          className="btn btn-secondary"
+                        >
+                          Try Mailto Link Again
+                        </a>
+                      </div>
+                    </div>
                   </div>
                 )}
                 
