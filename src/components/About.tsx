@@ -3,66 +3,30 @@ import type React from 'react';
 
 const About: React.FC = () => {
   const technologies = [
-    // Frontend
-    { name: 'React', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Next.js', color: 'bg-black text-white' },
-    { name: 'TypeScript', color: 'bg-blue-600 text-white' },
-    { name: 'JavaScript', color: 'bg-yellow-100 text-yellow-800' },
+    // Core Web Technologies
     { name: 'HTML5', color: 'bg-orange-100 text-orange-700' },
     { name: 'CSS3', color: 'bg-blue-100 text-blue-700' },
+    { name: 'JavaScript', color: 'bg-yellow-100 text-yellow-800' },
+    
+    // Frontend Framework
+    { name: 'React', color: 'bg-blue-100 text-blue-700' },
+    
+    // Styling
     { name: 'Tailwind CSS', color: 'bg-cyan-100 text-cyan-700' },
-    { name: 'Sass', color: 'bg-pink-100 text-pink-700' },
     
-    // Backend
-    { name: 'Node.js', color: 'bg-green-100 text-green-700' },
-    { name: 'Express.js', color: 'bg-gray-100 text-gray-700' },
-    { name: 'Python', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Django', color: 'bg-green-600 text-white' },
-    { name: 'FastAPI', color: 'bg-teal-100 text-teal-700' },
-    { name: 'PHP', color: 'bg-purple-100 text-purple-700' },
-    { name: 'Laravel', color: 'bg-red-100 text-red-700' },
-    
-    // Databases
-    { name: 'MongoDB', color: 'bg-green-100 text-green-700' },
-    { name: 'PostgreSQL', color: 'bg-blue-100 text-blue-700' },
-    { name: 'MySQL', color: 'bg-blue-600 text-white' },
-    { name: 'Redis', color: 'bg-red-100 text-red-700' },
-    { name: 'Firebase', color: 'bg-orange-100 text-orange-700' },
-    
-    // Cloud & DevOps
-    { name: 'AWS', color: 'bg-orange-100 text-orange-700' },
-    { name: 'Docker', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Kubernetes', color: 'bg-blue-600 text-white' },
+    // Version Control
     { name: 'Git', color: 'bg-orange-100 text-orange-700' },
     { name: 'GitHub', color: 'bg-gray-800 text-white' },
-    { name: 'CI/CD', color: 'bg-purple-100 text-purple-700' },
     
-    // AI/ML
-    { name: 'TensorFlow', color: 'bg-orange-100 text-orange-700' },
-    { name: 'PyTorch', color: 'bg-red-100 text-red-700' },
-    { name: 'OpenAI API', color: 'bg-green-100 text-green-700' },
-    { name: 'Machine Learning', color: 'bg-purple-100 text-purple-700' },
-    { name: 'Deep Learning', color: 'bg-indigo-100 text-indigo-700' },
-    
-    // Tools & Libraries
-    { name: 'Webpack', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Vite', color: 'bg-purple-100 text-purple-700' },
-    { name: 'Jest', color: 'bg-red-100 text-red-700' },
-    { name: 'Cypress', color: 'bg-green-100 text-green-700' },
-    { name: 'Storybook', color: 'bg-pink-100 text-pink-700' },
-    { name: 'Framer Motion', color: 'bg-purple-100 text-purple-700' },
-    
-    // Additional
-    { name: 'REST APIs', color: 'bg-gray-100 text-gray-700' },
-    { name: 'GraphQL', color: 'bg-pink-100 text-pink-700' },
-    { name: 'WebSockets', color: 'bg-blue-100 text-blue-700' },
-    { name: 'JWT', color: 'bg-purple-100 text-purple-700' },
-    { name: 'OAuth', color: 'bg-green-100 text-green-700' },
+    // Design & UX
     { name: 'Responsive Design', color: 'bg-cyan-100 text-cyan-700' },
-    { name: 'PWA', color: 'bg-blue-100 text-blue-700' },
-    { name: 'SEO', color: 'bg-green-100 text-green-700' },
+    { name: 'UI/UX Design', color: 'bg-purple-100 text-purple-700' },
+    
+    // Additional Skills
+    { name: 'Problem Solving', color: 'bg-green-100 text-green-700' },
+    { name: 'Clean Code', color: 'bg-blue-100 text-blue-700' },
+    { name: 'Debugging', color: 'bg-red-100 text-red-700' },
     { name: 'Performance', color: 'bg-orange-100 text-orange-700' },
-    { name: 'Security', color: 'bg-red-100 text-red-700' },
   ];
 
   return (
@@ -78,19 +42,18 @@ const About: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <h3 className="text-2xl font-bold text-gray-800 mb-6">
-                Full Stack Developer & AI Enthusiast
+                Frontend Developer
               </h3>
               <p className="text-lg text-gray-600 mb-6">
-                I'm a passionate full-stack developer with expertise in modern
-                web technologies, artificial intelligence, and machine learning.
-                I love creating innovative solutions that solve real-world
-                problems.
+                I'm a passionate frontend developer with expertise in modern
+                web technologies. I love creating beautiful, responsive, and
+                user-friendly web applications that provide excellent user experiences.
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                With experience in React, Next.js, Node.js, and various AI/ML
-                frameworks, I bring ideas to life through clean, efficient, and
-                scalable code. I'm constantly learning and exploring new technologies
-                to stay at the forefront of web development.
+                With experience in React and modern CSS frameworks like Tailwind,
+                I focus on writing clean, maintainable code and building intuitive
+                interfaces. I'm always learning and exploring new ways to improve
+                my development skills.
               </p>
               
               {/* Technology Chips */}
@@ -116,20 +79,20 @@ const About: React.FC = () => {
               {/* Key Strengths */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2">🚀 Frontend Excellence</h5>
-                  <p className="text-sm text-gray-600">Modern React apps with TypeScript, responsive design, and smooth animations</p>
+                  <h5 className="font-semibold text-gray-800 mb-2">🎨 Frontend Development</h5>
+                  <p className="text-sm text-gray-600">Building responsive and interactive web applications with React</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2">⚡ Backend Development</h5>
-                  <p className="text-sm text-gray-600">Scalable APIs with Node.js, Python, and robust database design</p>
+                  <h5 className="font-semibold text-gray-800 mb-2">💻 Clean Code</h5>
+                  <p className="text-sm text-gray-600">Writing maintainable, well-structured, and efficient code</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2">🤖 AI Integration</h5>
-                  <p className="text-sm text-gray-600">Machine learning models, AI APIs, and intelligent automation</p>
+                  <h5 className="font-semibold text-gray-800 mb-2">🔧 Problem Solving</h5>
+                  <p className="text-sm text-gray-600">Analyzing issues and finding effective solutions</p>
                 </div>
                 <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2">☁️ Cloud & DevOps</h5>
-                  <p className="text-sm text-gray-600">AWS deployment, Docker containers, and CI/CD pipelines</p>
+                  <h5 className="font-semibold text-gray-800 mb-2">📱 Responsive Design</h5>
+                  <p className="text-sm text-gray-600">Creating websites that work perfectly on all devices</p>
                 </div>
               </div>
             </div>
