@@ -142,25 +142,25 @@ export const PROJECTS: Project[] = [
     id: 1,
     title: 'TechStore - Computer Hardware Store',
     description:
-      'A modern, responsive computer hardware store built with SvelteKit, TypeScript, and Tailwind CSS, deployed on Azure Static Web Apps. Features product catalog, shopping cart, search & filter functionality, and responsive design.',
+      'A modern, responsive computer hardware store built with SvelteKit, TypeScript, and Tailwind CSS, deployed on Azure Static Web Apps. Features comprehensive product catalog with 8 categories (CPUs, GPUs, Storage, RAM, Motherboards, Cooling, PSUs, Cases), advanced shopping cart with quantity management, search & filter functionality, and fully responsive design optimized for desktop, tablet, and mobile.',
     technologies: ['SvelteKit 2.0', 'TypeScript', 'Tailwind CSS', 'Lucide Svelte', 'Azure Static Web Apps'],
     githubUrl: 'https://github.com/davidagustin/azure-static-practice',
     liveUrl: 'https://ashy-sky-078d0441e.2.azurestaticapps.net',
     icon: FaBolt,
     category: 'E-commerce',
     features: [
-      'Product Catalog & Search',
-      'Shopping Cart System',
-      'Category Filtering',
-      'Responsive Design',
+      '8 Product Categories',
+      'Advanced Shopping Cart',
+      'Search & Filter System',
+      'Mobile-First Design',
     ],
   },
   {
     id: 2,
     title: '20 Newsgroups ML Analysis Dashboard',
     description:
-      'A comprehensive machine learning analysis dashboard for the 20 Newsgroups dataset, featuring advanced hyperparameter tuning, model comparison, and interactive visualizations. Built with Next.js 14, Material-UI, and Python ML pipeline.',
-    technologies: ['Next.js 14', 'React 18', 'TypeScript', 'Material-UI 5', 'Python', 'Scikit-learn', 'XGBoost', 'LightGBM', 'Vercel'],
+      'A comprehensive machine learning analysis dashboard for the 20 Newsgroups dataset, featuring advanced hyperparameter tuning, model comparison, and interactive visualizations. Built with Next.js 15, Material-UI, and Python ML pipeline.',
+    technologies: ['Next.js 15', 'React 18', 'TypeScript', 'Material-UI 5', 'Python', 'Scikit-learn', 'XGBoost', 'LightGBM', 'Vercel'],
     githubUrl: 'https://github.com/davidagustin/machine-learning-project',
     liveUrl: 'https://machine-learning-project-theta.vercel.app',
     icon: FaChartLine,
@@ -198,7 +198,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/hope-foundation/charity-website',
     liveUrl: 'https://sample-gatsby-6fe3p.ondigitalocean.app/',
     icon: FaHeart,
-    category: 'Full Stack',
+    category: 'Charity/Non-Profit',
     features: [
       'Donation System',
       'Volunteer Portal',
@@ -215,7 +215,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/davidagustin/historigal-vercel',
     liveUrl: 'https://historigal-vercel.vercel.app',
     icon: FaSearch,
-    category: 'Full Stack',
+    category: 'Data/Research',
     features: [
       '37,860+ historical events',
       'Advanced citation parsing',
@@ -232,7 +232,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/davidagustin/comprehensive-ai-learning-app',
     liveUrl: 'https://comprehensive-ai-learning-app.vercel.app',
     icon: FaBrain,
-    category: 'Full Stack',
+    category: 'Education/AI',
     features: [
       'Interactive Learning',
       '1000+ Quiz Questions',
@@ -249,7 +249,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/davidagustin/a-very-nice-grocery-list-vercel',
     liveUrl: 'https://a-very-nice-grocery-list-vercel.vercel.app',
     icon: FaShoppingCart,
-    category: 'Full Stack',
+    category: 'Productivity',
     features: [
       'Add & Remove Items',
       'Duplicate Prevention',
@@ -266,7 +266,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/davidagustin/surge-practice',
     liveUrl: 'https://my-surge-practice-site.surge.sh',
     icon: FaHome,
-    category: 'Full Stack',
+    category: 'Real Estate',
     features: [
       'Property Listings & Search',
       'Advanced Filtering',
@@ -283,7 +283,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/davidagustin/render-practice',
     liveUrl: 'https://render-practice-or72.onrender.com',
     icon: FaChair,
-    category: 'Full Stack',
+    category: 'E-commerce',
     features: [
       'Product Catalog & Search',
       'Shopping Cart System',
@@ -300,7 +300,7 @@ export const PROJECTS: Project[] = [
     githubUrl: 'https://github.com/davidagustin/netlify-practice',
     liveUrl: 'https://netlify-practice-one.netlify.app',
     icon: FaBalanceScale,
-    category: 'Full Stack',
+    category: 'Professional Services',
     features: [
       'Professional Design',
       'Practice Areas',

@@ -1,6 +1,6 @@
 # David Agustin - Portfolio Website
 
-A modern, responsive portfolio website showcasing **9+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
+A modern, responsive portfolio website showcasing **10+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
 
 ## 🚀 Features
 
@@ -12,7 +12,7 @@ A modern, responsive portfolio website showcasing **9+ diverse projects** and **
 - **GitHub Pages**: Deployed on GitHub Pages
 - **Performance Optimized**: Fast loading and optimized for performance
 - **Reliable Contact Form**: EmailJS integration for cross-browser email functionality
-- **Diverse Tech Stack**: Showcases projects built with React, Angular, Vue.js, Astro.js, and AI/ML technologies
+- **Diverse Tech Stack**: Showcases projects built with React, Angular, Vue.js, SvelteKit, Astro.js, and AI/ML technologies
 - **AI/ML Focus**: Specialized in machine learning applications and AI integration
 
 ## 🛠️ Tech Stack
@@ -27,7 +27,13 @@ A modern, responsive portfolio website showcasing **9+ diverse projects** and **
 
 ## 🎯 Featured Projects
 
-This portfolio showcases **9+ diverse projects** built with modern web technologies and AI/ML frameworks:
+This portfolio showcases **10+ diverse projects** built with modern web technologies and AI/ML frameworks:
+
+### ⚡ **TechStore - Computer Hardware Store** - E-commerce Platform
+- **Tech Stack**: SvelteKit 2.0, TypeScript, Tailwind CSS, Lucide Svelte, Azure Static Web Apps
+- **Features**: 8 product categories, advanced shopping cart, search & filter system, mobile-first design
+- **Live Demo**: [https://ashy-sky-078d0441e.2.azurestaticapps.net](https://ashy-sky-078d0441e.2.azurestaticapps.net)
+- **GitHub**: [https://github.com/davidagustin/azure-static-practice](https://github.com/davidagustin/azure-static-practice)
 
 ### 🤖 **20 Newsgroups ML Analysis Dashboard** - Machine Learning Dashboard
 - **Tech Stack**: Next.js, React, TypeScript, Material-UI, Python, Scikit-learn, XGBoost, LightGBM, Vercel
@@ -93,7 +99,7 @@ src/
 │   ├── Footer.tsx      # Footer component
 │   ├── Hero.tsx        # Hero section with stats
 │   ├── Navbar.tsx      # Navigation bar
-│   └── Projects.tsx    # Projects showcase (9+ projects)
+│   └── Projects.tsx    # Projects showcase (10+ projects)
 ├── hooks/              # Custom React hooks
 ├── types/              # TypeScript type definitions
 ├── utils/              # Utility functions
@@ -158,7 +164,7 @@ Each section is a separate component in the `src/components/` directory:
 App-wide constants are defined in `src/utils/constants.ts`:
 - Navigation items
 - Social links
-- Project data (9+ projects)
+- Project data (10+ projects)
 - Contact information
 
 ## 🚀 Deployment
