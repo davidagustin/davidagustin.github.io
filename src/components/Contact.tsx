@@ -17,9 +17,24 @@ const Contact: React.FC = () => {
     setSubmitStatus('idle');
 
     try {
-      // Create email content
+      // Create professional email content
       const subject = `Portfolio Contact from ${formData.name}`;
-      const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+      const body = `Hi David,
+
+I hope this message finds you well. I came across your portfolio and would like to connect regarding potential opportunities.
+
+Contact Information:
+• Name: ${formData.name}
+• Email: ${formData.email}
+
+Message:
+${formData.message}
+
+Best regards,
+${formData.name}
+
+---
+This message was sent from your portfolio contact form at https://davidagustin.github.io`;
       
       // Create mailto link
       const mailtoLink = `mailto:davidsyagustin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
@@ -176,7 +191,7 @@ const Contact: React.FC = () => {
                 {/* Status Messages */}
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                    ✅ Message sent successfully! Your email client should open with the message ready to send.
+                    ✅ Perfect! Your email client should now open with a professionally formatted message ready to send. The email includes your contact information and message in a clean, business-friendly format.
                   </div>
                 )}
                 
