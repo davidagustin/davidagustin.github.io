@@ -14,22 +14,40 @@ const Contact: React.FC = () => {
 
   // Initialize EmailJS
   useEffect(() => {
-    emailjs.init("q2ic3TavT5Sv1CTEP");
+    try {
+      emailjs.init("q2ic3TavT5Sv1CTEP");
+    } catch (error) {
+      console.error('EmailJS initialization failed:', error);
+    }
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
+      setSubmitStatus('error');
+      return;
+    }
+    
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email.trim())) {
+      setSubmitStatus('error');
+      return;
+    }
+    
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
       // EmailJS template parameters
       const templateParams = {
-        from_name: formData.name,
-        from_email: formData.email,
-        message: formData.message,
+        from_name: formData.name.trim(),
+        from_email: formData.email.trim(),
+        message: formData.message.trim(),
         to_email: 'davidsyagustin@gmail.com',
-        subject: `Portfolio Contact from ${formData.name}`,
+        subject: `Portfolio Contact from ${formData.name.trim()}`,
       };
 
       // Send email using EmailJS
@@ -40,7 +58,9 @@ const Contact: React.FC = () => {
         'q2ic3TavT5Sv1CTEP'
       );
 
-      if (result.status === 200) {
+      console.log('EmailJS result:', result);
+
+      if (result.status === 200 || result.text === 'OK') {
         setSubmitStatus('success');
         
         // Reset form
@@ -50,11 +70,20 @@ const Contact: React.FC = () => {
           message: '',
         });
       } else {
+        console.error('EmailJS returned non-success status:', result);
         setSubmitStatus('error');
       }
     } catch (error) {
       console.error('Error sending email:', error);
       setSubmitStatus('error');
+      
+      // Log additional error details for debugging
+      if (error instanceof Error) {
+        console.error('Error details:', {
+          message: error.message,
+          stack: error.stack
+        });
+      }
     } finally {
       setIsSubmitting(false);
       
@@ -192,7 +221,7 @@ const Contact: React.FC = () => {
                 
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
-                    ❌ There was an error sending your message. Please try again or email me directly at davidsyagustin@gmail.com
+                    ❌ There was an error sending your message. Please check your internet connection and try again, or email me directly at davidsyagustin@gmail.com
                   </div>
                 )}
                 
