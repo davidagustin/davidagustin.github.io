@@ -62,7 +62,7 @@ const Contact: React.FC = () => {
         subject: `Portfolio Contact from ${formData.name.trim()}`,
       };
 
-      // Send email using EmailJS
+      // Send email using EmailJS (without reCAPTCHA)
       const result = await emailjs.send(
         'service_vdkx6od',
         'template_8u7ryea',
@@ -93,22 +93,32 @@ const Contact: React.FC = () => {
           type: 'error',
         });
       }
-    } catch (error) {
-      console.error('Error sending email:', error);
-      setSnackbar({
-        isOpen: true,
-        message: 'Network error. Please check your connection and try again.',
-        type: 'error',
-      });
-      
-      // Log additional error details for debugging
-      if (error instanceof Error) {
-        console.error('Error details:', {
-          message: error.message,
-          stack: error.stack
-        });
-      }
-    } finally {
+          } catch (error) {
+        console.error('Error sending email:', error);
+        
+        // Check for reCAPTCHA error
+        if (error instanceof Error && error.message.includes('reCAPTCHA')) {
+          setSnackbar({
+            isOpen: true,
+            message: 'Email service configuration error. Please contact the site administrator.',
+            type: 'error',
+          });
+        } else {
+          setSnackbar({
+            isOpen: true,
+            message: 'Network error. Please check your connection and try again.',
+            type: 'error',
+          });
+        }
+        
+        // Log additional error details for debugging
+        if (error instanceof Error) {
+          console.error('Error details:', {
+            message: error.message,
+            stack: error.stack
+          });
+        }
+      } finally {
       setIsSubmitting(false);
     }
   };
