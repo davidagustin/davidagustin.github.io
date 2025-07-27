@@ -8,11 +8,51 @@ const Contact: React.FC = () => {
     email: '',
     message: '',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission logic here
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitStatus('idle');
+
+    try {
+      // Create email content
+      const subject = `Portfolio Contact from ${formData.name}`;
+      const body = `Name: ${formData.name}\nEmail: ${formData.email}\n\nMessage:\n${formData.message}`;
+      
+      // Create mailto link
+      const mailtoLink = `mailto:davidsyagustin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      
+      // Open default email client
+      window.open(mailtoLink, '_blank');
+      
+      // Show success message
+      setSubmitStatus('success');
+      
+      // Reset form
+      setFormData({
+        name: '',
+        email: '',
+        message: '',
+      });
+      
+      // Reset status after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 3000);
+      
+    } catch (error) {
+      console.error('Error sending message:', error);
+      setSubmitStatus('error');
+      
+      // Reset error status after 3 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 3000);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -93,6 +133,7 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -110,6 +151,7 @@ const Contact: React.FC = () => {
                     onChange={handleChange}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <div>
@@ -127,10 +169,29 @@ const Contact: React.FC = () => {
                     rows={5}
                     className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
-                <button type="submit" className="w-full btn btn-primary">
-                  Send Message
+                
+                {/* Status Messages */}
+                {submitStatus === 'success' && (
+                  <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
+                    ✅ Message sent successfully! Your email client should open with the message ready to send.
+                  </div>
+                )}
+                
+                {submitStatus === 'error' && (
+                  <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+                    ❌ There was an error sending your message. Please try again or email me directly at davidsyagustin@gmail.com
+                  </div>
+                )}
+                
+                <button 
+                  type="submit" 
+                  className={`w-full btn btn-primary ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
               </form>
             </div>
