@@ -8,6 +8,7 @@ import {
   FaDatabase,
   FaEnvelope,
   FaGithub,
+  FaHeart,
   FaHome,
   FaJs,
   FaLinkedin,
@@ -133,6 +134,23 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
 export const PROJECTS: Project[] = [
   {
     id: 1,
+    title: 'Hope Foundation',
+    description:
+      'A modern, responsive charity website built with Gatsby for Hope Foundation. Features donation systems, volunteer portals, event management, and comprehensive program showcases. Deployed on Digital Ocean with excellent performance and SEO optimization.',
+    technologies: ['Gatsby', 'React', 'Digital Ocean', 'SEO Optimized', 'Responsive Design'],
+    githubUrl: 'https://github.com/hope-foundation/charity-website',
+    liveUrl: 'https://sample-gatsby-6fe3p.ondigitalocean.app/',
+    icon: FaHeart,
+    category: 'Full Stack',
+    features: [
+      'Donation System',
+      'Volunteer Portal',
+      'Event Management',
+      'Program Showcase',
+    ],
+  },
+  {
+    id: 2,
     title: 'Historigal',
     description:
       'A modern, responsive web application for searching through 37,860+ historical events from 300 B.C. to 2012 with a Google-like interface. Features advanced citation parsing, intelligent search with debouncing, URL routing, and mobile-first design.',
@@ -149,7 +167,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 2,
+    id: 3,
     title: 'AI Learning Hub',
     description:
       'A comprehensive Next.js application for learning AI and machine learning concepts through interactive mnemonics, character-based learning, and quizzes. Features 30+ learning sections with 1000+ quiz questions.',
@@ -166,7 +184,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 4,
     title: 'A Very Nice Grocery List',
     description:
       'A modern, responsive grocery list application built with Next.js, React, and TypeScript. Features duplicate prevention, auto-scroll, and a beautiful dark theme with smooth animations.',
@@ -183,7 +201,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 4,
+    id: 5,
     title: 'Luxury Realty',
     description:
       'A comprehensive, modern real estate website built with Angular and deployed on Surge.sh. Features luxury property listings with advanced search, filtering, interactive image galleries, and responsive design.',
@@ -200,7 +218,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 5,
+    id: 6,
     title: 'Elegant Furniture Store',
     description:
       'A modern, responsive furniture store built with Vue.js 3, Vite, and Tailwind CSS. Features a beautiful collection of premium furniture with shopping cart functionality, product catalog, and seamless user experience.',
@@ -217,7 +235,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 6,
+    id: 7,
     title: 'Law & Associates',
     description:
       'A modern, professional law firm website built with Astro.js and Tailwind CSS. Features comprehensive legal services, attorney profiles, practice areas, and contact forms with a clean, professional design.',
