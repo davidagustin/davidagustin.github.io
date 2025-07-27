@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Full Stack Developer
+              Full Stack Developer & AI Enthusiast
             </motion.h2>
 
             <motion.p
@@ -142,11 +142,11 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 1.2 }}
             >
               <div className="text-center text-white">
-                <h3 className="text-3xl font-bold mb-1 text-blue-200">7+</h3>
+                <h3 className="text-3xl font-bold mb-1 text-blue-200">9+</h3>
                 <p className="text-sm text-blue-100 font-semibold">Projects</p>
               </div>
               <div className="text-center text-white">
-                <h3 className="text-3xl font-bold mb-1 text-blue-200">4+</h3>
+                <h3 className="text-3xl font-bold mb-1 text-blue-200">50+</h3>
                 <p className="text-sm text-blue-100 font-semibold">Technologies</p>
               </div>
               <div className="text-center text-white">

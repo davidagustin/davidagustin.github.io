@@ -98,13 +98,10 @@ const About: React.FC = () => {
                 I'm a passionate full-stack developer with expertise in modern
                 web technologies, artificial intelligence, and machine learning.
                 I love creating innovative solutions that solve real-world
-                problems.
+                problems and deliver exceptional user experiences.
               </p>
               <p className="text-lg text-gray-600 mb-8">
-                With experience in React, Next.js, Node.js, and various AI/ML
-                frameworks, I bring ideas to life through clean, efficient, and
-                scalable code. I'm constantly learning and exploring new technologies
-                to stay at the forefront of web development.
+                With experience across 9+ diverse projects and 50+ technologies including React, Next.js, Node.js, Python, and various AI/ML frameworks, I bring ideas to life through clean, efficient, and scalable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development and AI innovation.
               </p>
               
               {/* Technology Chips */}
