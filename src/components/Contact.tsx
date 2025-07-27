@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import type React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -12,6 +12,15 @@ const Contact: React.FC = () => {
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
   const [showEmailFallback, setShowEmailFallback] = useState(false);
   const [emailContent, setEmailContent] = useState('');
+  const [browserInfo, setBrowserInfo] = useState({
+    isChrome: false,
+    isFirefox: false,
+    isSafari: false,
+    isEdge: false,
+    isMobile: false,
+    isIOS: false,
+    isAndroid: false
+  });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,33 +50,66 @@ This message was sent from your portfolio contact form at https://davidagustin.g
       // Create mailto link
       const mailtoLink = `mailto:davidsyagustin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       
-      // Try multiple methods to open email client (works across all browsers)
+      // Browser and mobile-specific email opening logic
       let emailOpened = false;
       
-      try {
-        // Method 1: Direct window.open
-        const emailWindow = window.open(mailtoLink, '_blank');
-        
-        // Method 2: If window.open fails, try location.href
-        if (!emailWindow || emailWindow.closed || typeof emailWindow.closed === 'undefined') {
+      if (browserInfo.isMobile) {
+        // Mobile devices - use location.href (most reliable on mobile)
+        try {
           window.location.href = mailtoLink;
           emailOpened = true;
-        } else {
+        } catch (error) {
+          console.error('Mobile email opening failed:', error);
+        }
+      } else if (browserInfo.isChrome) {
+        // Chrome desktop - try multiple methods
+        try {
+          // Method 1: Try window.open first
+          const emailWindow = window.open(mailtoLink, '_blank');
+          
+          // Method 2: If window.open fails, try location.href
+          if (!emailWindow || emailWindow.closed || typeof emailWindow.closed === 'undefined') {
+            window.location.href = mailtoLink;
+            emailOpened = true;
+          } else {
+            emailOpened = true;
+          }
+        } catch (windowError) {
+          // Method 3: Fallback to location.href
+          window.location.href = mailtoLink;
           emailOpened = true;
         }
-      } catch (windowError) {
-        // Method 3: Fallback to location.href
-        window.location.href = mailtoLink;
-        emailOpened = true;
+      } else if (browserInfo.isFirefox || browserInfo.isSafari || browserInfo.isEdge) {
+        // Firefox, Safari, Edge - use window.open (works well)
+        try {
+          window.open(mailtoLink, '_blank');
+          emailOpened = true;
+        } catch (error) {
+          // Fallback to location.href
+          window.location.href = mailtoLink;
+          emailOpened = true;
+        }
+      } else {
+        // Unknown browser - try both methods
+        try {
+          const emailWindow = window.open(mailtoLink, '_blank');
+          if (!emailWindow || emailWindow.closed || typeof emailWindow.closed === 'undefined') {
+            window.location.href = mailtoLink;
+          }
+          emailOpened = true;
+        } catch (error) {
+          window.location.href = mailtoLink;
+          emailOpened = true;
+        }
       }
       
-      // If email client didn't open, show fallback
+      // Show fallback after a delay if email client didn't open
       setTimeout(() => {
         if (!emailOpened) {
           setEmailContent(body);
           setShowEmailFallback(true);
         }
-      }, 1000);
+      }, browserInfo.isMobile ? 500 : 1000); // Shorter delay on mobile
       
       // Show success message
       setSubmitStatus('success');
@@ -96,6 +138,24 @@ This message was sent from your portfolio contact form at https://davidagustin.g
       setIsSubmitting(false);
     }
   };
+
+  // Browser detection on component mount
+  useEffect(() => {
+    const userAgent = navigator.userAgent;
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+    const isIOS = /iPad|iPhone|iPod/.test(userAgent);
+    const isAndroid = /Android/.test(userAgent);
+    
+    setBrowserInfo({
+      isChrome: /Chrome/.test(userAgent) && !/Edge/.test(userAgent),
+      isFirefox: /Firefox/.test(userAgent),
+      isSafari: /Safari/.test(userAgent) && !/Chrome/.test(userAgent),
+      isEdge: /Edge/.test(userAgent),
+      isMobile,
+      isIOS,
+      isAndroid
+    });
+  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -218,7 +278,18 @@ This message was sent from your portfolio contact form at https://davidagustin.g
                 {/* Status Messages */}
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                    ✅ Perfect! Your email client should now open with a professionally formatted message ready to send. The email includes your contact information and message in a clean, business-friendly format.
+                    {browserInfo.isMobile ? (
+                      <>
+                        ✅ Perfect! Your mobile email app should now open with a professionally formatted message ready to send. 
+                        {browserInfo.isIOS && ' If it doesn\'t open automatically, check your default email app settings.'}
+                        {browserInfo.isAndroid && ' If it doesn\'t open automatically, you may need to select your preferred email app.'}
+                      </>
+                    ) : (
+                      <>
+                        ✅ Perfect! Your email client should now open with a professionally formatted message ready to send. 
+                        {browserInfo.isChrome && ' If it doesn\'t open automatically, check your browser\'s popup settings or use the fallback option below.'}
+                      </>
+                    )}
                   </div>
                 )}
                 
@@ -231,9 +302,11 @@ This message was sent from your portfolio contact form at https://davidagustin.g
                 {/* Email Fallback Modal */}
                 {showEmailFallback && (
                   <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className="bg-white rounded-lg p-6 max-w-2xl w-full max-h-[80vh] overflow-y-auto">
+                    <div className={`bg-white rounded-lg p-6 ${browserInfo.isMobile ? 'w-full max-h-[90vh]' : 'max-w-2xl w-full max-h-[80vh]'} overflow-y-auto`}>
                       <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-xl font-bold text-gray-800">Email Client Not Found</h3>
+                        <h3 className="text-xl font-bold text-gray-800">
+                          {browserInfo.isMobile ? 'Email App Not Found' : 'Email Client Not Found'}
+                        </h3>
                         <button
                           onClick={() => setShowEmailFallback(false)}
                           className="text-gray-500 hover:text-gray-700 text-2xl"
@@ -242,7 +315,10 @@ This message was sent from your portfolio contact form at https://davidagustin.g
                         </button>
                       </div>
                       <p className="text-gray-600 mb-4">
-                        Your email client didn't open automatically. Here's your formatted message - you can copy and paste it into your email client:
+                        {browserInfo.isMobile 
+                          ? 'Your email app didn\'t open automatically. Here\'s your formatted message - you can copy and paste it into your preferred email app:'
+                          : 'Your email client didn\'t open automatically. Here\'s your formatted message - you can copy and paste it into your email client:'
+                        }
                       </p>
                       <div className="bg-gray-50 p-4 rounded-lg border">
                         <div className="mb-2">
@@ -258,21 +334,21 @@ This message was sent from your portfolio contact form at https://davidagustin.g
                           {emailContent}
                         </pre>
                       </div>
-                      <div className="mt-4 flex gap-2">
+                      <div className={`mt-4 flex gap-2 ${browserInfo.isMobile ? 'flex-col' : 'flex-row'}`}>
                         <button
                           onClick={() => {
                             navigator.clipboard.writeText(emailContent);
                             alert('Email content copied to clipboard!');
                           }}
-                          className="btn btn-primary"
+                          className={`btn btn-primary ${browserInfo.isMobile ? 'w-full' : ''}`}
                         >
                           Copy to Clipboard
                         </button>
                         <a
                           href={`mailto:davidsyagustin@gmail.com?subject=${encodeURIComponent(`Portfolio Contact from ${formData.name}`)}&body=${encodeURIComponent(emailContent)}`}
-                          className="btn btn-secondary"
+                          className={`btn btn-secondary ${browserInfo.isMobile ? 'w-full text-center' : ''}`}
                         >
-                          Try Mailto Link Again
+                          {browserInfo.isMobile ? 'Try Email App Again' : 'Try Mailto Link Again'}
                         </a>
                       </div>
                     </div>
