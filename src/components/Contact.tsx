@@ -50,6 +50,8 @@ const Contact: React.FC = () => {
       return;
     }
     
+
+    
     setIsSubmitting(true);
 
     try {
