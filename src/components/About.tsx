@@ -4,10 +4,10 @@ import type React from 'react';
 const About: React.FC = () => {
   const technologies = [
     // Frontend Frameworks & Libraries
-    { name: 'Next.js 14/15', color: 'bg-black text-white' },
-    { name: 'React 18/19', color: 'bg-blue-600 text-white' },
-    { name: 'Angular 17', color: 'bg-red-600 text-white' },
-    { name: 'Vue.js 3', color: 'bg-green-600 text-white' },
+    { name: 'Next.js', color: 'bg-black text-white' },
+    { name: 'React', color: 'bg-blue-600 text-white' },
+    { name: 'Angular', color: 'bg-red-600 text-white' },
+    { name: 'Vue.js', color: 'bg-green-600 text-white' },
     { name: 'Astro.js', color: 'bg-purple-600 text-white' },
     { name: 'Gatsby', color: 'bg-purple-100 text-purple-700' },
     
@@ -19,8 +19,8 @@ const About: React.FC = () => {
     { name: 'Python', color: 'bg-blue-100 text-blue-700' },
     
     // Styling & UI
-    { name: 'Tailwind CSS 3/4', color: 'bg-cyan-100 text-cyan-700' },
-    { name: 'Material-UI 5', color: 'bg-blue-600 text-white' },
+    { name: 'Tailwind CSS', color: 'bg-cyan-100 text-cyan-700' },
+    { name: 'Material-UI', color: 'bg-blue-600 text-white' },
     { name: 'Sass', color: 'bg-pink-100 text-pink-700' },
     { name: 'Google Fonts', color: 'bg-gray-100 text-gray-700' },
     
@@ -31,11 +31,11 @@ const About: React.FC = () => {
     { name: 'React Hooks', color: 'bg-blue-100 text-blue-700' },
     
     // State Management & Routing
-    { name: 'Pinia 2', color: 'bg-yellow-100 text-yellow-800' },
-    { name: 'Vue Router 4', color: 'bg-green-100 text-green-700' },
+    { name: 'Pinia', color: 'bg-yellow-100 text-yellow-800' },
+    { name: 'Vue Router', color: 'bg-green-100 text-green-700' },
     
     // Build Tools & Development
-    { name: 'Vite 4', color: 'bg-purple-100 text-purple-700' },
+    { name: 'Vite', color: 'bg-purple-100 text-purple-700' },
     { name: 'Webpack', color: 'bg-blue-100 text-blue-700' },
     
     // AI/ML & Data Science
