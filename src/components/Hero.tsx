@@ -6,10 +6,10 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg-gradient-to-br from-primary-600 via-secondary-600 to-primary-700 relative overflow-hidden"
+      className="min-h-screen flex items-center bg-gray-900 relative overflow-hidden"
     >
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-30">
+      {/* Subtle Pattern */}
+      <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Cdefs%3E%3Cpattern id=%22grain%22 width=%22100%22 height=%22100%22 patternUnits=%22userSpaceOnUse%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%221%22 fill=%22white%22 opacity=%220.1%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect width=%22100%22 height=%22100%22 fill=%22url(%23grain)%22/%3E%3C/svg%3E')]" />
       </div>
 
@@ -29,15 +29,15 @@ const Hero: React.FC = () => {
             >
               <h1 className="text-5xl lg:text-6xl font-bold leading-tight mb-4">
                 Hi, I'm{' '}
-                <span className="text-blue-600 font-bold relative">
+                <span className="text-blue-400 font-bold relative">
                   David Agustin
-                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-blue-600 rounded" />
+                  <span className="absolute -bottom-2 left-0 w-full h-1 bg-blue-400 rounded" />
                 </span>
               </h1>
             </motion.div>
 
             <motion.h2
-              className="text-2xl lg:text-3xl font-normal mb-6 opacity-90"
+              className="text-2xl lg:text-3xl font-semibold mb-6 text-gray-300"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -46,7 +46,7 @@ const Hero: React.FC = () => {
             </motion.h2>
 
             <motion.p
-              className="text-lg lg:text-xl leading-relaxed mb-8 opacity-80 max-w-lg"
+              className="text-lg lg:text-xl leading-relaxed mb-8 text-gray-400 max-w-lg"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
@@ -64,7 +64,7 @@ const Hero: React.FC = () => {
             >
               <motion.a
                 href="#projects"
-                className="btn btn-primary"
+                className="btn bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out px-6 py-3 rounded-lg font-semibold text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
               </motion.a>
               <motion.a
                 href="#contact"
-                className="btn btn-secondary"
+                className="btn bg-transparent text-blue-400 border-2 border-blue-400 hover:bg-blue-400 hover:text-white transition-all duration-300 ease-in-out px-6 py-3 rounded-lg font-semibold text-base"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-md border border-white/30 text-white hover:bg-white/30 hover:border-white/50 transition-all duration-300 shadow-lg"
+                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-800 border border-gray-700 text-gray-300 hover:bg-gray-700 hover:text-white transition-all duration-300 shadow-lg font-medium"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, scale: 0 }}
@@ -100,7 +100,7 @@ const Hero: React.FC = () => {
                   transition={{ duration: 0.5, delay: 1.2 }}
                 >
                   <social.icon className="text-lg" />
-                  <span className="font-medium">{social.label}</span>
+                  <span className="font-semibold">{social.label}</span>
                 </motion.a>
               ))}
             </motion.div>
@@ -118,7 +118,7 @@ const Hero: React.FC = () => {
               {TECH_STACK.map((tech) => (
                 <motion.div
                   key={tech.name}
-                  className="flex flex-col items-center gap-2 p-6 bg-white/20 backdrop-blur-md rounded-2xl border border-white/30 transition-all duration-300 cursor-pointer hover:bg-white/30 hover:border-white/50 shadow-lg"
+                  className="flex flex-col items-center gap-2 p-6 bg-gray-800 rounded-2xl border border-gray-700 transition-all duration-300 cursor-pointer hover:bg-gray-700 hover:border-gray-600 shadow-lg"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
@@ -127,7 +127,7 @@ const Hero: React.FC = () => {
                   <div style={{ color: tech.color }}>
                     <tech.icon className="text-4xl mb-2" />
                   </div>
-                  <span className="font-semibold text-white text-sm">
+                  <span className="font-bold text-white text-sm">
                     {tech.name}
                   </span>
                 </motion.div>
@@ -142,16 +142,16 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 1.2 }}
             >
               <div className="text-center text-white">
-                <h3 className="text-3xl font-bold mb-1 text-gradient">7+</h3>
-                <p className="text-sm opacity-80 font-medium">Projects</p>
+                <h3 className="text-3xl font-bold mb-1 text-blue-400">7+</h3>
+                <p className="text-sm text-gray-300 font-semibold">Projects</p>
               </div>
               <div className="text-center text-white">
-                <h3 className="text-3xl font-bold mb-1 text-gradient">4+</h3>
-                <p className="text-sm opacity-80 font-medium">Technologies</p>
+                <h3 className="text-3xl font-bold mb-1 text-blue-400">4+</h3>
+                <p className="text-sm text-gray-300 font-semibold">Technologies</p>
               </div>
               <div className="text-center text-white">
-                <h3 className="text-3xl font-bold mb-1 text-gradient">100%</h3>
-                <p className="text-sm opacity-80 font-medium">Responsive</p>
+                <h3 className="text-3xl font-bold mb-1 text-blue-400">100%</h3>
+                <p className="text-sm text-gray-300 font-semibold">Responsive</p>
               </div>
             </motion.div>
           </motion.div>
@@ -166,7 +166,7 @@ const Hero: React.FC = () => {
         transition={{ duration: 1, delay: 2 }}
       >
         <motion.div
-          className="text-3xl opacity-70 cursor-pointer"
+          className="text-3xl text-gray-400 cursor-pointer"
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
         >
