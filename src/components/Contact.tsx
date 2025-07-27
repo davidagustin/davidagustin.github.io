@@ -65,6 +65,8 @@ const Contact: React.FC = () => {
       };
 
       // Send email using EmailJS (without reCAPTCHA)
+      console.log('Sending email with params:', templateParams);
+      
       const result = await emailjs.send(
         'service_vdkx6od',
         'template_8u7ryea',
@@ -98,26 +100,40 @@ const Contact: React.FC = () => {
           } catch (error) {
         console.error('Error sending email:', error);
         
-        // Check for reCAPTCHA error
-        if (error instanceof Error && error.message.includes('reCAPTCHA')) {
-          setSnackbar({
-            isOpen: true,
-            message: 'Email service configuration error. Please contact the site administrator.',
-            type: 'error',
+        // Log the full error object for debugging
+        console.error('Full error object:', error);
+        
+        // Check for specific error types
+        if (error instanceof Error) {
+          if (error.message.includes('reCAPTCHA')) {
+            setSnackbar({
+              isOpen: true,
+              message: 'reCAPTCHA is still enabled. Please disable it in EmailJS settings.',
+              type: 'error',
+            });
+          } else if (error.message.includes('400')) {
+            setSnackbar({
+              isOpen: true,
+              message: 'Email service configuration issue. Please check EmailJS settings.',
+              type: 'error',
+            });
+          } else {
+            setSnackbar({
+              isOpen: true,
+              message: 'Network error. Please check your connection and try again.',
+              type: 'error',
+            });
+          }
+          
+          console.error('Error details:', {
+            message: error.message,
+            stack: error.stack
           });
         } else {
           setSnackbar({
             isOpen: true,
-            message: 'Network error. Please check your connection and try again.',
+            message: 'Unknown error occurred. Please try again.',
             type: 'error',
-          });
-        }
-        
-        // Log additional error details for debugging
-        if (error instanceof Error) {
-          console.error('Error details:', {
-            message: error.message,
-            stack: error.stack
           });
         }
       } finally {
