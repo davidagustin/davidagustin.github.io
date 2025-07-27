@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState, useEffect } from 'react';
+import emailjs from '@emailjs/browser';
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -10,152 +11,59 @@ const Contact: React.FC = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-  const [showEmailFallback, setShowEmailFallback] = useState(false);
-  const [emailContent, setEmailContent] = useState('');
-  const [browserInfo, setBrowserInfo] = useState({
-    isChrome: false,
-    isFirefox: false,
-    isSafari: false,
-    isEdge: false,
-    isMobile: false,
-    isIOS: false,
-    isAndroid: false
-  });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init("YOUR_PUBLIC_KEY"); // You'll need to replace this with your actual EmailJS public key
+  }, []);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
     try {
-      // Create professional email content
-      const subject = `Portfolio Contact from ${formData.name}`;
-      const body = `Hi David,
+      // EmailJS template parameters
+      const templateParams = {
+        from_name: formData.name,
+        from_email: formData.email,
+        message: formData.message,
+        to_email: 'davidsyagustin@gmail.com',
+        subject: `Portfolio Contact from ${formData.name}`,
+      };
 
-I hope this message finds you well. I came across your portfolio and would like to connect regarding potential opportunities.
+      // Send email using EmailJS
+      const result = await emailjs.send(
+        'YOUR_SERVICE_ID', // Replace with your EmailJS service ID
+        'YOUR_TEMPLATE_ID', // Replace with your EmailJS template ID
+        templateParams,
+        'YOUR_PUBLIC_KEY' // Replace with your EmailJS public key
+      );
 
-Contact Information:
-• Name: ${formData.name}
-• Email: ${formData.email}
-
-Message:
-${formData.message}
-
-Best regards,
-${formData.name}
-
----
-This message was sent from your portfolio contact form at https://davidagustin.github.io`;
-      
-      // Create mailto link
-      const mailtoLink = `mailto:davidsyagustin@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      
-      // Browser and mobile-specific email opening logic
-      let emailOpened = false;
-      
-      if (browserInfo.isMobile) {
-        // Mobile devices - use location.href (most reliable on mobile)
-        try {
-          window.location.href = mailtoLink;
-          emailOpened = true;
-        } catch (error) {
-          console.error('Mobile email opening failed:', error);
-        }
-      } else if (browserInfo.isChrome) {
-        // Chrome desktop - try multiple methods
-        try {
-          // Method 1: Try window.open first
-          const emailWindow = window.open(mailtoLink, '_blank');
-          
-          // Method 2: If window.open fails, try location.href
-          if (!emailWindow || emailWindow.closed || typeof emailWindow.closed === 'undefined') {
-            window.location.href = mailtoLink;
-            emailOpened = true;
-          } else {
-            emailOpened = true;
-          }
-        } catch (windowError) {
-          // Method 3: Fallback to location.href
-          window.location.href = mailtoLink;
-          emailOpened = true;
-        }
-      } else if (browserInfo.isFirefox || browserInfo.isSafari || browserInfo.isEdge) {
-        // Firefox, Safari, Edge - use window.open (works well)
-        try {
-          window.open(mailtoLink, '_blank');
-          emailOpened = true;
-        } catch (error) {
-          // Fallback to location.href
-          window.location.href = mailtoLink;
-          emailOpened = true;
-        }
+      if (result.status === 200) {
+        setSubmitStatus('success');
+        
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          message: '',
+        });
       } else {
-        // Unknown browser - try both methods
-        try {
-          const emailWindow = window.open(mailtoLink, '_blank');
-          if (!emailWindow || emailWindow.closed || typeof emailWindow.closed === 'undefined') {
-            window.location.href = mailtoLink;
-          }
-          emailOpened = true;
-        } catch (error) {
-          window.location.href = mailtoLink;
-          emailOpened = true;
-        }
+        setSubmitStatus('error');
       }
-      
-      // Show fallback after a delay if email client didn't open
-      setTimeout(() => {
-        if (!emailOpened) {
-          setEmailContent(body);
-          setShowEmailFallback(true);
-        }
-      }, browserInfo.isMobile ? 500 : 1000); // Shorter delay on mobile
-      
-      // Show success message
-      setSubmitStatus('success');
-      
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        message: '',
-      });
-      
-      // Reset status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
-      
     } catch (error) {
-      console.error('Error sending message:', error);
+      console.error('Error sending email:', error);
       setSubmitStatus('error');
-      
-      // Reset error status after 3 seconds
-      setTimeout(() => {
-        setSubmitStatus('idle');
-      }, 3000);
     } finally {
       setIsSubmitting(false);
+      
+      // Reset status after 5 seconds
+      setTimeout(() => {
+        setSubmitStatus('idle');
+      }, 5000);
     }
   };
-
-  // Browser detection on component mount
-  useEffect(() => {
-    const userAgent = navigator.userAgent;
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-    const isIOS = /iPad|iPhone|iPod/.test(userAgent);
-    const isAndroid = /Android/.test(userAgent);
-    
-    setBrowserInfo({
-      isChrome: /Chrome/.test(userAgent) && !/Edge/.test(userAgent),
-      isFirefox: /Firefox/.test(userAgent),
-      isSafari: /Safari/.test(userAgent) && !/Chrome/.test(userAgent),
-      isEdge: /Edge/.test(userAgent),
-      isMobile,
-      isIOS,
-      isAndroid
-    });
-  }, []);
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -278,80 +186,13 @@ This message was sent from your portfolio contact form at https://davidagustin.g
                 {/* Status Messages */}
                 {submitStatus === 'success' && (
                   <div className="p-4 bg-green-100 border border-green-400 text-green-700 rounded-lg">
-                    {browserInfo.isMobile ? (
-                      <>
-                        ✅ Perfect! Your mobile email app should now open with a professionally formatted message ready to send. 
-                        {browserInfo.isIOS && ' If it doesn\'t open automatically, check your default email app settings.'}
-                        {browserInfo.isAndroid && ' If it doesn\'t open automatically, you may need to select your preferred email app.'}
-                      </>
-                    ) : (
-                      <>
-                        ✅ Perfect! Your email client should now open with a professionally formatted message ready to send. 
-                        {browserInfo.isChrome && ' If it doesn\'t open automatically, check your browser\'s popup settings or use the fallback option below.'}
-                      </>
-                    )}
+                    ✅ Perfect! Your message has been sent successfully. I'll get back to you as soon as possible!
                   </div>
                 )}
                 
                 {submitStatus === 'error' && (
                   <div className="p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
                     ❌ There was an error sending your message. Please try again or email me directly at davidsyagustin@gmail.com
-                  </div>
-                )}
-                
-                {/* Email Fallback Modal */}
-                {showEmailFallback && (
-                  <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-                    <div className={`bg-white rounded-lg p-6 ${browserInfo.isMobile ? 'w-full max-h-[90vh]' : 'max-w-2xl w-full max-h-[80vh]'} overflow-y-auto`}>
-                      <div className="flex justify-between items-center mb-4">
-                        <h3 className="text-xl font-bold text-gray-800">
-                          {browserInfo.isMobile ? 'Email App Not Found' : 'Email Client Not Found'}
-                        </h3>
-                        <button
-                          onClick={() => setShowEmailFallback(false)}
-                          className="text-gray-500 hover:text-gray-700 text-2xl"
-                        >
-                          ×
-                        </button>
-                      </div>
-                      <p className="text-gray-600 mb-4">
-                        {browserInfo.isMobile 
-                          ? 'Your email app didn\'t open automatically. Here\'s your formatted message - you can copy and paste it into your preferred email app:'
-                          : 'Your email client didn\'t open automatically. Here\'s your formatted message - you can copy and paste it into your email client:'
-                        }
-                      </p>
-                      <div className="bg-gray-50 p-4 rounded-lg border">
-                        <div className="mb-2">
-                          <strong>To:</strong> davidsyagustin@gmail.com
-                        </div>
-                        <div className="mb-2">
-                          <strong>Subject:</strong> Portfolio Contact from {formData.name}
-                        </div>
-                        <div className="mb-4">
-                          <strong>Message:</strong>
-                        </div>
-                        <pre className="whitespace-pre-wrap text-sm text-gray-700 font-mono bg-white p-3 rounded border">
-                          {emailContent}
-                        </pre>
-                      </div>
-                      <div className={`mt-4 flex gap-2 ${browserInfo.isMobile ? 'flex-col' : 'flex-row'}`}>
-                        <button
-                          onClick={() => {
-                            navigator.clipboard.writeText(emailContent);
-                            alert('Email content copied to clipboard!');
-                          }}
-                          className={`btn btn-primary ${browserInfo.isMobile ? 'w-full' : ''}`}
-                        >
-                          Copy to Clipboard
-                        </button>
-                        <a
-                          href={`mailto:davidsyagustin@gmail.com?subject=${encodeURIComponent(`Portfolio Contact from ${formData.name}`)}&body=${encodeURIComponent(emailContent)}`}
-                          className={`btn btn-secondary ${browserInfo.isMobile ? 'w-full text-center' : ''}`}
-                        >
-                          {browserInfo.isMobile ? 'Try Email App Again' : 'Try Mailto Link Again'}
-                        </a>
-                      </div>
-                    </div>
                   </div>
                 )}
                 
