@@ -60,6 +60,7 @@ const About: React.FC = () => {
     { name: 'Netlify', color: 'bg-green-100 text-green-700' },
     { name: 'Surge.sh', color: 'bg-purple-100 text-purple-700' },
     { name: 'Render', color: 'bg-blue-100 text-blue-700' },
+    { name: 'Heroku', color: 'bg-purple-600 text-white' },
     { name: 'Digital Ocean', color: 'bg-blue-600 text-white' },
     { name: 'AWS', color: 'bg-orange-100 text-orange-700' },
     { name: 'AWS Amplify', color: 'bg-orange-100 text-orange-700' },

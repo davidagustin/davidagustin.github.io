@@ -24,6 +24,7 @@ import {
   FaChartLine,
   FaBolt,
   FaCar,
+  FaPuzzlePiece,
 } from 'react-icons/fa';
 
 import type {
@@ -49,6 +50,7 @@ export const TECH_STACK: TechStack[] = [
   { icon: FaCog, name: 'AI/ML', color: '#FF6B6B' },
   { icon: FaJs, name: 'JavaScript', color: '#F7DF1E' },
   { icon: FaCar, name: 'Hugo', color: '#FF4088' },
+  { icon: FaRocket, name: 'Heroku', color: '#430098' },
 ];
 
 export const SOCIAL_LINKS: SocialLink[] = [
@@ -137,6 +139,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       'Netlify',
       'Surge.sh',
       'Render',
+      'Heroku',
       'CI/CD',
       'Cloud Deployment',
     ],
@@ -347,6 +350,23 @@ export const PROJECTS: Project[] = [
       'Practice Areas',
       'Team Profiles',
       'Contact Forms',
+    ],
+  },
+  {
+    id: 13,
+    title: 'Sudoku Game',
+    description:
+      'A beautiful and interactive Sudoku game built with React and Express, deployed on Heroku. Features three difficulty levels (Easy, Medium, Hard), real-time validation, visual feedback with highlighted cells and error indicators, and modern UI with smooth animations.',
+    technologies: ['React 18', 'Express.js', 'Node.js', 'Webpack 5', 'Heroku', 'CSS3'],
+    githubUrl: 'https://github.com/davidagustin/heroku-practice',
+    liveUrl: 'https://heroku-practice-12345.herokuapp.com',
+    icon: FaPuzzlePiece,
+    category: 'Gaming',
+    features: [
+      'Three Difficulty Levels',
+      'Real-time Validation',
+      'Interactive Gameplay',
+      'Modern UI/UX',
     ],
   },
 ];
