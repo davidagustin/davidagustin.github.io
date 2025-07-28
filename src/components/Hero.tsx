@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Content */}
           <motion.div
             className="text-white"
@@ -108,26 +108,26 @@ const Hero: React.FC = () => {
 
           {/* Tech Stack & Stats */}
           <motion.div
-            className="flex flex-col items-center gap-8"
+            className="flex flex-col items-center gap-6 lg:gap-8"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             {/* Tech Stack */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4 sm:gap-6 w-full max-w-md">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-xs sm:max-w-sm lg:max-w-md">
               {TECH_STACK.map((tech) => (
                 <motion.div
                   key={tech.name}
-                  className="flex flex-col items-center gap-2 p-4 sm:p-6 bg-white/25 backdrop-blur-md rounded-2xl border border-white/40 transition-all duration-300 cursor-pointer hover:bg-white/35 hover:border-white/50 shadow-lg"
+                  className="flex flex-col items-center gap-1 sm:gap-2 p-2 sm:p-3 lg:p-4 bg-white/25 backdrop-blur-md rounded-lg sm:rounded-xl border border-white/40 transition-all duration-300 cursor-pointer hover:bg-white/35 hover:border-white/50 shadow-lg"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                 >
                   <div style={{ color: tech.color }}>
-                    <tech.icon className="text-3xl sm:text-4xl mb-2" />
+                    <tech.icon className="text-xl sm:text-2xl lg:text-3xl mb-1" />
                   </div>
-                  <span className="font-bold text-white text-xs sm:text-sm text-center">
+                  <span className="font-bold text-white text-xs text-center leading-tight">
                     {tech.name}
                   </span>
                 </motion.div>
