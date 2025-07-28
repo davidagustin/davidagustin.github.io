@@ -96,7 +96,7 @@ const About: React.FC = () => {
           <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
               <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
-                Full Stack Developer & AI Enthusiast
+                Full Stack Developer
               </h3>
               <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6">
                 I'm a passionate full-stack developer with expertise in modern

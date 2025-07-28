@@ -18,8 +18,8 @@ const Footer: React.FC = () => {
             <div>
               <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">David Agustin</h3>
               <p className="text-gray-400 mb-4 text-sm sm:text-base">
-                Full Stack Developer & AI Enthusiast passionate about creating innovative web
-                solutions, machine learning applications, and exploring cutting-edge technologies.
+                Full Stack Developer passionate about creating innovative web
+                solutions and exploring cutting-edge technologies.
               </p>
               <div className="flex space-x-4">
                 <a
