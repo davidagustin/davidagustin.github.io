@@ -22,6 +22,7 @@ const About: React.FC = () => {
     // Styling & UI
     { name: 'Tailwind CSS', color: 'bg-cyan-100 text-cyan-700' },
     { name: 'Material-UI', color: 'bg-blue-600 text-white' },
+    { name: 'Lucide React', color: 'bg-gray-100 text-gray-700' },
     { name: 'Sass', color: 'bg-pink-100 text-pink-700' },
     { name: 'Google Fonts', color: 'bg-gray-100 text-gray-700' },
     
@@ -61,6 +62,7 @@ const About: React.FC = () => {
     { name: 'Render', color: 'bg-blue-100 text-blue-700' },
     { name: 'Digital Ocean', color: 'bg-blue-600 text-white' },
     { name: 'AWS', color: 'bg-orange-100 text-orange-700' },
+    { name: 'AWS Amplify', color: 'bg-orange-100 text-orange-700' },
     { name: 'GitLab Pages', color: 'bg-orange-100 text-orange-700' },
     
     // DevOps & Tools
