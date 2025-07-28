@@ -160,50 +160,50 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
         >
           <h2 className="section-title">Get In Touch</h2>
-          <div className="grid lg:grid-cols-2 gap-12">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
                 Let's Work Together
               </h3>
-              <p className="text-lg text-gray-600 mb-8">
+              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
                 I'm always interested in new opportunities and exciting
                 projects. Whether you have a question or just want to say hi,
                 feel free to reach out!
               </p>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-xl">📧</span>
+              <div className="space-y-3 sm:space-y-4">
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-lg sm:text-xl">📧</span>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">Email</h4>
-                    <p className="text-gray-600">davidsyagustin@gmail.com</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-xl">📍</span>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">Location</h4>
-                    <p className="text-gray-600">San Francisco, CA</p>
+                  <div className="min-w-0">
+                    <h4 className="font-semibold text-gray-800 text-sm sm:text-base">Email</h4>
+                    <p className="text-gray-600 text-sm sm:text-base break-all">davidsyagustin@gmail.com</p>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center">
-                    <span className="text-white text-xl">💼</span>
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-lg sm:text-xl">📍</span>
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">
+                  <div className="min-w-0">
+                    <h4 className="font-semibold text-gray-800 text-sm sm:text-base">Location</h4>
+                    <p className="text-gray-600 text-sm sm:text-base">San Francisco, CA</p>
+                  </div>
+                </div>
+                <div className="flex items-center space-x-3 sm:space-x-4">
+                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-lg sm:text-xl">💼</span>
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="font-semibold text-gray-800 text-sm sm:text-base">
                       Availability
                     </h4>
-                    <p className="text-gray-600">Open to new opportunities</p>
+                    <p className="text-gray-600 text-sm sm:text-base">Open to new opportunities</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-lg p-8">
-              <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8">
+              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
                 <div>
                   <label
                     htmlFor="name"
@@ -217,7 +217,7 @@ const Contact: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base"
                     required
                     disabled={isSubmitting}
                   />
@@ -235,7 +235,7 @@ const Contact: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base"
                     required
                     disabled={isSubmitting}
                   />
@@ -252,8 +252,8 @@ const Contact: React.FC = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={5}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent"
+                    rows={4}
+                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base resize-none"
                     required
                     disabled={isSubmitting}
                   />

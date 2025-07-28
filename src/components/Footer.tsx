@@ -14,10 +14,10 @@ const Footer: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
             <div>
-              <h3 className="text-2xl font-bold mb-4">David Agustin</h3>
-              <p className="text-gray-400 mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">David Agustin</h3>
+              <p className="text-gray-400 mb-4 text-sm sm:text-base">
                 Full Stack Developer & AI Enthusiast passionate about creating innovative web
                 solutions, machine learning applications, and exploring cutting-edge technologies.
               </p>
@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <FaGithub className="text-2xl" />
+                  <FaGithub className="text-xl sm:text-2xl" />
                 </a>
                 <a
                   href="https://linkedin.com/in/davidsyagustin"
@@ -36,23 +36,23 @@ const Footer: React.FC = () => {
                   rel="noopener noreferrer"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <FaLinkedin className="text-2xl" />
+                  <FaLinkedin className="text-xl sm:text-2xl" />
                 </a>
                 <a
                   href="mailto:davidsyagustin@gmail.com"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <FaEnvelope className="text-2xl" />
+                  <FaEnvelope className="text-xl sm:text-2xl" />
                 </a>
               </div>
             </div>
             <div>
-              <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
+              <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Quick Links</h4>
               <ul className="space-y-2">
                 <li>
                   <a
                     href="#about"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
                   >
                     About
                   </a>
@@ -60,7 +60,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href="#projects"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
                   >
                     Projects
                   </a>
@@ -68,7 +68,7 @@ const Footer: React.FC = () => {
                 <li>
                   <a
                     href="#contact"
-                    className="text-gray-400 hover:text-white transition-colors"
+                    className="text-gray-400 hover:text-white transition-colors text-sm sm:text-base"
                   >
                     Contact
                   </a>

@@ -93,29 +93,29 @@ const About: React.FC = () => {
           viewport={{ once: true }}
         >
           <h2 className="section-title">About Me</h2>
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             <div>
-              <h3 className="text-2xl font-bold text-gray-800 mb-6">
+              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
                 Full Stack Developer & AI Enthusiast
               </h3>
-              <p className="text-lg text-gray-600 mb-6">
+              <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6">
                 I'm a passionate full-stack developer with expertise in modern
                 web technologies, artificial intelligence, and machine learning.
                 I love creating innovative solutions that solve real-world
                 problems and deliver exceptional user experiences.
               </p>
-              <p className="text-lg text-gray-600 mb-8">
-                With experience across 10+ diverse projects and 50+ technologies including React, Next.js, Node.js, Python, Hugo, and various AI/ML frameworks, I bring ideas to life through clean, efficient, and scalable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development and AI innovation.
+              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
+                With experience across 12+ diverse projects and 50+ technologies including React, Next.js, Node.js, Python, Hugo, and various AI/ML frameworks, I bring ideas to life through clean, efficient, and scalable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development and AI innovation.
               </p>
               
               {/* Technology Chips */}
               <div className="mb-6">
-                <h4 className="text-lg font-semibold text-gray-800 mb-4">Technologies & Skills</h4>
-                <div className="flex flex-wrap gap-2">
+                <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Technologies & Skills</h4>
+                <div className="flex flex-wrap gap-1.5 sm:gap-2">
                   {technologies.map((tech, index) => (
                     <motion.span
                       key={tech.name}
-                      className={`px-3 py-1.5 ${tech.color} rounded-full text-xs font-medium shadow-sm hover:shadow-md transition-all duration-200 cursor-default`}
+                      className={`px-2 sm:px-3 py-1 sm:py-1.5 ${tech.color} rounded-full text-xs font-medium shadow-sm hover:shadow-md transition-all duration-200 cursor-default`}
                       initial={{ opacity: 0, scale: 0.8 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       transition={{ duration: 0.3, delay: index * 0.02 }}
@@ -129,30 +129,30 @@ const About: React.FC = () => {
               </div>
               
               {/* Key Strengths */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2">🚀 Frontend Excellence</h5>
-                  <p className="text-sm text-gray-600">Modern React apps with Next.js, TypeScript, and responsive design</p>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h5 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">🚀 Frontend Excellence</h5>
+                  <p className="text-xs sm:text-sm text-gray-600">Modern React apps with Next.js, TypeScript, and responsive design</p>
                 </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2">⚡ Backend Development</h5>
-                  <p className="text-sm text-gray-600">Scalable APIs with Node.js, Python, and robust database design</p>
+                <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h5 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">⚡ Backend Development</h5>
+                  <p className="text-xs sm:text-sm text-gray-600">Scalable APIs with Node.js, Python, and robust database design</p>
                 </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2">🤖 AI Integration</h5>
-                  <p className="text-sm text-gray-600">Machine learning models, AI APIs, and intelligent automation</p>
+                <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h5 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">🤖 AI Integration</h5>
+                  <p className="text-xs sm:text-sm text-gray-600">Machine learning models, AI APIs, and intelligent automation</p>
                 </div>
-                <div className="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2">☁️ Cloud & DevOps</h5>
-                  <p className="text-sm text-gray-600">AWS deployment, Docker containers, and CI/CD pipelines</p>
+                <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200">
+                  <h5 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">☁️ Cloud & DevOps</h5>
+                  <p className="text-xs sm:text-sm text-gray-600">AWS deployment, Docker containers, and CI/CD pipelines</p>
                 </div>
               </div>
             </div>
             
             <div className="relative">
-              <div className="w-full h-96 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-2xl">
+              <div className="w-full h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-2xl">
                 {/* Placeholder for profile image or illustration */}
-                <div className="flex items-center justify-center h-full text-white text-6xl">
+                <div className="flex items-center justify-center h-full text-white text-4xl sm:text-5xl lg:text-6xl">
                   👨‍💻
                 </div>
               </div>

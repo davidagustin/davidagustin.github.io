@@ -57,14 +57,14 @@ const Hero: React.FC = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-wrap gap-4 mb-8"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 mb-8"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
             >
               <motion.a
                 href="#projects"
-                className="btn bg-white/90 hover:bg-white text-blue-800 shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out px-6 py-3 rounded-lg font-semibold text-base"
+                className="btn bg-white/90 hover:bg-white text-blue-800 shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out px-6 py-3 rounded-lg font-semibold text-base text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
               </motion.a>
               <motion.a
                 href="#contact"
-                className="btn bg-transparent text-white border-2 border-white hover:bg-white hover:text-blue-800 transition-all duration-300 ease-in-out px-6 py-3 rounded-lg font-semibold text-base"
+                className="btn bg-transparent text-white border-2 border-white hover:bg-white hover:text-blue-800 transition-all duration-300 ease-in-out px-6 py-3 rounded-lg font-semibold text-base text-center"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="flex gap-4"
+              className="flex flex-col sm:flex-row gap-4"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
@@ -92,7 +92,7 @@ const Hero: React.FC = () => {
                   href={social.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/25 backdrop-blur-md border border-white/40 text-white hover:bg-white/35 hover:text-white transition-all duration-300 shadow-lg font-medium"
+                  className="flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-white/25 backdrop-blur-md border border-white/40 text-white hover:bg-white/35 hover:text-white transition-all duration-300 shadow-lg font-medium"
                   whileHover={{ scale: 1.1, y: -3 }}
                   whileTap={{ scale: 0.9 }}
                   initial={{ opacity: 0, scale: 0 }}
@@ -114,20 +114,20 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             {/* Tech Stack */}
-            <div className="grid grid-cols-2 gap-6 w-full max-w-md">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-2 gap-4 sm:gap-6 w-full max-w-md">
               {TECH_STACK.map((tech) => (
                 <motion.div
                   key={tech.name}
-                  className="flex flex-col items-center gap-2 p-6 bg-white/25 backdrop-blur-md rounded-2xl border border-white/40 transition-all duration-300 cursor-pointer hover:bg-white/35 hover:border-white/50 shadow-lg"
+                  className="flex flex-col items-center gap-2 p-4 sm:p-6 bg-white/25 backdrop-blur-md rounded-2xl border border-white/40 transition-all duration-300 cursor-pointer hover:bg-white/35 hover:border-white/50 shadow-lg"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: 0.5 }}
                   whileHover={{ scale: 1.05, y: -5 }}
                 >
                   <div style={{ color: tech.color }}>
-                    <tech.icon className="text-4xl mb-2" />
+                    <tech.icon className="text-3xl sm:text-4xl mb-2" />
                   </div>
-                  <span className="font-bold text-white text-sm">
+                  <span className="font-bold text-white text-xs sm:text-sm text-center">
                     {tech.name}
                   </span>
                 </motion.div>
@@ -136,22 +136,22 @@ const Hero: React.FC = () => {
 
             {/* Stats */}
             <motion.div
-              className="flex gap-8 justify-center w-full"
+              className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center w-full"
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1.2 }}
             >
               <div className="text-center text-white">
-                <h3 className="text-3xl font-bold mb-1 text-blue-200">9+</h3>
-                <p className="text-sm text-blue-100 font-semibold">Projects</p>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-1 text-blue-200">12+</h3>
+                <p className="text-xs sm:text-sm text-blue-100 font-semibold">Projects</p>
               </div>
               <div className="text-center text-white">
-                <h3 className="text-3xl font-bold mb-1 text-blue-200">50+</h3>
-                <p className="text-sm text-blue-100 font-semibold">Technologies</p>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-1 text-blue-200">50+</h3>
+                <p className="text-xs sm:text-sm text-blue-100 font-semibold">Technologies</p>
               </div>
               <div className="text-center text-white">
-                <h3 className="text-3xl font-bold mb-1 text-blue-200">100%</h3>
-                <p className="text-sm text-blue-100 font-semibold">Responsive</p>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-1 text-blue-200">100%</h3>
+                <p className="text-xs sm:text-sm text-blue-100 font-semibold">Responsive</p>
               </div>
             </motion.div>
           </motion.div>

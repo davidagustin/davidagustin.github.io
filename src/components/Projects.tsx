@@ -80,7 +80,7 @@ const Projects: React.FC = () => {
           {/* Search and Filter Controls */}
           <div className="mb-8 space-y-4">
             {/* Search Input */}
-            <div className="max-w-md">
+            <div className="w-full max-w-md">
               <input
                 type="text"
                 placeholder="Search projects, technologies, or descriptions..."
@@ -91,12 +91,12 @@ const Projects: React.FC = () => {
             </div>
             
             {/* Sort Options */}
-            <div className="flex items-center gap-4">
-              <label className="text-sm font-medium text-gray-700">Sort by:</label>
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
+              <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
               <select
                 value={sortBy}
                 onChange={(e) => setSortBy(e.target.value)}
-                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+                className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
               >
                 <option value="name">Name (A-Z)</option>
                 <option value="category">Category</option>
@@ -113,7 +113,7 @@ const Projects: React.FC = () => {
                   <button
                     key={category}
                     onClick={() => setSelectedCategory(category)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
                       selectedCategory === category
                         ? 'bg-blue-600 text-white shadow-lg'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -133,7 +133,7 @@ const Projects: React.FC = () => {
                   <button
                     key={tech}
                     onClick={() => setSelectedTechnology(tech)}
-                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
                       selectedTechnology === tech
                         ? 'bg-green-600 text-white shadow-lg'
                         : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -153,7 +153,7 @@ const Projects: React.FC = () => {
           
           {/* Projects Grid */}
           {filteredProjects.length > 0 ? (
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
               {filteredProjects.map((project, index) => (
                 <motion.div
                   key={project.id}
@@ -162,28 +162,28 @@ const Projects: React.FC = () => {
                   transition={{ duration: 0.6, delay: index * 0.1 }}
                   className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
                 >
-                  <div className="h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-                    <project.icon className="text-6xl text-white" />
+                  <div className="h-40 sm:h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
+                    <project.icon className="text-4xl sm:text-6xl text-white" />
                   </div>
-                  <div className="p-6">
-                    <h3 className="text-xl font-bold text-gray-800 mb-3">
+                  <div className="p-4 sm:p-6">
+                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 line-clamp-2">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 mb-4">{project.description}</p>
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <p className="text-gray-600 mb-4 text-sm sm:text-base line-clamp-3">{project.description}</p>
+                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
                       {project.technologies.map((tech) => (
                         <span
                           key={tech}
-                          className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-sm"
+                          className="px-2 sm:px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm"
                         >
                           {tech}
                         </span>
                       ))}
                     </div>
-                    <div className="flex gap-4">
+                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
                       <a
                         href={project.githubUrl}
-                        className="btn btn-secondary flex-1 text-center"
+                        className="btn btn-secondary flex-1 text-center text-sm sm:text-base py-2 sm:py-3"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -191,7 +191,7 @@ const Projects: React.FC = () => {
                       </a>
                       <a
                         href={project.liveUrl}
-                        className="btn btn-primary flex-1 text-center"
+                        className="btn btn-primary flex-1 text-center text-sm sm:text-base py-2 sm:py-3"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
