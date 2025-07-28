@@ -6,6 +6,8 @@ import { PROJECTS } from '../utils/constants';
 const Projects: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
+  const [selectedTechnology, setSelectedTechnology] = useState('All');
+  const [sortBy, setSortBy] = useState('name');
 
   // Get unique categories
   const categories = useMemo(() => {
@@ -13,9 +15,21 @@ const Projects: React.FC = () => {
     return ['All', ...uniqueCategories];
   }, []);
 
-  // Filter projects based on search term and category
+  // Get unique technologies (without version numbers)
+  const technologies = useMemo(() => {
+    const allTechnologies = PROJECTS.flatMap(project => 
+      project.technologies.map(tech => {
+        // Remove version numbers (e.g., "Next.js 15" -> "Next.js")
+        return tech.replace(/\s+\d+(\.\d+)*$/, '');
+      })
+    );
+    const uniqueTechnologies = [...new Set(allTechnologies)];
+    return ['All', ...uniqueTechnologies.sort()];
+  }, []);
+
+  // Filter and sort projects
   const filteredProjects = useMemo(() => {
-    return PROJECTS.filter(project => {
+    let filtered = PROJECTS.filter(project => {
       const matchesSearch = 
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -25,9 +39,32 @@ const Projects: React.FC = () => {
       
       const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
       
-      return matchesSearch && matchesCategory;
+      const matchesTechnology = selectedTechnology === 'All' || 
+        project.technologies.some(tech => 
+          tech.replace(/\s+\d+(\.\d+)*$/, '').toLowerCase() === selectedTechnology.toLowerCase()
+        );
+      
+      return matchesSearch && matchesCategory && matchesTechnology;
     });
-  }, [searchTerm, selectedCategory]);
+
+    // Sort projects
+    filtered.sort((a, b) => {
+      switch (sortBy) {
+        case 'name':
+          return a.title.localeCompare(b.title);
+        case 'category':
+          return a.category.localeCompare(b.category);
+        case 'newest':
+          return b.id - a.id;
+        case 'oldest':
+          return a.id - b.id;
+        default:
+          return 0;
+      }
+    });
+
+    return filtered;
+  }, [searchTerm, selectedCategory, selectedTechnology, sortBy]);
 
   return (
     <section id="projects" className="py-20">
@@ -53,21 +90,59 @@ const Projects: React.FC = () => {
               />
             </div>
             
+            {/* Sort Options */}
+            <div className="flex items-center gap-4">
+              <label className="text-sm font-medium text-gray-700">Sort by:</label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
+              >
+                <option value="name">Name (A-Z)</option>
+                <option value="category">Category</option>
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+              </select>
+            </div>
+            
             {/* Category Filter */}
-            <div className="flex flex-wrap gap-2">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                    selectedCategory === category
-                      ? 'bg-blue-600 text-white shadow-lg'
-                      : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Category:</label>
+              <div className="flex flex-wrap gap-2">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setSelectedCategory(category)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                      selectedCategory === category
+                        ? 'bg-blue-600 text-white shadow-lg'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {category}
+                  </button>
+                ))}
+              </div>
+            </div>
+            
+            {/* Technology Filter */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">Technology:</label>
+              <div className="flex flex-wrap gap-2">
+                {technologies.map((tech) => (
+                  <button
+                    key={tech}
+                    onClick={() => setSelectedTechnology(tech)}
+                    className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                      selectedTechnology === tech
+                        ? 'bg-green-600 text-white shadow-lg'
+                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    }`}
+                  >
+                    {tech}
+                  </button>
+                ))}
+              </div>
             </div>
             
             {/* Results Count */}
