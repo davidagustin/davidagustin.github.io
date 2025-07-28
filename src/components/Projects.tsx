@@ -48,7 +48,7 @@ const Projects: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      GitHub
+                      {project.githubUrl.includes('gitlab.com') ? 'GitLab' : 'GitHub'}
                     </a>
                     <a
                       href={project.liveUrl}
