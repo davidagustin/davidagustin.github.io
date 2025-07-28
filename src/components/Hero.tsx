@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden pt-16 sm:pt-20"
+      className="min-h-screen flex items-center bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden pt-16 sm:pt-20 pb-8"
     >
       {/* Subtle Pattern */}
       <div className="absolute inset-0 opacity-10">
@@ -14,10 +14,10 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center justify-items-center">
           {/* Content */}
           <motion.div
-            className="text-white"
+            className="text-white text-center lg:text-left max-w-lg lg:max-w-none"
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
             </motion.p>
 
             <motion.div
-              className="flex flex-col sm:flex-row flex-wrap gap-4 mb-8"
+              className="flex flex-col sm:flex-row flex-wrap gap-4 mb-8 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -81,7 +81,7 @@ const Hero: React.FC = () => {
             </motion.div>
 
             <motion.div
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 1 }}
@@ -108,13 +108,13 @@ const Hero: React.FC = () => {
 
           {/* Tech Stack & Stats */}
           <motion.div
-            className="flex flex-col items-center gap-6 lg:gap-8"
+            className="flex flex-col items-center gap-6 lg:gap-8 w-full max-w-md"
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
             {/* Tech Stack */}
-            <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full max-w-xs sm:max-w-sm lg:max-w-md">
+            <div className="grid grid-cols-3 gap-3 sm:gap-4 w-full">
               {TECH_STACK.map((tech) => (
                 <motion.div
                   key={tech.name}
