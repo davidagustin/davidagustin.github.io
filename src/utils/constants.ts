@@ -163,7 +163,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     title: 'Premium Auto Sales - Professional Car Sales Website',
     description:
       'A modern, professional car sales website built with Hugo and designed for GitLab Pages deployment. Features comprehensive vehicle inventory with detailed listings, contact forms, multi-language support (English, French, Persian RTL), and a premium car dealership experience with professional styling and SEO optimization.',
@@ -180,7 +180,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     title: 'TechStore - Computer Hardware Store',
     description:
       'A modern, responsive computer hardware store built with SvelteKit, TypeScript, and Tailwind CSS, deployed on Azure Static Web Apps. Features comprehensive product catalog with 8 categories (CPUs, GPUs, Storage, RAM, Motherboards, Cooling, PSUs, Cases), advanced shopping cart with quantity management, search & filter functionality, and fully responsive design optimized for desktop, tablet, and mobile.',
@@ -197,7 +197,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 5,
+    id: 4,
     title: '20 Newsgroups ML Analysis Dashboard',
     description:
       'A comprehensive machine learning analysis dashboard for the 20 Newsgroups dataset, featuring advanced hyperparameter tuning, model comparison, and interactive visualizations. Built with Next.js 15, Material-UI, and Python ML pipeline.',
@@ -214,7 +214,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 6,
+    id: 5,
     title: 'MLI Learning Quiz App',
     description:
       'A beautiful, interactive learning and mnemonic quiz application designed specifically for the MLI (Machine Learning Institute) precourse material. Features 5 quiz categories with smart mnemonics, progress analytics, and modern UI/UX.',
@@ -231,7 +231,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 7,
+    id: 6,
     title: 'Hope Foundation',
     description:
       'A modern, responsive charity website built with Gatsby for Hope Foundation. Features donation systems, volunteer portals, event management, and comprehensive program showcases. Deployed on Digital Ocean with excellent performance and SEO optimization.',
@@ -248,7 +248,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 8,
+    id: 7,
     title: 'Historigal',
     description:
       'A modern, responsive web application for searching through 37,860+ historical events from 300 B.C. to 2012 with a Google-like interface. Features advanced citation parsing, intelligent search with debouncing, URL routing, and mobile-first design.',
@@ -265,7 +265,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 9,
+    id: 8,
     title: 'AI Learning Hub',
     description:
       'A comprehensive Next.js application for learning AI and machine learning concepts through interactive mnemonics, character-based learning, and quizzes. Features 30+ learning sections with 1000+ quiz questions.',
@@ -282,7 +282,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 10,
+    id: 9,
     title: 'A Very Nice Grocery List',
     description:
       'A modern, responsive grocery list application built with Next.js, React, and TypeScript. Features duplicate prevention, auto-scroll, and a beautiful dark theme with smooth animations.',
@@ -299,7 +299,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 11,
+    id: 10,
     title: 'Luxury Realty',
     description:
       'A comprehensive, modern real estate website built with Angular and deployed on Surge.sh. Features luxury property listings with advanced search, filtering, interactive image galleries, and responsive design.',
@@ -316,7 +316,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 12,
+    id: 11,
     title: 'Elegant Furniture Store',
     description:
       'A modern, responsive furniture store built with Vue.js 3, Vite, and Tailwind CSS. Features a beautiful collection of premium furniture with shopping cart functionality, product catalog, and seamless user experience.',
@@ -333,7 +333,7 @@ export const PROJECTS: Project[] = [
     ],
   },
   {
-    id: 13,
+    id: 12,
     title: 'Law & Associates',
     description:
       'A modern, professional law firm website built with Astro.js and Tailwind CSS. Features comprehensive legal services, attorney profiles, practice areas, and contact forms with a clean, professional design.',
