@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+          <div className="grid md:grid-cols-2 gap-6 md:gap-8 items-start">
             <div>
               <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">David Agustin</h3>
               <p className="text-gray-400 mb-4 text-sm sm:text-base">
@@ -46,9 +46,9 @@ const Footer: React.FC = () => {
                 </a>
               </div>
             </div>
-            <div>
+            <div className="flex flex-col items-start md:items-end">
               <h4 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Quick Links</h4>
-              <ul className="space-y-2">
+              <ul className="space-y-2 text-right">
                 <li>
                   <a
                     href="#about"
