@@ -1,6 +1,6 @@
 # David Agustin - Portfolio Website
 
-A modern, responsive portfolio website showcasing **10+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
+A modern, responsive portfolio website showcasing **13+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
 
 ## 🚀 Features
 
@@ -27,7 +27,7 @@ A modern, responsive portfolio website showcasing **10+ diverse projects** and *
 
 ## 🎯 Featured Projects
 
-This portfolio showcases **10+ diverse projects** built with modern web technologies and AI/ML frameworks:
+This portfolio showcases **13+ diverse projects** built with modern web technologies and AI/ML frameworks:
 
 ### ⚡ **TechStore - Computer Hardware Store** - E-commerce Platform
 - **Tech Stack**: SvelteKit 2.0, TypeScript, Tailwind CSS, Lucide Svelte, Azure Static Web Apps
@@ -89,6 +89,12 @@ This portfolio showcases **10+ diverse projects** built with modern web technolo
 - **Live Demo**: [https://netlify-practice-one.netlify.app](https://netlify-practice-one.netlify.app)
 - **GitHub**: [https://github.com/davidagustin/netlify-practice](https://github.com/davidagustin/netlify-practice)
 
+### 🧩 **Sudoku Game** - Interactive Puzzle Game
+- **Tech Stack**: React 18, Express.js, Node.js, Webpack 5, Heroku, CSS3
+- **Features**: Three difficulty levels, real-time validation, interactive gameplay, modern UI/UX
+- **Live Demo**: [https://heroku-sudoku-49243446e4d3.herokuapp.com/](https://heroku-sudoku-49243446e4d3.herokuapp.com/)
+- **GitHub**: [https://github.com/davidagustin/heroku-practice](https://github.com/davidagustin/heroku-practice)
+
 ## 📁 Project Structure
 
 ```
@@ -99,7 +105,7 @@ src/
 │   ├── Footer.tsx      # Footer component
 │   ├── Hero.tsx        # Hero section with stats
 │   ├── Navbar.tsx      # Navigation bar
-│   └── Projects.tsx    # Projects showcase (10+ projects)
+│   └── Projects.tsx    # Projects showcase (13+ projects)
 ├── hooks/              # Custom React hooks
 ├── types/              # TypeScript type definitions
 ├── utils/              # Utility functions
@@ -164,7 +170,7 @@ Each section is a separate component in the `src/components/` directory:
 App-wide constants are defined in `src/utils/constants.ts`:
 - Navigation items
 - Social links
-- Project data (10+ projects)
+- Project data (13+ projects)
 - Contact information
 
 ## 🚀 Deployment
@@ -265,6 +271,7 @@ This portfolio demonstrates expertise across **50+ modern web technologies**:
 - **Netlify** - Static site hosting and deployment
 - **Surge.sh** - Simple static site deployment
 - **Render** - Cloud application hosting
+- **Heroku** - Cloud application platform
 - **Digital Ocean** - Cloud infrastructure
 - **AWS** - Cloud computing platform
 

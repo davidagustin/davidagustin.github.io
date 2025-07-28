@@ -359,7 +359,7 @@ export const PROJECTS: Project[] = [
       'A beautiful and interactive Sudoku game built with React and Express, deployed on Heroku. Features three difficulty levels (Easy, Medium, Hard), real-time validation, visual feedback with highlighted cells and error indicators, and modern UI with smooth animations.',
     technologies: ['React 18', 'Express.js', 'Node.js', 'Webpack 5', 'Heroku', 'CSS3'],
     githubUrl: 'https://github.com/davidagustin/heroku-practice',
-    liveUrl: 'https://heroku-practice-12345.herokuapp.com',
+    liveUrl: 'https://heroku-sudoku-49243446e4d3.herokuapp.com/',
     icon: FaPuzzlePiece,
     category: 'Gaming',
     features: [
