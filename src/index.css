@@ -43,6 +43,16 @@
   .container {
     @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
+
+  /* Ensure sections don't get hidden behind fixed navbar */
+  section {
+    @apply relative;
+  }
+
+  /* Add top padding to sections that might be hidden behind navbar */
+  section:not(#home) {
+    @apply pt-16 sm:pt-20;
+  }
 }
 
 @layer utilities {

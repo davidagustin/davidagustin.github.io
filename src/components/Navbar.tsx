@@ -34,7 +34,7 @@ const Navbar: React.FC = () => {
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         scrolled
           ? 'bg-white/95 backdrop-blur-md shadow-lg py-2'
-          : 'bg-white/90 backdrop-blur-sm py-4'
+          : 'bg-white/90 backdrop-blur-sm py-3 sm:py-4'
       }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}

@@ -6,7 +6,7 @@ const Hero: React.FC = () => {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden"
+      className="min-h-screen flex items-center bg-gradient-to-br from-blue-600 via-purple-600 to-blue-800 relative overflow-hidden pt-16 sm:pt-20"
     >
       {/* Subtle Pattern */}
       <div className="absolute inset-0 opacity-10">
