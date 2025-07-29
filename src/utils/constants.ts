@@ -50,7 +50,7 @@ export const TECH_STACK: TechStack[] = [
   { icon: FaCloud, name: 'Azure', color: '#0078D4' },
   { icon: FaCog, name: 'AI/ML', color: '#FF6B6B' },
   { icon: FaJs, name: 'JavaScript', color: '#F7DF1E' },
-  { icon: FaCar, name: 'Hugo', color: '#FF4088' },
+  { icon: FaDatabase, name: 'SQL', color: '#336791' },
   { icon: FaRocket, name: 'Heroku', color: '#430098' },
   { icon: FaCode, name: 'Angular', color: '#DD0031' },
 ];
