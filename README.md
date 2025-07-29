@@ -1,6 +1,6 @@
 # David Agustin - Portfolio Website
 
-A modern, responsive portfolio website showcasing **13+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
+A modern, responsive portfolio website showcasing **14+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
 
 ## 🚀 Features
 
@@ -27,7 +27,7 @@ A modern, responsive portfolio website showcasing **13+ diverse projects** and *
 
 ## 🎯 Featured Projects
 
-This portfolio showcases **13+ diverse projects** built with modern web technologies and AI/ML frameworks:
+This portfolio showcases **14+ diverse projects** built with modern web technologies and AI/ML frameworks:
 
 ### ⚡ **TechStore - Computer Hardware Store** - E-commerce Platform
 - **Tech Stack**: SvelteKit 2.0, TypeScript, Tailwind CSS, Lucide Svelte, Azure Static Web Apps
@@ -88,6 +88,12 @@ This portfolio showcases **13+ diverse projects** built with modern web technolo
 - **Features**: Professional design, practice areas, team profiles, contact forms
 - **Live Demo**: [https://netlify-practice-one.netlify.app](https://netlify-practice-one.netlify.app)
 - **GitHub**: [https://github.com/davidagustin/netlify-practice](https://github.com/davidagustin/netlify-practice)
+
+### 🍽️ **FoodRater - Restaurant Rating App** - Food & Rating Platform
+- **Tech Stack**: Angular 17, Firebase, TypeScript, Tailwind CSS, Material Design, RxJS
+- **Features**: Restaurant discovery, 5-star rating system, user authentication, real-time data
+- **Live Demo**: [https://fir-practice-54eb3.web.app/](https://fir-practice-54eb3.web.app/)
+- **GitHub**: [https://github.com/davidagustin/firebase-practice](https://github.com/davidagustin/firebase-practice)
 
 ### 🧩 **Sudoku Game** - Interactive Puzzle Game
 - **Tech Stack**: React 18, Express.js, Node.js, Webpack 5, Heroku, CSS3
@@ -234,18 +240,22 @@ This portfolio demonstrates expertise across **50+ modern web technologies**:
 ### Styling & UI
 - **Tailwind CSS** - Utility-first CSS framework
 - **Material-UI** - React component library
+- **Material Design** - Design system and components
 - **Sass** - CSS preprocessor
 - **Google Fonts** - Typography
 
 ### Backend & APIs
 - **Node.js** - JavaScript runtime
 - **Express.js** - Web application framework
+- **Firebase** - Backend-as-a-Service platform
+- **Firestore** - NoSQL cloud database
 - **REST APIs** - API development
 - **React Hooks** - Modern React state management
 
 ### State Management & Routing
 - **Pinia** - Vue.js state management
 - **Vue Router** - Vue.js routing solution
+- **RxJS** - Reactive programming library
 
 ### Build Tools & Development
 - **Vite** - Next-generation frontend tooling
@@ -274,6 +284,7 @@ This portfolio demonstrates expertise across **50+ modern web technologies**:
 - **Heroku** - Cloud application platform
 - **Digital Ocean** - Cloud infrastructure
 - **AWS** - Cloud computing platform
+- **Firebase Hosting** - Static site hosting and deployment
 
 ### DevOps & Tools
 - **Docker** - Containerization

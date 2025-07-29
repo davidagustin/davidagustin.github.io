@@ -25,6 +25,7 @@ import {
   FaBolt,
   FaCar,
   FaPuzzlePiece,
+  FaUtensils,
 } from 'react-icons/fa';
 
 import type {
@@ -101,6 +102,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       'TypeScript',
       'Tailwind CSS',
       'HTML5/CSS3',
+      'Material Design',
+      'RxJS',
     ],
     color: '#61DAFB',
   },
@@ -114,6 +117,8 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       'REST APIs',
       'Database Design',
       'Authentication',
+      'Firebase',
+      'Firestore',
     ],
     color: '#339933',
   },
@@ -140,6 +145,7 @@ export const SKILL_CATEGORIES: SkillCategory[] = [
       'Surge.sh',
       'Render',
       'Heroku',
+      'Firebase Hosting',
       'CI/CD',
       'Cloud Deployment',
     ],
@@ -354,6 +360,23 @@ export const PROJECTS: Project[] = [
   },
   {
     id: 13,
+    title: 'FoodRater - Restaurant Rating App',
+    description:
+      'A modern, responsive restaurant rating application built with Angular 17 and Firebase, inspired by Yelp. Features restaurant discovery, 5-star rating system, user authentication, real-time data, and beautiful UI with Material Design components.',
+    technologies: ['Angular 17', 'Firebase', 'TypeScript', 'Tailwind CSS', 'Material Design', 'RxJS'],
+    githubUrl: 'https://github.com/davidagustin/firebase-practice',
+    liveUrl: 'https://fir-practice-54eb3.web.app/',
+    icon: FaUtensils,
+    category: 'Food & Rating',
+    features: [
+      'Restaurant Discovery',
+      '5-Star Rating System',
+      'User Authentication',
+      'Real-time Data',
+    ],
+  },
+  {
+    id: 14,
     title: 'Sudoku Game',
     description:
       'A beautiful and interactive Sudoku game built with React and Express, deployed on Heroku. Features three difficulty levels (Easy, Medium, Hard), real-time validation, visual feedback with highlighted cells and error indicators, and modern UI with smooth animations.',
