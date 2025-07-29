@@ -1,6 +1,6 @@
 # David Agustin - Portfolio Website
 
-A modern, responsive portfolio website showcasing **14+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
+A modern, responsive portfolio website showcasing **15+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
 
 ## 🚀 Features
 
@@ -27,7 +27,7 @@ A modern, responsive portfolio website showcasing **14+ diverse projects** and *
 
 ## 🎯 Featured Projects
 
-This portfolio showcases **14+ diverse projects** built with modern web technologies and AI/ML frameworks:
+This portfolio showcases **15+ diverse projects** built with modern web technologies and AI/ML frameworks:
 
 ### ⚡ **TechStore - Computer Hardware Store** - E-commerce Platform
 - **Tech Stack**: SvelteKit 2.0, TypeScript, Tailwind CSS, Lucide Svelte, Azure Static Web Apps
@@ -40,6 +40,12 @@ This portfolio showcases **14+ diverse projects** built with modern web technolo
 - **Features**: 10+ ML algorithms, interactive visualizations, hyperparameter tuning, real-time model comparison
 - **Live Demo**: [https://machine-learning-project-theta.vercel.app](https://machine-learning-project-theta.vercel.app)
 - **GitHub**: [https://github.com/davidagustin/machine-learning-project](https://github.com/davidagustin/machine-learning-project)
+
+### 📚 **Rules of Machine Learning - Memorization App** - ML Education Platform
+- **Tech Stack**: Next.js 15, TypeScript, Tailwind CSS, Vercel
+- **Features**: 43 ML Engineering Rules, three study modes (Browse, Study, Flashcard), category filtering, progress tracking
+- **Live Demo**: [https://rules-of-machine-learning.vercel.app/](https://rules-of-machine-learning.vercel.app/)
+- **GitHub**: [https://github.com/davidagustin/rules-of-machine-learning](https://github.com/davidagustin/rules-of-machine-learning)
 
 ### 🧠 **MLI Learning Quiz App** - AI Education Platform
 - **Tech Stack**: Next.js, React, TypeScript, Tailwind CSS, Vercel
@@ -111,7 +117,7 @@ src/
 │   ├── Footer.tsx      # Footer component
 │   ├── Hero.tsx        # Hero section with stats
 │   ├── Navbar.tsx      # Navigation bar
-│   └── Projects.tsx    # Projects showcase (13+ projects)
+│   └── Projects.tsx    # Projects showcase (15+ projects)
 ├── hooks/              # Custom React hooks
 ├── types/              # TypeScript type definitions
 ├── utils/              # Utility functions
@@ -176,7 +182,7 @@ Each section is a separate component in the `src/components/` directory:
 App-wide constants are defined in `src/utils/constants.ts`:
 - Navigation items
 - Social links
-- Project data (13+ projects)
+- Project data (15+ projects)
 - Contact information
 
 ## 🚀 Deployment
