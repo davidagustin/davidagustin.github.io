@@ -52,7 +52,6 @@ export const TECH_STACK: TechStack[] = [
   { icon: FaJs, name: 'JavaScript', color: '#F7DF1E' },
   { icon: FaCar, name: 'Hugo', color: '#FF4088' },
   { icon: FaRocket, name: 'Heroku', color: '#430098' },
-  { icon: FaDatabase, name: 'Firebase', color: '#FFCA28' },
   { icon: FaCode, name: 'Angular', color: '#DD0031' },
 ];
 
