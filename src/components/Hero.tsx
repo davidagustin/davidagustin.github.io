@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
               transition={{ duration: 0.8, delay: 1.2 }}
             >
               <div className="text-center text-white">
-                <h3 className="text-2xl sm:text-3xl font-bold mb-1 text-blue-200">12+</h3>
+                <h3 className="text-2xl sm:text-3xl font-bold mb-1 text-blue-200">15+</h3>
                 <p className="text-xs sm:text-sm text-blue-100 font-semibold">Projects</p>
               </div>
               <div className="text-center text-white">

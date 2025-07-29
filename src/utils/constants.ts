@@ -26,6 +26,7 @@ import {
   FaCar,
   FaPuzzlePiece,
   FaUtensils,
+  FaBook,
 } from 'react-icons/fa';
 
 import type {
@@ -391,6 +392,23 @@ export const PROJECTS: Project[] = [
       'Real-time Validation',
       'Interactive Gameplay',
       'Modern UI/UX',
+    ],
+  },
+  {
+    id: 15,
+    title: 'Rules of Machine Learning - Memorization App',
+    description:
+      'A modern, interactive web application to help memorize Google\'s 43 Rules of Machine Learning Engineering. Features three study modes: Browse Mode with category filtering and search, Study Mode for sequential learning with progress tracking, and Flashcard Mode for randomized learning with navigation controls.',
+    technologies: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    githubUrl: 'https://github.com/davidagustin/rules-of-machine-learning',
+    liveUrl: 'https://rules-of-machine-learning.vercel.app/',
+    icon: FaBook,
+    category: 'AI/ML Education',
+    features: [
+      '43 ML Engineering Rules',
+      'Three Study Modes',
+      'Category Filtering',
+      'Progress Tracking',
     ],
   },
 ];

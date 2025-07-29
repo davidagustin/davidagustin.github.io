@@ -110,7 +110,7 @@ const About: React.FC = () => {
                 problems and deliver exceptional user experiences.
               </p>
               <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
-                With experience across 12+ diverse projects and 50+ technologies including React, Next.js, Node.js, Python, Hugo, and various AI/ML frameworks, I bring ideas to life through clean, efficient, and scalable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development and AI innovation.
+                With experience across 15+ diverse projects and 50+ technologies including React, Next.js, Node.js, Python, Hugo, and various AI/ML frameworks, I bring ideas to life through clean, efficient, and scalable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development and AI innovation.
               </p>
               
               {/* Technology Chips */}
