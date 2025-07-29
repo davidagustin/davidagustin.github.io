@@ -92,7 +92,7 @@ This portfolio showcases **14+ diverse projects** built with modern web technolo
 ### 🍽️ **FoodRater - Restaurant Rating App** - Food & Rating Platform
 - **Tech Stack**: Angular 17, Firebase, TypeScript, Tailwind CSS, Material Design, RxJS
 - **Features**: Restaurant discovery, 5-star rating system, user authentication, real-time data
-- **Live Demo**: [https://fir-practice-54eb3.web.app/](https://fir-practice-54eb3.web.app/)
+- **Live Demo**: [https://firebase-practice--fir-practice-54eb3.us-central1.hosted.app/](https://firebase-practice--fir-practice-54eb3.us-central1.hosted.app/)
 - **GitHub**: [https://github.com/davidagustin/firebase-practice](https://github.com/davidagustin/firebase-practice)
 
 ### 🧩 **Sudoku Game** - Interactive Puzzle Game

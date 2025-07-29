@@ -365,7 +365,7 @@ export const PROJECTS: Project[] = [
       'A modern, responsive restaurant rating application built with Angular 17 and Firebase, inspired by Yelp. Features restaurant discovery, 5-star rating system, user authentication, real-time data, and beautiful UI with Material Design components.',
     technologies: ['Angular 17', 'Firebase', 'TypeScript', 'Tailwind CSS', 'Material Design', 'RxJS'],
     githubUrl: 'https://github.com/davidagustin/firebase-practice',
-    liveUrl: 'https://fir-practice-54eb3.web.app/',
+    liveUrl: 'https://firebase-practice--fir-practice-54eb3.us-central1.hosted.app/',
     icon: FaUtensils,
     category: 'Food & Rating',
     features: [
