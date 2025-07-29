@@ -22,6 +22,7 @@ const About: React.FC = () => {
     // Styling & UI
     { name: 'Tailwind CSS', color: 'bg-cyan-100 text-cyan-700' },
     { name: 'Material-UI', color: 'bg-blue-600 text-white' },
+    { name: 'Material Design', color: 'bg-blue-100 text-blue-700' },
     { name: 'Lucide React', color: 'bg-gray-100 text-gray-700' },
     { name: 'Sass', color: 'bg-pink-100 text-pink-700' },
     { name: 'Google Fonts', color: 'bg-gray-100 text-gray-700' },
@@ -29,12 +30,15 @@ const About: React.FC = () => {
     // Backend & APIs
     { name: 'Node.js', color: 'bg-green-100 text-green-700' },
     { name: 'Express.js', color: 'bg-gray-100 text-gray-700' },
+    { name: 'Firebase', color: 'bg-yellow-100 text-yellow-800' },
+    { name: 'Firestore', color: 'bg-orange-100 text-orange-700' },
     { name: 'REST APIs', color: 'bg-gray-100 text-gray-700' },
     { name: 'React Hooks', color: 'bg-blue-100 text-blue-700' },
     
     // State Management & Routing
     { name: 'Pinia', color: 'bg-yellow-100 text-yellow-800' },
     { name: 'Vue Router', color: 'bg-green-100 text-green-700' },
+    { name: 'RxJS', color: 'bg-pink-100 text-pink-700' },
     
     // Build Tools & Development
     { name: 'Vite', color: 'bg-purple-100 text-purple-700' },
