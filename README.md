@@ -1,6 +1,6 @@
 # David Agustin - Portfolio Website
 
-A modern, responsive portfolio website showcasing **15+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
+A modern, responsive portfolio website showcasing **16+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
 
 ## 🚀 Features
 
@@ -27,7 +27,7 @@ A modern, responsive portfolio website showcasing **15+ diverse projects** and *
 
 ## 🎯 Featured Projects
 
-This portfolio showcases **15+ diverse projects** built with modern web technologies and AI/ML frameworks:
+This portfolio showcases **16+ diverse projects** built with modern web technologies and AI/ML frameworks:
 
 ### ⚡ **TechStore - Computer Hardware Store** - E-commerce Platform
 - **Tech Stack**: SvelteKit 2.0, TypeScript, Tailwind CSS, Lucide Svelte, Azure Static Web Apps
@@ -107,6 +107,12 @@ This portfolio showcases **15+ diverse projects** built with modern web technolo
 - **Live Demo**: [https://heroku-sudoku-49243446e4d3.herokuapp.com/](https://heroku-sudoku-49243446e4d3.herokuapp.com/)
 - **GitHub**: [https://github.com/davidagustin/heroku-practice](https://github.com/davidagustin/heroku-practice)
 
+### 🤟 **Sign Language Learning App** - AI-Powered ASL Education
+- **Tech Stack**: Next.js 15.4.5, React 19, TypeScript, Tailwind CSS, MediaPipe Hands, Vercel
+- **Features**: Real-time hand tracking, AI-powered gesture recognition, personalized learning, ASL alphabet guide
+- **Live Demo**: [https://spell-your-name.vercel.app/](https://spell-your-name.vercel.app/)
+- **GitHub**: [https://github.com/davidagustin/spell-your-name](https://github.com/davidagustin/spell-your-name)
+
 ## 📁 Project Structure
 
 ```
@@ -117,7 +123,7 @@ src/
 │   ├── Footer.tsx      # Footer component
 │   ├── Hero.tsx        # Hero section with stats
 │   ├── Navbar.tsx      # Navigation bar
-│   └── Projects.tsx    # Projects showcase (15+ projects)
+│   └── Projects.tsx    # Projects showcase (16+ projects)
 ├── hooks/              # Custom React hooks
 ├── types/              # TypeScript type definitions
 ├── utils/              # Utility functions
@@ -182,7 +188,7 @@ Each section is a separate component in the `src/components/` directory:
 App-wide constants are defined in `src/utils/constants.ts`:
 - Navigation items
 - Social links
-- Project data (15+ projects)
+- Project data (16+ projects)
 - Contact information
 
 ## 🚀 Deployment
