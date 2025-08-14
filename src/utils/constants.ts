@@ -28,6 +28,7 @@ import {
   FaPuzzlePiece,
   FaUtensils,
   FaBook,
+  FaLaptopCode,
 } from 'react-icons/fa';
 
 import type {
@@ -282,7 +283,7 @@ export const PROJECTS: Project[] = [
     id: 8,
     title: 'AI Learning Hub',
     description:
-      'A comprehensive Next.js application for learning AI and machine learning concepts through interactive mnemonics, character-based learning, and quizzes. Features 30+ learning sections with 1000+ quiz questions.',
+      'A comprehensive Next.js application for learning AI and machine learning concepts through interactive mnemonics, character-based learning, and quizzes. Features 30+ learning sections with hundreds of quiz questions.',
     technologies: ['Next.js 15', 'TypeScript', 'Tailwind CSS', 'React Hooks', 'Vercel'],
     githubUrl: 'https://github.com/davidagustin/comprehensive-ai-learning-app',
     liveUrl: 'https://comprehensive-ai-learning-app.vercel.app',
@@ -290,7 +291,7 @@ export const PROJECTS: Project[] = [
     category: 'Education/AI',
     features: [
       'Interactive Learning',
-      '1000+ Quiz Questions',
+      'Hundreds of Quiz Questions',
       'Character-based Learning',
       '30+ AI/ML Topics',
     ],
@@ -429,6 +430,23 @@ export const PROJECTS: Project[] = [
       'AI-powered Gesture Recognition',
       'Personalized Learning',
       'ASL Alphabet Guide',
+    ],
+  },
+  {
+    id: 17,
+    title: '🧠 System Design Learning Application',
+    description:
+      'A comprehensive, interactive learning platform designed to help developers master system design interviews through structured study materials, core concepts, interactive quizzes, and progress tracking. Features 50 study materials covering fundamentals to cutting-edge technologies, 40 core concepts with essential patterns and advanced principles, 60 quiz questions with progressive difficulty, and advanced progress tracking with dark mode support. Perfect for developers preparing for senior-level interviews at top tech companies.',
+    technologies: ['Next.js 15', 'React 19', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    githubUrl: 'https://github.com/davidagustin/system-design-practice',
+    liveUrl: 'https://system-design-practice.vercel.app/',
+    icon: FaLaptopCode,
+    category: 'Education/System Design',
+    features: [
+      '50 Study Materials',
+      '40 Core Concepts',
+      '60 Quiz Questions',
+      'Dark Mode Support',
     ],
   },
 ];
