@@ -449,4 +449,21 @@ export const PROJECTS: Project[] = [
       'Dark Mode Support',
     ],
   },
+  {
+    id: 18,
+    title: '🎨 UI Patterns React',
+    description:
+      'A production-ready collection of 90+ modern React UI patterns and components built with Next.js 15, React 19, TypeScript 5.6, and Tailwind CSS 3.4. Features comprehensive form patterns, interactive elements, data visualization, navigation systems, and advanced features with full accessibility compliance (WCAG 2.1 AA). Perfect for developers building enterprise-grade applications with modern React patterns.',
+    technologies: ['Next.js 15', 'React 19', 'TypeScript 5.6', 'Tailwind CSS 3.4', 'Vercel'],
+    githubUrl: 'https://github.com/davidagustin/ui-patterns-react',
+    liveUrl: 'https://ui-patterns-react.vercel.app/',
+    icon: FaCode,
+    category: 'UI/Component Library',
+    features: [
+      '90+ UI Patterns',
+      '100% TypeScript',
+      'WCAG 2.1 AA Compliant',
+      'Dark Mode Support',
+    ],
+  },
 ];
