@@ -1,6 +1,6 @@
 # David Agustin - Portfolio Website
 
-A modern, responsive portfolio website showcasing **16+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
+A modern, responsive portfolio website showcasing **19+ diverse projects** and **50+ technologies** across full-stack development, AI/ML, and modern web applications. Built with React, TypeScript, and Tailwind CSS featuring smooth animations and clean design.
 
 ## 🚀 Features
 
@@ -27,7 +27,7 @@ A modern, responsive portfolio website showcasing **16+ diverse projects** and *
 
 ## 🎯 Featured Projects
 
-This portfolio showcases **16+ diverse projects** built with modern web technologies and AI/ML frameworks:
+This portfolio showcases **19+ diverse projects** built with modern web technologies and AI/ML frameworks:
 
 ### ⚡ **TechStore - Computer Hardware Store** - E-commerce Platform
 - **Tech Stack**: SvelteKit 2.0, TypeScript, Tailwind CSS, Lucide Svelte, Azure Static Web Apps
@@ -113,6 +113,24 @@ This portfolio showcases **16+ diverse projects** built with modern web technolo
 - **Live Demo**: [https://spell-your-name.vercel.app/](https://spell-your-name.vercel.app/)
 - **GitHub**: [https://github.com/davidagustin/spell-your-name](https://github.com/davidagustin/spell-your-name)
 
+### 🧠 **System Design Learning Application** - Comprehensive Learning Platform
+- **Tech Stack**: Next.js 15, React 19, TypeScript, Tailwind CSS, Vercel
+- **Features**: 50 study materials, 40 core concepts, 60 quiz questions, dark mode support, advanced progress tracking
+- **Live Demo**: [https://system-design-practice.vercel.app/](https://system-design-practice.vercel.app/)
+- **GitHub**: [https://github.com/davidagustin/system-design-practice](https://github.com/davidagustin/system-design-practice)
+
+### 🎨 **UI Patterns React** - Component Library
+- **Tech Stack**: Next.js 15, React 19, TypeScript 5.6, Tailwind CSS 3.4, Vercel
+- **Features**: 90+ UI patterns, 100% TypeScript coverage, WCAG 2.1 AA compliant, dark mode support
+- **Live Demo**: [https://ui-patterns-react.vercel.app/](https://ui-patterns-react.vercel.app/)
+- **GitHub**: [https://github.com/davidagustin/ui-patterns-react](https://github.com/davidagustin/ui-patterns-react)
+
+### ⚡ **React Interview Code Sandbox** - Development Tool
+- **Tech Stack**: React 18, TypeScript, BEM CSS, Tailwind CSS, Prism.js, Jest
+- **Features**: Built-in interview timer, live code preview, resizable panels, professional syntax highlighting
+- **Live Demo**: [https://react-interview-sandbox.vercel.app/](https://react-interview-sandbox.vercel.app/)
+- **GitHub**: [https://github.com/davidagustin/react-interview-sandbox](https://github.com/davidagustin/react-interview-sandbox)
+
 ## 📁 Project Structure
 
 ```
@@ -123,7 +141,7 @@ src/
 │   ├── Footer.tsx      # Footer component
 │   ├── Hero.tsx        # Hero section with stats
 │   ├── Navbar.tsx      # Navigation bar
-│   └── Projects.tsx    # Projects showcase (16+ projects)
+│   └── Projects.tsx    # Projects showcase (19+ projects)
 ├── hooks/              # Custom React hooks
 ├── types/              # TypeScript type definitions
 ├── utils/              # Utility functions
@@ -188,7 +206,7 @@ Each section is a separate component in the `src/components/` directory:
 App-wide constants are defined in `src/utils/constants.ts`:
 - Navigation items
 - Social links
-- Project data (16+ projects)
+- Project data (19+ projects)
 - Contact information
 
 ## 🚀 Deployment
