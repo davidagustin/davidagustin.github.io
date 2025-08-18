@@ -128,7 +128,6 @@ This portfolio showcases **19+ diverse projects** built with modern web technolo
 ### ⚡ **React Interview Code Sandbox** - Development Tool
 - **Tech Stack**: React 18, TypeScript, BEM CSS, Tailwind CSS, Prism.js, Jest
 - **Features**: Built-in interview timer, live code preview, resizable panels, professional syntax highlighting
-- **Live Demo**: [https://react-interview-sandbox.vercel.app/](https://react-interview-sandbox.vercel.app/)
 - **GitHub**: [https://github.com/davidagustin/react-interview-sandbox](https://github.com/davidagustin/react-interview-sandbox)
 
 ## 📁 Project Structure

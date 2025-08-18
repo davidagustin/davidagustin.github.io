@@ -189,14 +189,16 @@ const Projects: React.FC = () => {
                       >
                         {project.githubUrl.includes('gitlab.com') ? 'GitLab' : 'GitHub'}
                       </a>
-                      <a
-                        href={project.liveUrl}
-                        className="btn btn-primary flex-1 text-center text-sm sm:text-base py-2 sm:py-3"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Live Demo
-                      </a>
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          className="btn btn-primary flex-1 text-center text-sm sm:text-base py-2 sm:py-3"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          Live Demo
+                        </a>
+                      )}
                     </div>
                   </div>
                 </motion.div>

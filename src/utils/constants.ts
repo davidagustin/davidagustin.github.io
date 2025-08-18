@@ -473,7 +473,6 @@ export const PROJECTS: Project[] = [
       'A professional React TypeScript code sandbox designed for coding interviews with a built-in timer, live preview, and resizable panels. Features clean, maintainable code using BEM methodology, professional syntax highlighting with Prism.js, dual styling options (BEM CSS and Tailwind CSS), and persistent timer that survives page refreshes. Perfect for technical interviews and live coding sessions.',
     technologies: ['React 18', 'TypeScript', 'BEM CSS', 'Tailwind CSS', 'Prism.js', 'Jest'],
     githubUrl: 'https://github.com/davidagustin/react-interview-sandbox',
-    liveUrl: 'https://react-interview-sandbox.vercel.app/',
     icon: FaCode,
     category: 'Development Tools',
     features: [
