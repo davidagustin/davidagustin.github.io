@@ -29,6 +29,7 @@ import {
   FaUtensils,
   FaBook,
   FaLaptopCode,
+  FaGamepad,
 } from 'react-icons/fa';
 
 import type {
@@ -480,6 +481,23 @@ export const PROJECTS: Project[] = [
       'Live Code Preview',
       'Resizable Panels',
       'Professional Syntax Highlighting',
+    ],
+  },
+  {
+    id: 20,
+    title: '🐍 Classic Snake Game',
+    description:
+      'A modern, responsive implementation of the classic Snake game built with cutting-edge web technologies. Features smooth 60fps gameplay, responsive controls (keyboard and touch), high score persistence, and beautiful UI/UX. Built with React 19, TypeScript, and Tailwind CSS for optimal performance and cross-platform compatibility.',
+    technologies: ['React 19', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'Local Storage'],
+    githubUrl: 'https://github.com/davidagustin/classic-snake-game',
+    liveUrl: 'https://classic-snake-game--davidagustin.github.app/',
+    icon: FaGamepad,
+    category: 'Gaming',
+    features: [
+      'Smooth 60fps Gameplay',
+      'Responsive Controls',
+      'High Score Tracking',
+      'Mobile-First Design',
     ],
   },
 ];
