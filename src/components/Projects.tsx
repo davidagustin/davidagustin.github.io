@@ -133,22 +133,21 @@ const CarouselView: React.FC<{
   columns: 1 | 2 | 3;
   onSelect: (p: Project) => void;
 }> = ({ projects, columns, onSelect }) => {
-  const [pageIndex, setPageIndex] = useState(0);
-  const [direction, setDirection] = useState(0);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const maxStart = Math.max(0, projects.length - columns);
+  const maxIndex = Math.max(0, projects.length - columns);
 
-  // Reset page when filter or columns change
+  // Reset when filter or columns change
   useEffect(() => {
-    setPageIndex(0);
+    setCurrentIndex(0);
   }, [projects.length, columns]);
 
   const go = useCallback(
     (dir: 1 | -1) => {
-      setDirection(dir);
-      setPageIndex((prev) => (prev + dir + maxStart + 1) % (maxStart + 1));
+      setCurrentIndex((prev) => Math.max(0, Math.min(maxIndex, prev + dir)));
     },
-    [maxStart]
+    [maxIndex]
   );
 
   useEffect(() => {
@@ -162,132 +161,115 @@ const CarouselView: React.FC<{
 
   if (projects.length === 0) return null;
 
-  // Get current window of projects (one card shift at a time)
-  const pageProjects = projects.slice(pageIndex, pageIndex + columns);
-
-  const variants = {
-    enter: (d: number) => ({ x: d > 0 ? 150 : -150, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (d: number) => ({ x: d > 0 ? -150 : 150, opacity: 0 }),
-  };
-
-  const gridClass =
-    columns === 1
-      ? 'grid-cols-1 max-w-2xl mx-auto'
-      : columns === 2
-        ? 'grid-cols-1 md:grid-cols-2'
-        : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
+  // Each card takes 1/columns of the container width, with gap
+  const gapPx = 24;
+  const cardPercent = 100 / columns;
+  const offsetPercent = -(currentIndex * cardPercent);
 
   return (
     <div className="flex flex-col items-center">
-      <div className={`relative w-full ${columns === 1 ? 'max-w-2xl' : ''}`}>
+      <div className="relative w-full">
         {/* Nav arrows */}
         <button
           type="button"
           onClick={() => go(-1)}
-          className={`absolute ${columns === 1 ? 'left-0' : '-left-4 sm:-left-12'} top-1/2 -translate-y-1/2 ${columns === 1 ? '-translate-x-4 sm:-translate-x-12' : ''} z-10 p-2.5 rounded-full bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:border-surface-400 dark:hover:border-surface-500 shadow-sm transition-all`}
-          aria-label="Previous page"
+          disabled={currentIndex === 0}
+          className={`absolute -left-4 sm:-left-12 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-full bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:border-surface-400 dark:hover:border-surface-500 shadow-sm transition-all ${currentIndex === 0 ? 'opacity-30 cursor-default' : ''}`}
+          aria-label="Previous"
         >
           <FaChevronLeft className="text-sm" />
         </button>
         <button
           type="button"
           onClick={() => go(1)}
-          className={`absolute ${columns === 1 ? 'right-0' : '-right-4 sm:-right-12'} top-1/2 -translate-y-1/2 ${columns === 1 ? 'translate-x-4 sm:translate-x-12' : ''} z-10 p-2.5 rounded-full bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:border-surface-400 dark:hover:border-surface-500 shadow-sm transition-all`}
-          aria-label="Next page"
+          disabled={currentIndex >= maxIndex}
+          className={`absolute -right-4 sm:-right-12 top-1/2 -translate-y-1/2 z-10 p-2.5 rounded-full bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:border-surface-400 dark:hover:border-surface-500 shadow-sm transition-all ${currentIndex >= maxIndex ? 'opacity-30 cursor-default' : ''}`}
+          aria-label="Next"
         >
           <FaChevronRight className="text-sm" />
         </button>
 
-        {/* Cards Grid */}
-        <div className={`overflow-hidden rounded-xl ${columns === 1 ? 'min-h-[420px]' : 'min-h-[480px]'}`}>
-          <AnimatePresence mode="sync" custom={direction}>
-            <motion.div
-              key={pageIndex}
-              custom={direction}
-              variants={variants}
-              initial="enter"
-              animate="center"
-              exit="exit"
-              transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
-              className={`grid ${gridClass} gap-6`}
-            >
-              {pageProjects.map((project) => (
-                <article
-                  key={project.id}
-                  onClick={() => onSelect(project)}
-                  className="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl overflow-hidden hover:shadow-lg dark:hover:border-surface-600 transition-shadow cursor-pointer"
-                >
-                  <ProjectThumbnail project={project} className="h-44" />
-                  <div className="p-5">
-                    <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-surface-400 mb-2">
-                      {project.category}
-                    </span>
-                    <h3 className="text-base font-bold text-surface-900 dark:text-white mb-2">
-                      {project.title}
-                    </h3>
-                    <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3 line-clamp-3">
-                      {project.description}
-                    </p>
-                    <div className="flex flex-wrap gap-1.5 mb-3">
-                      {project.technologies.slice(0, 4).map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 py-0.5 bg-surface-50 dark:bg-surface-700 text-surface-600 dark:text-surface-300 rounded text-[11px] font-medium border border-surface-100 dark:border-surface-600"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                      {project.technologies.length > 4 && (
-                        <span className="px-2 py-0.5 text-surface-400 text-[11px]">
-                          +{project.technologies.length - 4}
-                        </span>
-                      )}
-                    </div>
-                    <div className="flex items-center gap-3 pt-3 border-t border-surface-100 dark:border-surface-700">
+        {/* Sliding container */}
+        <div ref={containerRef} className="overflow-hidden rounded-xl">
+          <motion.div
+            animate={{ x: `calc(${offsetPercent}% - ${currentIndex * gapPx}px)` }}
+            transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+            className="flex"
+            style={{ gap: `${gapPx}px` }}
+          >
+            {projects.map((project) => (
+              <article
+                key={project.id}
+                onClick={() => onSelect(project)}
+                className="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl overflow-hidden hover:shadow-lg dark:hover:border-surface-600 transition-shadow cursor-pointer flex-shrink-0"
+                style={{ width: `calc(${cardPercent}% - ${gapPx * (columns - 1) / columns}px)` }}
+              >
+                <ProjectThumbnail project={project} className="h-44" />
+                <div className="p-5">
+                  <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-surface-400 mb-2">
+                    {project.category}
+                  </span>
+                  <h3 className="text-base font-bold text-surface-900 dark:text-white mb-2">
+                    {project.title}
+                  </h3>
+                  <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3 line-clamp-3">
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5 mb-3">
+                    {project.technologies.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 bg-surface-50 dark:bg-surface-700 text-surface-600 dark:text-surface-300 rounded text-[11px] font-medium border border-surface-100 dark:border-surface-600"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 4 && (
+                      <span className="px-2 py-0.5 text-surface-400 text-[11px]">
+                        +{project.technologies.length - 4}
+                      </span>
+                    )}
+                  </div>
+                  <div className="flex items-center gap-3 pt-3 border-t border-surface-100 dark:border-surface-700">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 dark:hover:text-white transition-colors"
+                    >
+                      <FaGithub className="text-sm" />
+                      Code
+                    </a>
+                    {project.liveUrl && (
                       <a
-                        href={project.githubUrl}
+                        href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 dark:hover:text-white transition-colors"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-primary-600 transition-colors"
                       >
-                        <FaGithub className="text-sm" />
-                        Code
+                        <FaExternalLinkAlt className="text-[10px]" />
+                        Live Demo
                       </a>
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          onClick={(e) => e.stopPropagation()}
-                          className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-primary-600 transition-colors"
-                        >
-                          <FaExternalLinkAlt className="text-[10px]" />
-                          Live Demo
-                        </a>
-                      )}
-                    </div>
+                    )}
                   </div>
-                </article>
-              ))}
-            </motion.div>
-          </AnimatePresence>
+                </div>
+              </article>
+            ))}
+          </motion.div>
         </div>
       </div>
 
-      {/* Dot indicators */}
+      {/* Progress indicator */}
       <div className="flex items-center gap-1.5 mt-6">
-        {Array.from({ length: maxStart + 1 }).map((_, i) => (
+        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
           <button
             key={i}
             type="button"
-            onClick={() => {
-              setDirection(i > pageIndex ? 1 : -1);
-              setPageIndex(i);
-            }}
+            onClick={() => setCurrentIndex(i)}
             className={`rounded-full transition-all duration-200 ${
-              i === pageIndex
+              i === currentIndex
                 ? 'w-6 h-2 bg-surface-900 dark:bg-white'
                 : 'w-2 h-2 bg-surface-300 dark:bg-surface-600 hover:bg-surface-400 dark:hover:bg-surface-500'
             }`}
@@ -296,7 +278,7 @@ const CarouselView: React.FC<{
         ))}
       </div>
       <p className="text-xs text-surface-400 mt-3">
-        {pageIndex + 1}&ndash;{Math.min(pageIndex + columns, projects.length)} of {projects.length}
+        {currentIndex + 1}&ndash;{Math.min(currentIndex + columns, projects.length)} of {projects.length}
       </p>
     </div>
   );
