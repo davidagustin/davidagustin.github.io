@@ -37,7 +37,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
     <motion.nav
       aria-label="Main navigation"
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled
+        scrolled || isOpen
           ? 'bg-white/95 dark:bg-surface-950/95 backdrop-blur-md shadow-sm border-b border-surface-100 dark:border-surface-800'
           : 'bg-transparent'
       }`}
@@ -53,7 +53,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               type="button"
               onClick={() => scrollToSection('home')}
               className={`text-lg font-bold tracking-tight transition-colors ${
-                scrolled
+                scrolled || isOpen
                   ? 'text-surface-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-400'
                   : 'text-white hover:text-primary-300'
               }`}
@@ -93,7 +93,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               onClick={toggleTheme}
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               className={`p-2 rounded-lg transition-colors duration-200 ${
-                scrolled
+                scrolled || isOpen
                   ? 'text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-800'
                   : 'text-surface-300 hover:text-white hover:bg-white/10'
               }`}
@@ -112,21 +112,21 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               >
                 <span
                   className={`w-5 h-px transition-all duration-300 ${
-                    scrolled
+                    scrolled || isOpen
                       ? 'bg-surface-800 dark:bg-white'
                       : 'bg-white'
                   } ${isOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`}
                 />
                 <span
                   className={`w-5 h-px transition-all duration-300 ${
-                    scrolled
+                    scrolled || isOpen
                       ? 'bg-surface-800 dark:bg-white'
                       : 'bg-white'
                   } ${isOpen ? 'opacity-0' : ''}`}
                 />
                 <span
                   className={`w-5 h-px transition-all duration-300 ${
-                    scrolled
+                    scrolled || isOpen
                       ? 'bg-surface-800 dark:bg-white'
                       : 'bg-white'
                   } ${isOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`}
@@ -151,11 +151,7 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                     scrollToSection(item.id);
                     setIsOpen(false);
                   }}
-                  className={`block py-3 px-2 text-sm transition-colors ${
-                    scrolled
-                      ? 'text-surface-600 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white'
-                      : 'text-surface-300 hover:text-white'
-                  }`}
+                  className="block py-3 px-2 text-sm transition-colors text-surface-600 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white"
                 >
                   {item.label}
                 </a>

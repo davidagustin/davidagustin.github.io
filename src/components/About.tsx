@@ -181,7 +181,7 @@ const About: React.FC = () => {
             </p>
 
             {/* ---- stats ---- */}
-            <div className="flex gap-12">
+            <div className="flex gap-6 sm:gap-12">
               {stats.map((stat) => (
                 <div key={stat.label}>
                   <div className="text-3xl font-bold text-surface-900 dark:text-white">

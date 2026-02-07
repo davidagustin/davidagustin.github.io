@@ -60,8 +60,9 @@ const FeaturedStrip: React.FC<{ onSelect: (p: Project) => void }> = ({ onSelect 
 
     const interval = setInterval(() => {
       if (!isHoveredRef.current && scrollRef.current) {
-        // Card width: w-96 (384px) + gap-4 (16px) = 400px
-        const cardWidth = 400;
+        // Measure actual card width + gap dynamically for responsiveness
+        const firstCard = scrollRef.current.firstElementChild as HTMLElement | null;
+        const cardWidth = firstCard ? firstCard.offsetWidth + 16 : 336;
         scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
 
         // If reached the end, scroll back to start
@@ -136,12 +137,26 @@ const CarouselView: React.FC<{
   const [currentIndex, setCurrentIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  const maxIndex = Math.max(0, projects.length - columns);
+  // Responsive column override: force fewer columns on small screens
+  const [effectiveCols, setEffectiveCols] = useState(columns);
+  useEffect(() => {
+    const update = () => {
+      const w = window.innerWidth;
+      if (w < 640) setEffectiveCols(1);
+      else if (w < 1024) setEffectiveCols(Math.min(columns, 2) as 1 | 2 | 3);
+      else setEffectiveCols(columns);
+    };
+    update();
+    window.addEventListener('resize', update);
+    return () => window.removeEventListener('resize', update);
+  }, [columns]);
+
+  const maxIndex = Math.max(0, projects.length - effectiveCols);
 
   // Reset when filter or columns change
   useEffect(() => {
     setCurrentIndex(0);
-  }, [projects.length, columns]);
+  }, [projects.length, effectiveCols]);
 
   const go = useCallback(
     (dir: 1 | -1) => {
@@ -161,9 +176,9 @@ const CarouselView: React.FC<{
 
   if (projects.length === 0) return null;
 
-  // Each card takes 1/columns of the container width, with gap
+  // Each card takes 1/effectiveCols of the container width, with gap
   const gapPx = 24;
-  const cardPercent = 100 / columns;
+  const cardPercent = 100 / effectiveCols;
   const offsetPercent = -(currentIndex * cardPercent);
 
   return (
@@ -202,7 +217,7 @@ const CarouselView: React.FC<{
                 key={project.id}
                 onClick={() => onSelect(project)}
                 className="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl overflow-hidden hover:shadow-lg dark:hover:border-surface-600 transition-shadow cursor-pointer flex-shrink-0"
-                style={{ width: `calc(${cardPercent}% - ${gapPx * (columns - 1) / columns}px)` }}
+                style={{ width: `calc(${cardPercent}% - ${gapPx * (effectiveCols - 1) / effectiveCols}px)` }}
               >
                 <ProjectThumbnail project={project} className="h-44" />
                 <div className="p-5">
@@ -261,24 +276,26 @@ const CarouselView: React.FC<{
         </div>
       </div>
 
-      {/* Progress indicator */}
-      <div className="flex items-center gap-1.5 mt-6">
-        {Array.from({ length: maxIndex + 1 }).map((_, i) => (
-          <button
-            key={i}
-            type="button"
-            onClick={() => setCurrentIndex(i)}
-            className={`rounded-full transition-all duration-200 ${
-              i === currentIndex
-                ? 'w-6 h-2 bg-surface-900 dark:bg-white'
-                : 'w-2 h-2 bg-surface-300 dark:bg-surface-600 hover:bg-surface-400 dark:hover:bg-surface-500'
-            }`}
-            aria-label={`Go to position ${i + 1}`}
-          />
-        ))}
-      </div>
+      {/* Progress indicator - dots for <=10 positions, text-only otherwise */}
+      {maxIndex + 1 <= 10 && (
+        <div className="flex items-center gap-1.5 mt-6">
+          {Array.from({ length: maxIndex + 1 }).map((_, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setCurrentIndex(i)}
+              className={`rounded-full transition-all duration-200 ${
+                i === currentIndex
+                  ? 'w-6 h-2 bg-surface-900 dark:bg-white'
+                  : 'w-2 h-2 bg-surface-300 dark:bg-surface-600 hover:bg-surface-400 dark:hover:bg-surface-500'
+              }`}
+              aria-label={`Go to position ${i + 1}`}
+            />
+          ))}
+        </div>
+      )}
       <p className="text-xs text-surface-400 mt-3">
-        {currentIndex + 1}&ndash;{Math.min(currentIndex + columns, projects.length)} of {projects.length}
+        {currentIndex + 1}&ndash;{Math.min(currentIndex + effectiveCols, projects.length)} of {projects.length}
       </p>
     </div>
   );
@@ -326,7 +343,7 @@ const TableView: React.FC<{
               <td className="px-5 py-6">
                 <ProjectThumbnail
                   project={project}
-                  className="w-72 h-48 rounded-lg flex-shrink-0"
+                  className="w-40 h-28 sm:w-56 sm:h-36 lg:w-72 lg:h-48 rounded-lg flex-shrink-0"
                 />
               </td>
               <td className="px-5 py-6">
@@ -810,7 +827,7 @@ const Projects: React.FC = () => {
                   </ul>
                 </div>
 
-                <div className="flex items-center gap-3 pt-6 border-t border-surface-100 dark:border-surface-800">
+                <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-surface-100 dark:border-surface-800">
                   <a
                     href={selectedProject.githubUrl}
                     target="_blank"
