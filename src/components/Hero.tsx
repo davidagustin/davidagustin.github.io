@@ -90,7 +90,7 @@ const Hero: React.FC = () => {
             {/* Name - MASSIVE Apple-style typography */}
             <motion.h1
               variants={staggerItem}
-              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] mb-6 tracking-tight"
+              className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] mb-6 tracking-tight"
             >
               David Agustin
             </motion.h1>

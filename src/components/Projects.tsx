@@ -81,7 +81,7 @@ const FeaturedStrip: React.FC<{ onSelect: (p: Project) => void }> = ({ onSelect 
   }, [isPlaying]);
 
   return (
-    <div className="mb-12">
+    <div className="mb-8 sm:mb-12">
       <div className="flex items-center gap-3 mb-4">
         <h3 className="text-sm font-semibold uppercase tracking-wider text-surface-400 dark:text-surface-500">
           Featured
@@ -447,12 +447,12 @@ const GridView: React.FC<{
         >
           <ProjectThumbnail project={project} className="h-40" />
 
-          <div className="p-6">
-            <div className="mb-4">
-              <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-surface-400 mb-3">
+          <div className="p-4 sm:p-6">
+            <div className="mb-3 sm:mb-4">
+              <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-surface-400 mb-2 sm:mb-3">
                 {project.category}
               </span>
-              <h3 className="text-lg font-bold text-surface-900 dark:text-white mb-2 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
+              <h3 className="text-base sm:text-lg font-bold text-surface-900 dark:text-white mb-1.5 sm:mb-2 group-hover:text-primary-700 dark:group-hover:text-primary-400 transition-colors">
                 {project.title}
               </h3>
               <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed line-clamp-3">
@@ -589,7 +589,7 @@ const Projects: React.FC = () => {
 
           <FeaturedStrip onSelect={setSelectedProject} />
 
-          <div className="mb-10 space-y-4">
+          <div className="mb-6 sm:mb-10 space-y-3 sm:space-y-4">
             {/* Search + View Toggle Row */}
             <div className="flex flex-col sm:flex-row sm:items-center gap-3">
               <label htmlFor="project-search" className="sr-only">Search projects</label>
@@ -746,13 +746,13 @@ const Projects: React.FC = () => {
                 className="w-full"
               />
 
-              <div className="p-6 sm:p-8">
-                <div className="flex items-start justify-between mb-4">
+              <div className="p-4 sm:p-6 md:p-8">
+                <div className="flex items-start justify-between mb-3 sm:mb-4">
                   <div>
                     <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-primary-600 mb-2">
                       {selectedProject.category}
                     </span>
-                    <h3 className="text-2xl font-bold text-surface-900 dark:text-white">
+                    <h3 className="text-xl sm:text-2xl font-bold text-surface-900 dark:text-white">
                       {selectedProject.title}
                     </h3>
                   </div>

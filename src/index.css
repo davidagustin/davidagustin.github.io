@@ -5,9 +5,11 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
   }
 
   body {
+    overflow-x: hidden;
     font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
       "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
       "Helvetica Neue", sans-serif;
@@ -62,7 +64,7 @@
   }
 
   .section-title {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-surface-900 mb-6 tracking-tight;
+    @apply text-3xl sm:text-5xl lg:text-6xl font-bold text-surface-900 mb-4 sm:mb-6 tracking-tight;
   }
 
   .dark .section-title {
@@ -70,7 +72,7 @@
   }
 
   .section-subtitle {
-    @apply text-lg sm:text-xl text-surface-500 mb-16 max-w-2xl leading-relaxed;
+    @apply text-base sm:text-xl text-surface-500 mb-10 sm:mb-16 max-w-2xl leading-relaxed;
   }
 
   .dark .section-subtitle {
@@ -86,7 +88,7 @@
   }
 
   section:not(#home) {
-    @apply py-24 sm:py-32;
+    @apply py-16 sm:py-24 lg:py-32;
   }
 
   .loading-screen {
