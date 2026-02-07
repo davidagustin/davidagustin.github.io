@@ -42,9 +42,9 @@ const App: React.FC = () => {
         <Hero />
         <About />
         <Projects />
-        <Donation />
         <Contact />
       </main>
+      <Donation />
       <Footer />
     </div>
   );

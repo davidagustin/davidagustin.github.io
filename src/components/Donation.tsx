@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState } from 'react';
 import { FaBitcoin, FaEthereum } from 'react-icons/fa';
@@ -17,63 +16,48 @@ const Donation: React.FC = () => {
   };
 
   return (
-    <section className="py-24 bg-white">
-      <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
-          className="max-w-2xl mx-auto text-center"
-        >
-          <h2 className="section-title mx-auto text-center">Support My Work</h2>
-          <p className="text-surface-500 mb-10">
-            If you find my projects helpful, consider supporting continued development.
+    <div className="bg-surface-950 border-b border-surface-800">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-xs text-surface-500">
+            Support this project
           </p>
 
-          <div className="space-y-4">
+          <div className="flex flex-wrap items-center gap-3">
             <a
               href="https://buy.stripe.com/fZucN5epreyuchqdtZfnO00"
               target="_blank"
               rel="noopener noreferrer"
-              className="block w-full py-3 px-6 bg-surface-900 text-white text-sm font-semibold rounded-lg hover:bg-surface-800 transition-colors"
+              className="text-xs text-surface-400 hover:text-white transition-colors"
             >
-              Donate via Stripe
+              Stripe
             </a>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              <button
-                type="button"
-                onClick={() => copyToClipboard(btcAddress, 'BTC')}
-                className="flex items-center gap-3 p-4 border border-surface-200 rounded-lg hover:border-surface-300 transition-colors text-left group"
-              >
-                <FaBitcoin className="text-lg text-surface-400 group-hover:text-[#f7931a] transition-colors flex-shrink-0" />
-                <div className="min-w-0">
-                  <div className="text-xs font-semibold text-surface-900 mb-0.5">Bitcoin</div>
-                  <div className="text-[11px] text-surface-400 truncate font-mono">
-                    {copiedAddress === 'BTC' ? 'Copied!' : btcAddress}
-                  </div>
-                </div>
-              </button>
+            <span className="text-surface-700">|</span>
 
-              <button
-                type="button"
-                onClick={() => copyToClipboard(ethAddress, 'ETH')}
-                className="flex items-center gap-3 p-4 border border-surface-200 rounded-lg hover:border-surface-300 transition-colors text-left group"
-              >
-                <FaEthereum className="text-lg text-surface-400 group-hover:text-[#627eea] transition-colors flex-shrink-0" />
-                <div className="min-w-0">
-                  <div className="text-xs font-semibold text-surface-900 mb-0.5">Ethereum</div>
-                  <div className="text-[11px] text-surface-400 truncate font-mono">
-                    {copiedAddress === 'ETH' ? 'Copied!' : ethAddress}
-                  </div>
-                </div>
-              </button>
-            </div>
+            <button
+              type="button"
+              onClick={() => copyToClipboard(btcAddress, 'BTC')}
+              className="flex items-center gap-1.5 text-xs text-surface-400 hover:text-white transition-colors"
+            >
+              <FaBitcoin className="text-xs" />
+              {copiedAddress === 'BTC' ? 'Copied!' : 'BTC'}
+            </button>
+
+            <span className="text-surface-700">|</span>
+
+            <button
+              type="button"
+              onClick={() => copyToClipboard(ethAddress, 'ETH')}
+              className="flex items-center gap-1.5 text-xs text-surface-400 hover:text-white transition-colors"
+            >
+              <FaEthereum className="text-xs" />
+              {copiedAddress === 'ETH' ? 'Copied!' : 'ETH'}
+            </button>
           </div>
-        </motion.div>
+        </div>
       </div>
-    </section>
+    </div>
   );
 };
 
