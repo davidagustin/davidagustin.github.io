@@ -166,9 +166,9 @@ const CarouselView: React.FC<{
   const pageProjects = projects.slice(pageIndex, pageIndex + columns);
 
   const variants = {
-    enter: (d: number) => ({ x: d > 0 ? 300 : -300 }),
-    center: { x: 0 },
-    exit: (d: number) => ({ x: d > 0 ? -300 : 300 }),
+    enter: (d: number) => ({ x: d > 0 ? 150 : -150, opacity: 0 }),
+    center: { x: 0, opacity: 1 },
+    exit: (d: number) => ({ x: d > 0 ? -150 : 150, opacity: 0 }),
   };
 
   const gridClass =
@@ -201,7 +201,7 @@ const CarouselView: React.FC<{
 
         {/* Cards Grid */}
         <div className={`overflow-hidden rounded-xl ${columns === 1 ? 'min-h-[420px]' : 'min-h-[480px]'}`}>
-          <AnimatePresence mode="wait" custom={direction}>
+          <AnimatePresence mode="sync" custom={direction}>
             <motion.div
               key={pageIndex}
               custom={direction}
@@ -209,7 +209,7 @@ const CarouselView: React.FC<{
               initial="enter"
               animate="center"
               exit="exit"
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
+              transition={{ duration: 0.25, ease: [0.4, 0, 0.2, 1] }}
               className={`grid ${gridClass} gap-6`}
             >
               {pageProjects.map((project) => (
