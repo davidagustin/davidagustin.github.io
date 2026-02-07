@@ -344,7 +344,7 @@ const TableView: React.FC<{
               <td className="px-5 py-6">
                 <ProjectThumbnail
                   project={project}
-                  className="w-48 h-32 rounded-lg flex-shrink-0"
+                  className="w-72 h-48 rounded-lg flex-shrink-0"
                 />
               </td>
               <td className="px-5 py-6">
