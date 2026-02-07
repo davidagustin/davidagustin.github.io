@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -15,57 +15,67 @@
       "Helvetica Neue", sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    @apply bg-white text-surface-800;
+  }
+
+  ::selection {
+    @apply bg-primary-100 text-primary-900;
   }
 }
 
 @layer components {
   .btn {
-    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-base transition-all duration-300 ease-in-out;
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold text-sm tracking-wide transition-all duration-200 ease-in-out;
   }
 
   .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300 ease-in-out;
+    @apply bg-surface-900 hover:bg-surface-800 text-white;
   }
 
   .btn-secondary {
-    @apply bg-transparent text-blue-600 border-2 border-blue-600 hover:bg-blue-600 hover:text-white transition-all duration-300 ease-in-out;
+    @apply bg-transparent text-surface-800 border border-surface-300 hover:border-surface-800 hover:bg-surface-50;
   }
 
   .section-title {
-    @apply text-4xl font-bold text-center text-gray-800 mb-12 relative;
+    @apply text-3xl sm:text-4xl font-bold text-surface-900 mb-4;
   }
 
-  .section-title::after {
-    content: "";
-    @apply absolute bottom-0 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-blue-600 rounded;
+  .section-subtitle {
+    @apply text-lg text-surface-500 mb-12 max-w-2xl;
   }
 
   .container {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
   }
 
-  /* Ensure sections don't get hidden behind fixed navbar */
   section {
     @apply relative;
   }
 
-  /* Add top padding to sections that might be hidden behind navbar */
   section:not(#home) {
     @apply pt-16 sm:pt-20;
+  }
+
+  .loading-screen {
+    @apply fixed inset-0 flex items-center justify-center bg-white z-50;
+  }
+
+  .loading-content {
+    @apply text-center;
+  }
+
+  .loading-content h2 {
+    @apply text-2xl font-bold text-surface-900 mb-2 tracking-tight;
+  }
+
+  .loading-content p {
+    @apply text-surface-400 text-sm tracking-wide uppercase;
   }
 }
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-r from-blue-600 to-blue-800 bg-clip-text text-transparent;
-  }
-
-  .bg-gradient-primary {
-    @apply bg-gradient-to-br from-blue-600 to-blue-800;
-  }
-
-  .glass-effect {
-    @apply bg-white/20 backdrop-blur-md border border-white/30 shadow-lg;
+    @apply bg-gradient-to-r from-primary-600 to-primary-800 bg-clip-text text-transparent;
   }
 
   .line-clamp-2 {
@@ -78,13 +88,6 @@
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-
-  .line-clamp-4 {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }

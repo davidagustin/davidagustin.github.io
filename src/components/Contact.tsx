@@ -2,6 +2,7 @@ import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState, useEffect } from 'react';
 import emailjs from '@emailjs/browser';
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 import Snackbar from './Snackbar';
 
 const Contact: React.FC = () => {
@@ -17,7 +18,6 @@ const Contact: React.FC = () => {
     type: 'success' as 'success' | 'error',
   });
 
-  // Initialize EmailJS
   useEffect(() => {
     try {
       emailjs.init("q2ic3TavT5Sv1CTEP");
@@ -28,34 +28,21 @@ const Contact: React.FC = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic validation
+
     if (!formData.name.trim() || !formData.email.trim() || !formData.message.trim()) {
-      setSnackbar({
-        isOpen: true,
-        message: 'Please fill in all fields.',
-        type: 'error',
-      });
+      setSnackbar({ isOpen: true, message: 'Please fill in all fields.', type: 'error' });
       return;
     }
-    
-    // Email validation
+
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(formData.email.trim())) {
-      setSnackbar({
-        isOpen: true,
-        message: 'Please enter a valid email address.',
-        type: 'error',
-      });
+      setSnackbar({ isOpen: true, message: 'Please enter a valid email address.', type: 'error' });
       return;
     }
-    
 
-    
     setIsSubmitting(true);
 
     try {
-      // EmailJS template parameters
       const templateParams = {
         from_name: formData.name.trim(),
         from_email: formData.email.trim(),
@@ -64,9 +51,6 @@ const Contact: React.FC = () => {
         subject: `Portfolio Contact from ${formData.name.trim()}`,
       };
 
-      // Send email using EmailJS (without reCAPTCHA)
-      console.log('Sending email with params:', templateParams);
-      
       const result = await emailjs.send(
         'service_vdkx6od',
         'template_8u7ryea',
@@ -74,69 +58,23 @@ const Contact: React.FC = () => {
         'q2ic3TavT5Sv1CTEP'
       );
 
-      console.log('EmailJS result:', result);
-
       if (result.status === 200 || result.text === 'OK') {
         setSnackbar({
           isOpen: true,
           message: 'Message sent successfully! I\'ll get back to you soon.',
           type: 'success',
         });
-        
-        // Reset form
-        setFormData({
-          name: '',
-          email: '',
-          message: '',
-        });
+        setFormData({ name: '', email: '', message: '' });
       } else {
-        console.error('EmailJS returned non-success status:', result);
-        setSnackbar({
-          isOpen: true,
-          message: 'Failed to send message. Please try again.',
-          type: 'error',
-        });
+        setSnackbar({ isOpen: true, message: 'Failed to send message. Please try again.', type: 'error' });
       }
-          } catch (error) {
-        console.error('Error sending email:', error);
-        
-        // Log the full error object for debugging
-        console.error('Full error object:', error);
-        
-        // Check for specific error types
-        if (error instanceof Error) {
-          if (error.message.includes('reCAPTCHA')) {
-            setSnackbar({
-              isOpen: true,
-              message: 'reCAPTCHA is still enabled. Please disable it in EmailJS settings.',
-              type: 'error',
-            });
-          } else if (error.message.includes('400')) {
-            setSnackbar({
-              isOpen: true,
-              message: 'Email service configuration issue. Please check EmailJS settings.',
-              type: 'error',
-            });
-          } else {
-            setSnackbar({
-              isOpen: true,
-              message: 'Network error. Please check your connection and try again.',
-              type: 'error',
-            });
-          }
-          
-          console.error('Error details:', {
-            message: error.message,
-            stack: error.stack
-          });
-        } else {
-          setSnackbar({
-            isOpen: true,
-            message: 'Unknown error occurred. Please try again.',
-            type: 'error',
-          });
-        }
-      } finally {
+    } catch (error) {
+      setSnackbar({
+        isOpen: true,
+        message: 'Something went wrong. Please try again or email me directly.',
+        type: 'error',
+      });
+    } finally {
       setIsSubmitting(false);
     }
   };
@@ -144,71 +82,77 @@ const Contact: React.FC = () => {
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
-    <section id="contact" className="py-20 bg-gray-50">
+    <section id="contact" className="py-24 bg-surface-50">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">Get In Touch</h2>
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
-                Let's Work Together
-              </h3>
-              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
-                I'm always interested in new opportunities and exciting
-                projects. Whether you have a question or just want to say hi,
-                feel free to reach out!
-              </p>
-              <div className="space-y-3 sm:space-y-4">
-                <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-lg sm:text-xl">📧</span>
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="font-semibold text-gray-800 text-sm sm:text-base">Email</h4>
-                    <p className="text-gray-600 text-sm sm:text-base break-all">davidsyagustin@gmail.com</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-lg sm:text-xl">📍</span>
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="font-semibold text-gray-800 text-sm sm:text-base">Location</h4>
-                    <p className="text-gray-600 text-sm sm:text-base">San Francisco, CA</p>
-                  </div>
-                </div>
-                <div className="flex items-center space-x-3 sm:space-x-4">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 bg-blue-600 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <span className="text-white text-lg sm:text-xl">💼</span>
-                  </div>
-                  <div className="min-w-0">
-                    <h4 className="font-semibold text-gray-800 text-sm sm:text-base">
-                      Availability
-                    </h4>
-                    <p className="text-gray-600 text-sm sm:text-base">Open to new opportunities</p>
-                  </div>
+          <h2 className="section-title">Contact</h2>
+          <p className="section-subtitle">
+            Interested in working together? Send a message or reach out directly.
+          </p>
+
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+            <div className="lg:col-span-2 space-y-6">
+              <div>
+                <h3 className="text-sm font-semibold text-surface-900 uppercase tracking-wider mb-4">
+                  Reach Out
+                </h3>
+                <div className="space-y-3">
+                  <a
+                    href="mailto:davidsyagustin@gmail.com"
+                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 transition-colors"
+                  >
+                    <FaEnvelope className="text-surface-400 flex-shrink-0" />
+                    davidsyagustin@gmail.com
+                  </a>
+                  <a
+                    href="https://github.com/davidagustin"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 transition-colors"
+                  >
+                    <FaGithub className="text-surface-400 flex-shrink-0" />
+                    github.com/davidagustin
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/davidsyagustin/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 transition-colors"
+                  >
+                    <FaLinkedin className="text-surface-400 flex-shrink-0" />
+                    linkedin.com/in/davidsyagustin
+                  </a>
                 </div>
               </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-surface-900 uppercase tracking-wider mb-2">
+                  Location
+                </h3>
+                <p className="text-sm text-surface-500">San Francisco, CA</p>
+              </div>
+
+              <div>
+                <h3 className="text-sm font-semibold text-surface-900 uppercase tracking-wider mb-2">
+                  Availability
+                </h3>
+                <p className="text-sm text-surface-500">Open to new opportunities</p>
+              </div>
             </div>
-            <div className="bg-white rounded-2xl shadow-lg p-4 sm:p-6 lg:p-8">
-              <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
+
+            <div className="lg:col-span-3">
+              <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
+                  <label htmlFor="name" className="block text-xs font-semibold text-surface-700 uppercase tracking-wider mb-2">
                     Name
                   </label>
                   <input
@@ -217,16 +161,13 @@ const Contact: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base"
+                    className="w-full px-4 py-3 bg-white border border-surface-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
+                  <label htmlFor="email" className="block text-xs font-semibold text-surface-700 uppercase tracking-wider mb-2">
                     Email
                   </label>
                   <input
@@ -235,16 +176,13 @@ const Contact: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base"
+                    className="w-full px-4 py-3 bg-white border border-surface-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label
-                    htmlFor="message"
-                    className="block text-sm font-medium text-gray-700 mb-2"
-                  >
+                  <label htmlFor="message" className="block text-xs font-semibold text-surface-700 uppercase tracking-wider mb-2">
                     Message
                   </label>
                   <textarea
@@ -252,14 +190,13 @@ const Contact: React.FC = () => {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    rows={4}
-                    className="w-full px-3 sm:px-4 py-2 sm:py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-transparent text-sm sm:text-base resize-none"
+                    rows={5}
+                    className="w-full px-4 py-3 bg-white border border-surface-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
-                
-                {/* Snackbar Component */}
+
                 <Snackbar
                   isOpen={snackbar.isOpen}
                   message={snackbar.message}
@@ -267,10 +204,12 @@ const Contact: React.FC = () => {
                   onClose={() => setSnackbar({ ...snackbar, isOpen: false })}
                   duration={5000}
                 />
-                
-                <button 
-                  type="submit" 
-                  className={`w-full btn btn-primary ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
+
+                <button
+                  type="submit"
+                  className={`w-full py-3 px-6 bg-surface-900 text-white text-sm font-semibold rounded-lg hover:bg-surface-800 transition-colors ${
+                    isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
+                  }`}
                   disabled={isSubmitting}
                 >
                   {isSubmitting ? 'Sending...' : 'Send Message'}

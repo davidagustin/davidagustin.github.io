@@ -2,164 +2,90 @@ import { motion } from 'framer-motion';
 import type React from 'react';
 
 const About: React.FC = () => {
-  const technologies = [
-    // Frontend Frameworks & Libraries
-    { name: 'Next.js', color: 'bg-black text-white' },
-    { name: 'React', color: 'bg-blue-600 text-white' },
-    { name: 'Angular', color: 'bg-red-600 text-white' },
-    { name: 'Vue.js', color: 'bg-green-600 text-white' },
-    { name: 'Astro.js', color: 'bg-purple-600 text-white' },
-    { name: 'Gatsby', color: 'bg-purple-100 text-purple-700' },
-    { name: 'Hugo', color: 'bg-pink-100 text-pink-700' },
-    
-    // Languages & Type Safety
-    { name: 'TypeScript', color: 'bg-blue-600 text-white' },
-    { name: 'JavaScript', color: 'bg-yellow-100 text-yellow-800' },
-    { name: 'HTML5', color: 'bg-orange-100 text-orange-700' },
-    { name: 'CSS3', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Python', color: 'bg-blue-100 text-blue-700' },
-    
-    // Styling & UI
-    { name: 'Tailwind CSS', color: 'bg-cyan-100 text-cyan-700' },
-    { name: 'Material-UI', color: 'bg-blue-600 text-white' },
-    { name: 'Material Design', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Lucide React', color: 'bg-gray-100 text-gray-700' },
-    { name: 'Sass', color: 'bg-pink-100 text-pink-700' },
-    { name: 'Google Fonts', color: 'bg-gray-100 text-gray-700' },
-    
-    // Backend & APIs
-    { name: 'Node.js', color: 'bg-green-100 text-green-700' },
-    { name: 'Express.js', color: 'bg-gray-100 text-gray-700' },
-    { name: 'Firebase', color: 'bg-yellow-100 text-yellow-800' },
-    { name: 'Firestore', color: 'bg-orange-100 text-orange-700' },
-    { name: 'REST APIs', color: 'bg-gray-100 text-gray-700' },
-    { name: 'React Hooks', color: 'bg-blue-100 text-blue-700' },
-    
-    // State Management & Routing
-    { name: 'Pinia', color: 'bg-yellow-100 text-yellow-800' },
-    { name: 'Vue Router', color: 'bg-green-100 text-green-700' },
-    { name: 'RxJS', color: 'bg-pink-100 text-pink-700' },
-    
-    // Build Tools & Development
-    { name: 'Vite', color: 'bg-purple-100 text-purple-700' },
-    { name: 'Webpack', color: 'bg-blue-100 text-blue-700' },
-    
-    // AI/ML & Data Science
-    { name: 'Scikit-learn', color: 'bg-orange-100 text-orange-700' },
-    { name: 'XGBoost', color: 'bg-green-100 text-green-700' },
-    { name: 'LightGBM', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Machine Learning', color: 'bg-purple-100 text-purple-700' },
-    { name: 'Deep Learning', color: 'bg-indigo-100 text-indigo-700' },
-    { name: 'TensorFlow', color: 'bg-orange-100 text-orange-700' },
-    { name: 'PyTorch', color: 'bg-red-100 text-red-700' },
-    { name: 'OpenAI API', color: 'bg-green-100 text-green-700' },
-    
-    // Databases
-    { name: 'MongoDB', color: 'bg-green-100 text-green-700' },
-    { name: 'PostgreSQL', color: 'bg-blue-100 text-blue-700' },
-    { name: 'MySQL', color: 'bg-blue-600 text-white' },
-    
-    // Cloud & Deployment
-    { name: 'Vercel', color: 'bg-black text-white' },
-    { name: 'Netlify', color: 'bg-green-100 text-green-700' },
-    { name: 'Surge.sh', color: 'bg-purple-100 text-purple-700' },
-    { name: 'Render', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Heroku', color: 'bg-purple-600 text-white' },
-    { name: 'Digital Ocean', color: 'bg-blue-600 text-white' },
-    { name: 'AWS', color: 'bg-orange-100 text-orange-700' },
-    { name: 'AWS Amplify', color: 'bg-orange-100 text-orange-700' },
-    { name: 'GitLab Pages', color: 'bg-orange-100 text-orange-700' },
-    
-    // DevOps & Tools
-    { name: 'Docker', color: 'bg-blue-100 text-blue-700' },
-    { name: 'Kubernetes', color: 'bg-blue-600 text-white' },
-    { name: 'Git', color: 'bg-orange-100 text-orange-700' },
-    { name: 'GitHub', color: 'bg-gray-800 text-white' },
-    { name: 'CI/CD', color: 'bg-purple-100 text-purple-700' },
-    
-    // Testing & Quality
-    { name: 'Jest', color: 'bg-red-100 text-red-700' },
-    { name: 'Cypress', color: 'bg-green-100 text-green-700' },
-    { name: 'Storybook', color: 'bg-pink-100 text-pink-700' },
-    
-    // Additional Skills
-    { name: 'SEO Optimized', color: 'bg-green-100 text-green-700' },
-    { name: 'Responsive Design', color: 'bg-cyan-100 text-cyan-700' },
-    { name: 'Performance', color: 'bg-orange-100 text-orange-700' },
+  const skills = [
+    {
+      title: 'Frontend',
+      items: ['React', 'Next.js', 'Angular', 'Vue.js', 'SvelteKit', 'TypeScript', 'Tailwind CSS'],
+    },
+    {
+      title: 'Backend',
+      items: ['Node.js', 'Express', 'Python', 'Firebase', 'REST APIs', 'MongoDB', 'PostgreSQL'],
+    },
+    {
+      title: 'AI/ML',
+      items: ['Scikit-learn', 'TensorFlow', 'PyTorch', 'OpenAI', 'MediaPipe', 'XGBoost', 'WebLLM'],
+    },
+    {
+      title: 'Infrastructure',
+      items: ['AWS', 'Azure', 'Vercel', 'Docker', 'Kubernetes', 'CI/CD', 'Git'],
+    },
   ];
 
   return (
-    <section id="about" className="py-20 bg-gray-50">
+    <section id="about" className="py-24 bg-white">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">About Me</h2>
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
-            <div>
-              <h3 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">
-                Full Stack Developer
-              </h3>
-              <p className="text-base sm:text-lg text-gray-600 mb-4 sm:mb-6">
-                I'm a passionate full-stack developer with expertise in modern
-                web technologies, artificial intelligence, and machine learning.
-                I love creating innovative solutions that solve real-world
-                problems and deliver exceptional user experiences.
+          <h2 className="section-title">About</h2>
+          <p className="section-subtitle">
+            Full stack developer with expertise in modern web technologies and AI/ML.
+          </p>
+
+          <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
+            <div className="lg:col-span-2">
+              <p className="text-surface-600 leading-relaxed mb-6">
+                I build modern web applications using React, Next.js, Node.js, Python,
+                and AI/ML frameworks. With 20+ deployed projects spanning e-commerce
+                platforms, educational tools, ML dashboards, and interactive games,
+                I focus on creating clean, performant, and accessible experiences.
               </p>
-              <p className="text-base sm:text-lg text-gray-600 mb-6 sm:mb-8">
-                With experience across 15+ diverse projects and 50+ technologies including React, Next.js, Node.js, Python, Hugo, and various AI/ML frameworks, I bring ideas to life through clean, efficient, and scalable code. I'm constantly learning and exploring new technologies to stay at the forefront of web development and AI innovation.
+              <p className="text-surface-600 leading-relaxed mb-8">
+                My work covers the full stack -- from SvelteKit storefronts on Azure
+                to machine learning pipelines with Scikit-learn, from real-time Firebase
+                apps to Hugo sites with multi-language support. I'm constantly exploring
+                new technologies and building tools that help people learn.
               </p>
-              
-              {/* Technology Chips */}
-              <div className="mb-6">
-                <h4 className="text-base sm:text-lg font-semibold text-gray-800 mb-3 sm:mb-4">Technologies & Skills</h4>
-                <div className="flex flex-wrap gap-1.5 sm:gap-2">
-                  {technologies.map((tech, index) => (
-                    <motion.span
-                      key={tech.name}
-                      className={`px-2 sm:px-3 py-1 sm:py-1.5 ${tech.color} rounded-full text-xs font-medium shadow-sm hover:shadow-md transition-all duration-200 cursor-default`}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ duration: 0.3, delay: index * 0.02 }}
-                      viewport={{ once: true }}
-                      whileHover={{ scale: 1.05, y: -2 }}
-                    >
-                      {tech.name}
-                    </motion.span>
-                  ))}
+
+              <div className="flex gap-12">
+                <div>
+                  <div className="text-3xl font-bold text-surface-900">22</div>
+                  <div className="text-sm text-surface-500 mt-1">Projects</div>
                 </div>
-              </div>
-              
-              {/* Key Strengths */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">🚀 Frontend Excellence</h5>
-                  <p className="text-xs sm:text-sm text-gray-600">Modern React apps with Next.js, TypeScript, and responsive design</p>
+                <div>
+                  <div className="text-3xl font-bold text-surface-900">50+</div>
+                  <div className="text-sm text-surface-500 mt-1">Technologies</div>
                 </div>
-                <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">⚡ Backend Development</h5>
-                  <p className="text-xs sm:text-sm text-gray-600">Scalable APIs with Node.js, Python, and robust database design</p>
-                </div>
-                <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">🤖 AI Integration</h5>
-                  <p className="text-xs sm:text-sm text-gray-600">Machine learning models, AI APIs, and intelligent automation</p>
-                </div>
-                <div className="bg-white p-3 sm:p-4 rounded-lg shadow-sm border border-gray-200">
-                  <h5 className="font-semibold text-gray-800 mb-2 text-sm sm:text-base">☁️ Cloud & DevOps</h5>
-                  <p className="text-xs sm:text-sm text-gray-600">AWS deployment, Docker containers, and CI/CD pipelines</p>
+                <div>
+                  <div className="text-3xl font-bold text-surface-900">8</div>
+                  <div className="text-sm text-surface-500 mt-1">Platforms</div>
                 </div>
               </div>
             </div>
-            
-            <div className="relative">
-              <div className="w-full h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-blue-600 to-blue-800 rounded-2xl shadow-2xl">
-                {/* Placeholder for profile image or illustration */}
-                <div className="flex items-center justify-center h-full text-white text-4xl sm:text-5xl lg:text-6xl">
-                  👨‍💻
-                </div>
+
+            <div className="lg:col-span-3">
+              <div className="grid sm:grid-cols-2 gap-8">
+                {skills.map((group) => (
+                  <div key={group.title}>
+                    <h4 className="text-sm font-semibold text-surface-900 uppercase tracking-wider mb-4">
+                      {group.title}
+                    </h4>
+                    <ul className="space-y-2.5">
+                      {group.items.map((item) => (
+                        <li
+                          key={item}
+                          className="text-sm text-surface-600 flex items-center gap-2"
+                        >
+                          <span className="w-1 h-1 rounded-full bg-primary-500 flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
               </div>
             </div>
           </div>

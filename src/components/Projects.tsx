@@ -1,222 +1,152 @@
 import { motion } from 'framer-motion';
 import type React from 'react';
 import { useState, useMemo } from 'react';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { PROJECTS } from '../utils/constants';
 
 const Projects: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
-  const [selectedTechnology, setSelectedTechnology] = useState('All');
-  const [sortBy, setSortBy] = useState('name');
 
-  // Get unique categories
   const categories = useMemo(() => {
-    const uniqueCategories = [...new Set(PROJECTS.map(project => project.category))];
-    return ['All', ...uniqueCategories];
+    const unique = [...new Set(PROJECTS.map(p => p.category))];
+    return ['All', ...unique.sort()];
   }, []);
 
-  // Get unique technologies (without version numbers)
-  const technologies = useMemo(() => {
-    const allTechnologies = PROJECTS.flatMap(project => 
-      project.technologies.map(tech => {
-        // Remove version numbers (e.g., "Next.js 15" -> "Next.js")
-        return tech.replace(/\s+\d+(\.\d+)*$/, '');
-      })
-    );
-    const uniqueTechnologies = [...new Set(allTechnologies)];
-    return ['All', ...uniqueTechnologies.sort()];
-  }, []);
-
-  // Filter and sort projects
   const filteredProjects = useMemo(() => {
-    let filtered = PROJECTS.filter(project => {
-      const matchesSearch = 
+    return PROJECTS.filter(project => {
+      const matchesSearch =
         project.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
         project.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        project.technologies.some(tech => 
+        project.technologies.some(tech =>
           tech.toLowerCase().includes(searchTerm.toLowerCase())
         );
-      
       const matchesCategory = selectedCategory === 'All' || project.category === selectedCategory;
-      
-      const matchesTechnology = selectedTechnology === 'All' || 
-        project.technologies.some(tech => 
-          tech.replace(/\s+\d+(\.\d+)*$/, '').toLowerCase() === selectedTechnology.toLowerCase()
-        );
-      
-      return matchesSearch && matchesCategory && matchesTechnology;
+      return matchesSearch && matchesCategory;
     });
-
-    // Sort projects
-    filtered.sort((a, b) => {
-      switch (sortBy) {
-        case 'name':
-          return a.title.localeCompare(b.title);
-        case 'category':
-          return a.category.localeCompare(b.category);
-        case 'newest':
-          return b.id - a.id;
-        case 'oldest':
-          return a.id - b.id;
-        default:
-          return 0;
-      }
-    });
-
-    return filtered;
-  }, [searchTerm, selectedCategory, selectedTechnology, sortBy]);
+  }, [searchTerm, selectedCategory]);
 
   return (
-    <section id="projects" className="py-20">
+    <section id="projects" className="py-24 bg-surface-50">
       <div className="container">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
           viewport={{ once: true }}
         >
-          <h2 className="section-title">Featured Projects</h2>
-          
-          {/* Search and Filter Controls */}
-          <div className="mb-8 space-y-4">
-            {/* Search Input */}
-            <div className="w-full max-w-md">
-              <input
-                type="text"
-                placeholder="Search projects, technologies, or descriptions..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              />
-            </div>
-            
-            {/* Sort Options */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-2 sm:gap-4">
-              <label className="text-sm font-medium text-gray-700 whitespace-nowrap">Sort by:</label>
-              <select
-                value={sortBy}
-                onChange={(e) => setSortBy(e.target.value)}
-                className="w-full sm:w-auto px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200"
-              >
-                <option value="name">Name (A-Z)</option>
-                <option value="category">Category</option>
-                <option value="newest">Newest First</option>
-                <option value="oldest">Oldest First</option>
-              </select>
-            </div>
-            
-            {/* Category Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Category:</label>
-              <div className="flex flex-wrap gap-2">
-                {categories.map((category) => (
-                  <button
-                    key={category}
-                    onClick={() => setSelectedCategory(category)}
-                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
-                      selectedCategory === category
-                        ? 'bg-blue-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {category}
-                  </button>
-                ))}
-              </div>
-            </div>
-            
-            {/* Technology Filter */}
-            <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">Technology:</label>
-              <div className="flex flex-wrap gap-2">
-                {technologies.map((tech) => (
-                  <button
-                    key={tech}
-                    onClick={() => setSelectedTechnology(tech)}
-                    className={`px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 ${
-                      selectedTechnology === tech
-                        ? 'bg-green-600 text-white shadow-lg'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-                    }`}
-                  >
-                    {tech}
-                  </button>
-                ))}
-              </div>
-            </div>
-            
-            {/* Results Count */}
-            <div className="text-gray-600 text-sm">
-              Showing {filteredProjects.length} of {PROJECTS.length} projects
-            </div>
-          </div>
-          
-          {/* Projects Grid */}
-          {filteredProjects.length > 0 ? (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-              {filteredProjects.map((project, index) => (
-                <motion.div
-                  key={project.id}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-shadow duration-300"
+          <h2 className="section-title">Projects</h2>
+          <p className="section-subtitle">
+            A selection of projects spanning web applications, ML dashboards, educational platforms, and more.
+          </p>
+
+          <div className="mb-10 space-y-4">
+            <input
+              type="text"
+              placeholder="Search projects..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="w-full max-w-sm px-4 py-2.5 bg-white border border-surface-200 rounded-lg text-sm text-surface-800 placeholder:text-surface-400 focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
+            />
+
+            <div className="flex flex-wrap gap-2">
+              {categories.map((cat) => (
+                <button
+                  key={cat}
+                  onClick={() => setSelectedCategory(cat)}
+                  className={`px-3 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ${
+                    selectedCategory === cat
+                      ? 'bg-surface-900 text-white'
+                      : 'bg-white text-surface-500 border border-surface-200 hover:border-surface-400 hover:text-surface-700'
+                  }`}
                 >
-                  <div className="h-40 sm:h-48 bg-gradient-to-br from-blue-600 to-blue-800 flex items-center justify-center">
-                    <project.icon className="text-4xl sm:text-6xl text-white" />
-                  </div>
-                  <div className="p-4 sm:p-6">
-                    <h3 className="text-lg sm:text-xl font-bold text-gray-800 mb-3 line-clamp-2">
+                  {cat}
+                </button>
+              ))}
+            </div>
+
+            <p className="text-xs text-surface-400">
+              {filteredProjects.length} of {PROJECTS.length} projects
+            </p>
+          </div>
+
+          {filteredProjects.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProjects.map((project, index) => (
+                <motion.article
+                  key={project.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.05 }}
+                  viewport={{ once: true }}
+                  className="group bg-white border border-surface-200 rounded-xl p-6 hover:border-surface-300 hover:shadow-lg transition-all duration-300"
+                >
+                  <div className="mb-4">
+                    <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-surface-400 mb-3">
+                      {project.category}
+                    </span>
+                    <h3 className="text-lg font-bold text-surface-900 mb-2 group-hover:text-primary-700 transition-colors">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 mb-4 text-sm sm:text-base line-clamp-3">{project.description}</p>
-                    <div className="flex flex-wrap gap-1 sm:gap-2 mb-4 sm:mb-6">
-                      {project.technologies.map((tech) => (
-                        <span
-                          key={tech}
-                          className="px-2 sm:px-3 py-1 bg-blue-100 text-blue-700 rounded-full text-xs sm:text-sm"
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-2 sm:gap-4">
+                    <p className="text-sm text-surface-500 leading-relaxed line-clamp-3">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {project.technologies.slice(0, 4).map((tech) => (
+                      <span
+                        key={tech}
+                        className="px-2 py-0.5 bg-surface-50 text-surface-600 rounded text-[11px] font-medium border border-surface-100"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                    {project.technologies.length > 4 && (
+                      <span className="px-2 py-0.5 text-surface-400 text-[11px]">
+                        +{project.technologies.length - 4}
+                      </span>
+                    )}
+                  </div>
+
+                  <ul className="mb-5 space-y-1">
+                    {project.features.map((feature) => (
+                      <li key={feature} className="text-xs text-surface-400 flex items-center gap-1.5">
+                        <span className="w-0.5 h-0.5 rounded-full bg-surface-300 flex-shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <div className="flex items-center gap-3 pt-4 border-t border-surface-100">
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 transition-colors"
+                    >
+                      <FaGithub className="text-sm" />
+                      Code
+                    </a>
+                    {project.liveUrl && (
                       <a
-                        href={project.githubUrl}
-                        className="btn btn-secondary flex-1 text-center text-sm sm:text-base py-2 sm:py-3"
+                        href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-primary-600 transition-colors"
                       >
-                        {project.githubUrl.includes('gitlab.com') ? 'GitLab' : 'GitHub'}
+                        <FaExternalLinkAlt className="text-[10px]" />
+                        Live Demo
                       </a>
-                      {project.liveUrl && (
-                        <a
-                          href={project.liveUrl}
-                          className="btn btn-primary flex-1 text-center text-sm sm:text-base py-2 sm:py-3"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                        >
-                          Live Demo
-                        </a>
-                      )}
-                    </div>
+                    )}
                   </div>
-                </motion.div>
+                </motion.article>
               ))}
             </div>
           ) : (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-center py-12"
-            >
-              <div className="text-gray-500 text-lg mb-2">
-                No projects found matching your search criteria
-              </div>
-              <div className="text-gray-400 text-sm">
-                Try adjusting your search term or category filter
-              </div>
-            </motion.div>
+            <div className="text-center py-16">
+              <p className="text-surface-400">No projects match your search.</p>
+            </div>
           )}
         </motion.div>
       </div>
