@@ -403,4 +403,52 @@ export const PROJECTS: Project[] = [
       'Mobile-First',
     ],
   },
+  {
+    id: 23,
+    title: 'Backend Engineer Detective',
+    description:
+      'Interactive detective game where you investigate real-world backend incidents. 121 cases across 11 categories covering database failures, API outages, memory leaks, and more.',
+    technologies: ['Cloudflare Workers', 'TypeScript', 'Hono'],
+    githubUrl: 'https://github.com/davidagustin/backend-engineer-detective',
+    liveUrl: 'https://backend-engineer-detective.app-production.workers.dev/',
+    category: 'Education',
+    features: [
+      '121 Detective Cases',
+      '11 Incident Categories',
+      'Real-World Scenarios',
+      'Interactive Gameplay',
+    ],
+  },
+  {
+    id: 24,
+    title: 'Coding Tricks Practice',
+    description:
+      'LeetCode-style practice platform focused on JavaScript and TypeScript coding tricks. 155+ challenges across 19 categories with interactive code execution and progress tracking.',
+    technologies: ['Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    githubUrl: 'https://github.com/davidagustin/coding-tricks-practice',
+    liveUrl: 'https://coding-tricks-practice.vercel.app',
+    category: 'Education',
+    features: [
+      '155+ Challenges',
+      '19 Categories',
+      'JS/TS Focus',
+      'Progress Tracking',
+    ],
+  },
+  {
+    id: 25,
+    title: 'React 30',
+    description:
+      '30 classic vanilla JavaScript projects rebuilt as modern, type-safe React components. Each project demonstrates React best practices, hooks patterns, and TypeScript integration.',
+    technologies: ['React', 'TypeScript', 'Tailwind CSS', 'Vercel'],
+    githubUrl: 'https://github.com/davidagustin/react-30',
+    liveUrl: 'https://react-30-nu.vercel.app',
+    category: 'Education',
+    features: [
+      '30 React Projects',
+      'Type-Safe Components',
+      'React Best Practices',
+      'Hooks Patterns',
+    ],
+  },
 ];
