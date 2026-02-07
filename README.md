@@ -22,12 +22,12 @@ Personal portfolio showcasing 25 full-stack projects built with React, Next.js, 
 | Project | Stack | Description |
 |---------|-------|-------------|
 | [Coding Drills](https://coding-drills.vercel.app) | Next.js 16, React 19, Monaco Editor, WebLLM | Interactive learning platform — thousands of problems across 25 languages |
-| [PIIxelate](https://piixelate.vercel.app) | Next.js 15, Tesseract.js, OpenAI | Multi-layer PII detection and pixelation with 7-layer architecture |
-| [Coding Tricks Practice](https://coding-tricks-practice.vercel.app) | Next.js, TypeScript, Monaco Editor | Interactive coding challenges with live code execution |
-| [20 Newsgroups ML](https://machine-learning-project-theta.vercel.app) | Next.js, Scikit-learn, XGBoost | ML analysis dashboard with 10+ algorithms |
-| [Backend Engineer Detective](https://backend-engineer-detective.app-production.workers.dev/) | Node.js, Cloudflare Workers | Backend engineering challenges and detective puzzles |
-| [React 30](https://react-30-nu.vercel.app) | React 19, TypeScript, Framer Motion | 30-day React challenge with progressive complexity |
 | [Sign Language Learning](https://spell-your-name.vercel.app/) | Next.js 15, MediaPipe, React 19 | ASL learning with real-time hand tracking |
+| [Backend Engineer Detective](https://backend-engineer-detective.app-production.workers.dev/) | Cloudflare Workers, TypeScript | 121 investigation cases with AI mentor guidance |
+| [Coding Tricks Practice](https://coding-tricks-practice.vercel.app) | Next.js, TypeScript, Monaco Editor | 155+ LeetCode-style challenges across 19 categories |
+| [UI Patterns React](https://ui-patterns-react.vercel.app/) | Next.js 15, React 19, TypeScript 5.6 | 90+ production-ready components, WCAG 2.1 AA |
+| [System Design Practice](https://system-design-practice.vercel.app/) | Next.js 15, React 19, TypeScript | 50 study topics, 40 concepts, 60 quizzes |
+| [React 30](https://react-30-nu.vercel.app) | Next.js 16, React 19, TypeScript | 30 vanilla JS projects rebuilt as modern React |
 
 [View all 25 projects on the live site.](https://davidagustin.github.io/#projects)
 

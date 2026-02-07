@@ -42,7 +42,7 @@ const ProjectThumbnail: React.FC<{ project: Project; className?: string }> = ({
 };
 
 /* ─── Featured Strip ─── */
-const FEATURED_IDS = [1, 21, 24, 5, 23, 25, 17];
+const FEATURED_IDS = [1, 17, 23, 24, 19, 18, 25];
 
 const FeaturedStrip: React.FC<{ onSelect: (p: Project) => void }> = ({ onSelect }) => {
   const featured = useMemo(() =>
@@ -60,8 +60,8 @@ const FeaturedStrip: React.FC<{ onSelect: (p: Project) => void }> = ({ onSelect 
 
     const interval = setInterval(() => {
       if (!isHoveredRef.current && scrollRef.current) {
-        // Card width: w-80 (320px) + gap-4 (16px) = 336px
-        const cardWidth = 336;
+        // Card width: w-96 (384px) + gap-4 (16px) = 400px
+        const cardWidth = 400;
         scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
 
         // If reached the end, scroll back to start
