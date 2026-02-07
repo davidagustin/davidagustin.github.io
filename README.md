@@ -1,6 +1,6 @@
 # David Agustin — Portfolio
 
-Personal portfolio showcasing 22 full-stack projects built with React, Next.js, Angular, Vue, SvelteKit, Python, and AI/ML technologies. Deployed across 8+ cloud platforms.
+Personal portfolio showcasing 25 full-stack projects built with React, Next.js, Angular, Vue, SvelteKit, Python, and AI/ML technologies. Deployed across 10+ cloud platforms.
 
 **Live:** [davidagustin.github.io](https://davidagustin.github.io)
 
@@ -11,8 +11,8 @@ Personal portfolio showcasing 22 full-stack projects built with React, Next.js, 
 | Layer | Technologies |
 |-------|-------------|
 | Framework | React 18, TypeScript |
-| Styling | Tailwind CSS 3, Inter font |
-| Animation | Framer Motion |
+| Styling | Tailwind CSS 3, Inter font, Dark Mode |
+| Animation | Framer Motion, Parallax Scroll Effects |
 | Email | EmailJS |
 | Build | Create React App |
 | Deploy | GitHub Pages |
@@ -32,7 +32,7 @@ Personal portfolio showcasing 22 full-stack projects built with React, Next.js, 
 | [Sign Language Learning](https://spell-your-name.vercel.app/) | Next.js, MediaPipe | ASL learning with real-time hand tracking |
 | [Historigal](https://historigal-vercel.vercel.app) | Next.js 15, TypeScript | Search 37,860+ historical events |
 
-[View all 22 projects on the live site.](https://davidagustin.github.io/#projects)
+[View all 25 projects on the live site.](https://davidagustin.github.io/#projects)
 
 ## All Projects
 
@@ -45,6 +45,8 @@ Personal portfolio showcasing 22 full-stack projects built with React, Next.js, 
 | MLI Learning Quiz | Next.js 15, React 19, TypeScript | [Live](https://ai-quiz-questions.vercel.app) · [GitHub](https://github.com/davidagustin/ai-quiz-questions) |
 | Rules of ML | Next.js 15, TypeScript | [Live](https://rules-of-machine-learning.vercel.app/) · [GitHub](https://github.com/davidagustin/rules-of-machine-learning) |
 | Sign Language Learning | Next.js 15, MediaPipe, React 19 | [Live](https://spell-your-name.vercel.app/) · [GitHub](https://github.com/davidagustin/spell-your-name) |
+| Coding Tricks Practice | Next.js, TypeScript, Monaco Editor | [Live](https://coding-tricks-practice.vercel.app) · [GitHub](https://github.com/davidagustin/coding-tricks-practice) |
+| React 30 | React 19, TypeScript, Framer Motion | [Live](https://react-30-nu.vercel.app) · [GitHub](https://github.com/davidagustin/react-30) |
 
 ### AI/ML
 | Project | Technologies | Links |
@@ -74,13 +76,14 @@ Personal portfolio showcasing 22 full-stack projects built with React, Next.js, 
 | Project | Technologies | Links |
 |---------|-------------|-------|
 | UI Patterns React | Next.js 15, React 19, TypeScript 5.6 | [Live](https://ui-patterns-react.vercel.app/) · [GitHub](https://github.com/davidagustin/ui-patterns-react) |
+| Backend Engineer Detective | Node.js, Cloudflare Workers | [Live](https://backend-engineer-detective.app-production.workers.dev/) · [GitHub](https://github.com/davidagustin/backend-engineer-detective) |
 | React Interview Sandbox | React 18, TypeScript, Prism.js | [GitHub](https://github.com/davidagustin/react-interview-sandbox) |
 | Sudoku Game | React 18, Express.js, Heroku | [Live](https://heroku-sudoku-49243446e4d3.herokuapp.com/) · [GitHub](https://github.com/davidagustin/heroku-practice) |
 | Classic Snake Game | React 19, TypeScript, Framer Motion | [Live](https://classic-snake-game-phi.vercel.app/) · [GitHub](https://github.com/davidagustin/classic-snake-game) |
 
 ## Cloud Platforms
 
-Vercel, AWS (Amplify), Azure (Static Web Apps), Heroku, Digital Ocean, Netlify, Render, Surge.sh, Firebase Hosting, GitLab Pages
+Vercel, AWS (Amplify), Azure (Static Web Apps), Heroku, Digital Ocean, Netlify, Render, Surge.sh, Firebase Hosting, GitLab Pages, Cloudflare Workers
 
 ## Local Development
 
@@ -109,19 +112,21 @@ Open [http://localhost:3000](http://localhost:3000).
 src/
 ├── components/
 │   ├── Navbar.tsx        # Fixed navigation with scroll detection
-│   ├── Hero.tsx          # Dark-themed landing section
+│   ├── Hero.tsx          # Dark-themed landing section with parallax
 │   ├── About.tsx         # Skills organized by domain
-│   ├── Projects.tsx      # Filterable project grid (22 projects)
+│   ├── Projects.tsx      # Multi-view projects (Grid, Carousel, Table)
 │   ├── Donation.tsx      # Support section (Stripe, BTC, ETH)
 │   ├── Contact.tsx       # EmailJS contact form
 │   ├── Footer.tsx        # Site footer
 │   └── Snackbar.tsx      # Toast notifications
+├── hooks/
+│   └── useScrollProgress.tsx  # Scroll progress bar logic
 ├── types/
 │   └── index.ts          # TypeScript interfaces
 ├── utils/
-│   ├── constants.ts      # Project data, social links
+│   ├── constants.ts      # Project data (25 projects), social links
 │   └── scroll.ts         # Smooth scroll utility
-├── App.tsx               # Root component
+├── App.tsx               # Root component with theme toggle
 ├── index.tsx             # Entry point
 └── index.css             # Tailwind config and custom styles
 ```
@@ -131,8 +136,10 @@ src/
 - **Typography-first** — Content hierarchy through font weight, size, and spacing
 - **Restrained palette** — Dark hero, white/slate alternating sections
 - **Minimal decoration** — No emoji icons or gradient backgrounds on cards
-- **Accessible** — Semantic HTML, proper contrast, keyboard navigation
+- **Accessible** — Semantic HTML, proper contrast, keyboard navigation, skip-to-content link, prefers-reduced-motion support
 - **Responsive** — Mobile-first with sm/md/lg breakpoints
+- **Apple-style parallax** — Smooth scroll effects using Framer Motion useScroll/useTransform
+- **Dark/Light mode** — Theme toggle with localStorage persistence
 
 ## Support
 

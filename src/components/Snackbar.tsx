@@ -81,6 +81,8 @@ const Snackbar: React.FC<SnackbarProps> = ({
           className="fixed bottom-4 left-1/2 transform -translate-x-1/2 z-50"
         >
           <div
+            role="alert"
+            aria-live="assertive"
             className={`flex items-center gap-3 px-6 py-4 rounded-lg shadow-lg border ${styles.bg} ${styles.border} ${styles.text} max-w-md mx-4`}
           >
             <div className="flex-shrink-0 text-xl">

@@ -86,7 +86,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-surface-50">
+    <section id="contact" className="py-24 bg-surface-50 dark:bg-surface-900">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -102,13 +102,13 @@ const Contact: React.FC = () => {
           <div className="grid lg:grid-cols-5 gap-12 lg:gap-16">
             <div className="lg:col-span-2 space-y-6">
               <div>
-                <h3 className="text-sm font-semibold text-surface-900 uppercase tracking-wider mb-4">
+                <h3 className="text-sm font-semibold text-surface-900 dark:text-surface-200 uppercase tracking-wider mb-4">
                   Reach Out
                 </h3>
                 <div className="space-y-3">
                   <a
                     href="mailto:davidsyagustin@gmail.com"
-                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 transition-colors"
+                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-white transition-colors"
                   >
                     <FaEnvelope className="text-surface-400 flex-shrink-0" />
                     davidsyagustin@gmail.com
@@ -117,7 +117,7 @@ const Contact: React.FC = () => {
                     href="https://github.com/davidagustin"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 transition-colors"
+                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-white transition-colors"
                   >
                     <FaGithub className="text-surface-400 flex-shrink-0" />
                     github.com/davidagustin
@@ -126,7 +126,7 @@ const Contact: React.FC = () => {
                     href="https://www.linkedin.com/in/davidsyagustin/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 transition-colors"
+                    className="flex items-center gap-3 text-sm text-surface-600 hover:text-surface-900 dark:text-surface-400 dark:hover:text-white transition-colors"
                   >
                     <FaLinkedin className="text-surface-400 flex-shrink-0" />
                     linkedin.com/in/davidsyagustin
@@ -135,24 +135,24 @@ const Contact: React.FC = () => {
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-surface-900 uppercase tracking-wider mb-2">
+                <h3 className="text-sm font-semibold text-surface-900 dark:text-surface-200 uppercase tracking-wider mb-2">
                   Location
                 </h3>
-                <p className="text-sm text-surface-500">San Francisco, CA</p>
+                <p className="text-sm text-surface-500 dark:text-surface-400">San Francisco, CA</p>
               </div>
 
               <div>
-                <h3 className="text-sm font-semibold text-surface-900 uppercase tracking-wider mb-2">
+                <h3 className="text-sm font-semibold text-surface-900 dark:text-surface-200 uppercase tracking-wider mb-2">
                   Availability
                 </h3>
-                <p className="text-sm text-surface-500">Open to new opportunities</p>
+                <p className="text-sm text-surface-500 dark:text-surface-400">Open to new opportunities</p>
               </div>
             </div>
 
             <div className="lg:col-span-3">
               <form onSubmit={handleSubmit} className="space-y-5">
                 <div>
-                  <label htmlFor="name" className="block text-xs font-semibold text-surface-700 uppercase tracking-wider mb-2">
+                  <label htmlFor="name" className="block text-xs font-semibold text-surface-700 dark:text-surface-300 uppercase tracking-wider mb-2">
                     Name
                   </label>
                   <input
@@ -161,13 +161,13 @@ const Contact: React.FC = () => {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white border border-surface-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
+                    className="w-full px-4 py-3 bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 dark:text-surface-200 dark:placeholder:text-surface-500 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:focus:ring-primary-500/30 focus:border-primary-500 dark:focus:border-primary-400 transition-all"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-xs font-semibold text-surface-700 uppercase tracking-wider mb-2">
+                  <label htmlFor="email" className="block text-xs font-semibold text-surface-700 dark:text-surface-300 uppercase tracking-wider mb-2">
                     Email
                   </label>
                   <input
@@ -176,13 +176,13 @@ const Contact: React.FC = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 bg-white border border-surface-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all"
+                    className="w-full px-4 py-3 bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 dark:text-surface-200 dark:placeholder:text-surface-500 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:focus:ring-primary-500/30 focus:border-primary-500 dark:focus:border-primary-400 transition-all"
                     required
                     disabled={isSubmitting}
                   />
                 </div>
                 <div>
-                  <label htmlFor="message" className="block text-xs font-semibold text-surface-700 uppercase tracking-wider mb-2">
+                  <label htmlFor="message" className="block text-xs font-semibold text-surface-700 dark:text-surface-300 uppercase tracking-wider mb-2">
                     Message
                   </label>
                   <textarea
@@ -191,7 +191,7 @@ const Contact: React.FC = () => {
                     value={formData.message}
                     onChange={handleChange}
                     rows={5}
-                    className="w-full px-4 py-3 bg-white border border-surface-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500 transition-all resize-none"
+                    className="w-full px-4 py-3 bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 dark:text-surface-200 dark:placeholder:text-surface-500 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-primary-500/20 dark:focus:ring-primary-500/30 focus:border-primary-500 dark:focus:border-primary-400 transition-all resize-none"
                     required
                     disabled={isSubmitting}
                   />
@@ -207,7 +207,7 @@ const Contact: React.FC = () => {
 
                 <button
                   type="submit"
-                  className={`w-full py-3 px-6 bg-surface-900 text-white text-sm font-semibold rounded-lg hover:bg-surface-800 transition-colors ${
+                  className={`w-full py-3 px-6 bg-surface-900 dark:bg-white text-white dark:text-surface-900 text-sm font-semibold rounded-lg hover:bg-surface-800 dark:hover:bg-surface-100 transition-colors ${
                     isSubmitting ? 'opacity-50 cursor-not-allowed' : ''
                   }`}
                   disabled={isSubmitting}
