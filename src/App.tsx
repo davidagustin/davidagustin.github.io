@@ -44,8 +44,8 @@ const App: React.FC = () => {
         <Projects />
         <Contact />
       </main>
-      <Donation />
       <Footer />
+      <Donation />
     </div>
   );
 };
