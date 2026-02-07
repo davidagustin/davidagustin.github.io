@@ -42,7 +42,7 @@ const ProjectThumbnail: React.FC<{ project: Project; className?: string }> = ({
 };
 
 /* ─── Featured Strip ─── */
-const FEATURED_IDS = [1, 21, 24, 5, 23, 25];
+const FEATURED_IDS = [1, 21, 24, 5, 23, 25, 17];
 
 const FeaturedStrip: React.FC<{ onSelect: (p: Project) => void }> = ({ onSelect }) => {
   const featured = useMemo(() =>

@@ -23,14 +23,11 @@ Personal portfolio showcasing 25 full-stack projects built with React, Next.js, 
 |---------|-------|-------------|
 | [Coding Drills](https://coding-drills.vercel.app) | Next.js 16, React 19, Monaco Editor, WebLLM | Interactive learning platform — thousands of problems across 25 languages |
 | [PIIxelate](https://piixelate.vercel.app) | Next.js 15, Tesseract.js, OpenAI | Multi-layer PII detection and pixelation with 7-layer architecture |
-| [StreamFlix](https://main.d1bolbr8do04cv.amplifyapp.com/) | Next.js 15, AWS Amplify | Netflix/Disney+ inspired streaming interface |
+| [Coding Tricks Practice](https://coding-tricks-practice.vercel.app) | Next.js, TypeScript, Monaco Editor | Interactive coding challenges with live code execution |
 | [20 Newsgroups ML](https://machine-learning-project-theta.vercel.app) | Next.js, Scikit-learn, XGBoost | ML analysis dashboard with 10+ algorithms |
-| [TechStore](https://ashy-sky-078d0441e.2.azurestaticapps.net) | SvelteKit 2.0, Azure | E-commerce store with 8 product categories |
-| [FoodRater](https://firebase-practice--fir-practice-54eb3.us-central1.hosted.app/) | Angular 17, Firebase | Restaurant rating app with real-time data |
-| [UI Patterns React](https://ui-patterns-react.vercel.app/) | Next.js 15, React 19 | 90+ production-ready components, WCAG 2.1 AA |
-| [System Design Practice](https://system-design-practice.vercel.app/) | Next.js 15, React 19 | 50 study materials, 40 concepts, 60 quizzes |
-| [Sign Language Learning](https://spell-your-name.vercel.app/) | Next.js, MediaPipe | ASL learning with real-time hand tracking |
-| [Historigal](https://historigal-vercel.vercel.app) | Next.js 15, TypeScript | Search 37,860+ historical events |
+| [Backend Engineer Detective](https://backend-engineer-detective.app-production.workers.dev/) | Node.js, Cloudflare Workers | Backend engineering challenges and detective puzzles |
+| [React 30](https://react-30-nu.vercel.app) | React 19, TypeScript, Framer Motion | 30-day React challenge with progressive complexity |
+| [Sign Language Learning](https://spell-your-name.vercel.app/) | Next.js 15, MediaPipe, React 19 | ASL learning with real-time hand tracking |
 
 [View all 25 projects on the live site.](https://davidagustin.github.io/#projects)
 
