@@ -739,12 +739,12 @@ const Projects: React.FC = () => {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
               transition={{ duration: 0.25, ease: 'easeOut' }}
-              className="bg-white dark:bg-surface-900 rounded-2xl max-w-2xl w-full max-h-[85vh] overflow-y-auto shadow-2xl"
+              className="bg-white dark:bg-surface-900 rounded-2xl max-w-5xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
               onClick={(e) => e.stopPropagation()}
             >
               <ProjectThumbnail
                 project={selectedProject}
-                className="h-56 sm:h-64"
+                className="w-full"
               />
 
               <div className="p-6 sm:p-8">
