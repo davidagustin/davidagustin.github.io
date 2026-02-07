@@ -3,7 +3,6 @@ import type React from 'react';
 import { useEffect, useState } from 'react';
 import About from './components/About';
 import Contact from './components/Contact';
-import Donation from './components/Donation';
 import Footer from './components/Footer';
 import Hero from './components/Hero';
 import Navbar from './components/Navbar';
@@ -55,7 +54,6 @@ const App: React.FC = () => {
         <Projects />
         <Contact />
       </main>
-      <Donation />
       <Footer />
     </div>
   );

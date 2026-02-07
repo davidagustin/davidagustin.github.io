@@ -1,8 +1,20 @@
 import type React from 'react';
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
+import { useState } from 'react';
+import { FaBitcoin, FaEthereum, FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa';
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
+  const [copiedAddress, setCopiedAddress] = useState<string | null>(null);
+
+  const btcAddress = 'bc1qkq0g79l2c7s33h28qlevt7jffxajcd3';
+  const ethAddress = '0x846a4460455f9db3c0b3cd1e0e7d1070288e88f2';
+
+  const copyToClipboard = (address: string, label: string) => {
+    navigator.clipboard.writeText(address).then(() => {
+      setCopiedAddress(label);
+      setTimeout(() => setCopiedAddress(null), 2000);
+    }).catch(() => {});
+  };
 
   return (
     <footer className="bg-surface-950 text-surface-400 py-16 dark:border-t dark:border-surface-800">
@@ -68,7 +80,43 @@ const Footer: React.FC = () => {
           </div>
         </div>
 
-        <div className="border-t border-surface-800 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+        {/* Support strip */}
+        <div className="border-t border-surface-800 pt-6 pb-6 flex flex-col sm:flex-row items-center justify-between gap-3">
+          <p className="text-xs text-surface-500">
+            Support my projects
+          </p>
+          <div className="flex flex-wrap items-center gap-3">
+            <a
+              href="https://buy.stripe.com/fZucN5epreyuchqdtZfnO00"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-surface-400 hover:text-white transition-colors"
+            >
+              Stripe
+            </a>
+            <span className="text-surface-700">|</span>
+            <button
+              type="button"
+              onClick={() => copyToClipboard(btcAddress, 'BTC')}
+              className="flex items-center gap-1.5 text-xs text-surface-400 hover:text-white transition-colors"
+            >
+              <FaBitcoin className="text-xs" />
+              {copiedAddress === 'BTC' ? 'Copied!' : 'BTC'}
+            </button>
+            <span className="text-surface-700">|</span>
+            <button
+              type="button"
+              onClick={() => copyToClipboard(ethAddress, 'ETH')}
+              className="flex items-center gap-1.5 text-xs text-surface-400 hover:text-white transition-colors"
+            >
+              <FaEthereum className="text-xs" />
+              {copiedAddress === 'ETH' ? 'Copied!' : 'ETH'}
+            </button>
+          </div>
+        </div>
+
+        {/* Copyright */}
+        <div className="border-t border-surface-800 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-xs text-surface-500">
             &copy; {currentYear} David Agustin
           </p>
