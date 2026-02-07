@@ -14,6 +14,11 @@ export interface Project {
   liveUrl?: string;
   category: string;
   features: string[];
+  readmeHighlights?: {
+    overview: string;
+    highlights: string[];
+    techDetails: string;
+  };
 }
 
 export interface ContactInfo {

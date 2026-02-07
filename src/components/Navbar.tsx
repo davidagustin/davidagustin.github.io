@@ -46,20 +46,24 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
       transition={{ duration: 0.5 }}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-16">
-          <button
-            type="button"
-            onClick={() => scrollToSection('home')}
-            className={`text-lg font-bold tracking-tight transition-colors ${
-              scrolled
-                ? 'text-surface-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-400'
-                : 'text-white hover:text-primary-300'
-            }`}
-          >
-            David Agustin
-          </button>
+        <div className="flex items-center h-16">
+          {/* Left: Brand */}
+          <div className="flex-1">
+            <button
+              type="button"
+              onClick={() => scrollToSection('home')}
+              className={`text-lg font-bold tracking-tight transition-colors ${
+                scrolled
+                  ? 'text-surface-900 dark:text-white hover:text-primary-700 dark:hover:text-primary-400'
+                  : 'text-white hover:text-primary-300'
+              }`}
+            >
+              David Agustin
+            </button>
+          </div>
 
-          <div className="hidden md:flex items-center gap-8">
+          {/* Center: Nav links */}
+          <div className="hidden md:flex items-center">
             <ul className="flex items-center gap-8">
               {navItems.map((item) => (
                 <li key={item.id}>
@@ -80,22 +84,10 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
                 </li>
               ))}
             </ul>
-
-            <button
-              type="button"
-              onClick={toggleTheme}
-              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
-              className={`p-2 rounded-lg transition-colors duration-200 ${
-                scrolled
-                  ? 'text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-800'
-                  : 'text-surface-300 hover:text-white hover:bg-white/10'
-              }`}
-            >
-              {theme === 'dark' ? <FaSun size={16} /> : <FaMoon size={16} />}
-            </button>
           </div>
 
-          <div className="md:hidden flex items-center gap-2">
+          {/* Right: Theme toggle + Mobile menu */}
+          <div className="flex-1 flex items-center justify-end gap-2">
             <button
               type="button"
               onClick={toggleTheme}
@@ -109,35 +101,38 @@ const Navbar: React.FC<NavbarProps> = ({ theme, toggleTheme }) => {
               {theme === 'dark' ? <FaSun size={16} /> : <FaMoon size={16} />}
             </button>
 
-            <button
-              type="button"
-              className="flex flex-col gap-1.5 p-2"
-              onClick={() => setIsOpen(!isOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={isOpen}
-            >
-              <span
-                className={`w-5 h-px transition-all duration-300 ${
-                  scrolled
-                    ? 'bg-surface-800 dark:bg-white'
-                    : 'bg-white'
-                } ${isOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`}
-              />
-              <span
-                className={`w-5 h-px transition-all duration-300 ${
-                  scrolled
-                    ? 'bg-surface-800 dark:bg-white'
-                    : 'bg-white'
-                } ${isOpen ? 'opacity-0' : ''}`}
-              />
-              <span
-                className={`w-5 h-px transition-all duration-300 ${
-                  scrolled
-                    ? 'bg-surface-800 dark:bg-white'
-                    : 'bg-white'
-                } ${isOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`}
-              />
-            </button>
+            {/* Mobile hamburger - only on small screens */}
+            <div className="md:hidden">
+              <button
+                type="button"
+                className="flex flex-col gap-1.5 p-2"
+                onClick={() => setIsOpen(!isOpen)}
+                aria-label="Toggle menu"
+                aria-expanded={isOpen}
+              >
+                <span
+                  className={`w-5 h-px transition-all duration-300 ${
+                    scrolled
+                      ? 'bg-surface-800 dark:bg-white'
+                      : 'bg-white'
+                  } ${isOpen ? 'rotate-45 translate-y-[3.5px]' : ''}`}
+                />
+                <span
+                  className={`w-5 h-px transition-all duration-300 ${
+                    scrolled
+                      ? 'bg-surface-800 dark:bg-white'
+                      : 'bg-white'
+                  } ${isOpen ? 'opacity-0' : ''}`}
+                />
+                <span
+                  className={`w-5 h-px transition-all duration-300 ${
+                    scrolled
+                      ? 'bg-surface-800 dark:bg-white'
+                      : 'bg-white'
+                  } ${isOpen ? '-rotate-45 -translate-y-[3.5px]' : ''}`}
+                />
+              </button>
+            </div>
           </div>
         </div>
 

@@ -1,12 +1,14 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import type React from 'react';
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import {
   FaChevronLeft,
   FaChevronRight,
   FaExternalLinkAlt,
   FaGithub,
   FaList,
+  FaPause,
+  FaPlay,
   FaTh,
   FaTimes,
 } from 'react-icons/fa';
@@ -48,22 +50,66 @@ const FeaturedStrip: React.FC<{ onSelect: (p: Project) => void }> = ({ onSelect 
     []
   );
 
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true);
+  const isHoveredRef = useRef(false);
+
+  // Auto-scroll effect
+  useEffect(() => {
+    if (!isPlaying) return;
+
+    const interval = setInterval(() => {
+      if (!isHoveredRef.current && scrollRef.current) {
+        // Card width: w-80 (320px) + gap-4 (16px) = 336px
+        const cardWidth = 336;
+        scrollRef.current.scrollBy({ left: cardWidth, behavior: 'smooth' });
+
+        // If reached the end, scroll back to start
+        const maxScroll = scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
+        if (scrollRef.current.scrollLeft >= maxScroll) {
+          setTimeout(() => {
+            if (scrollRef.current) {
+              scrollRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+            }
+          }, 100);
+        }
+      }
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [isPlaying]);
+
   return (
     <div className="mb-12">
-      <h3 className="text-sm font-semibold uppercase tracking-wider text-surface-400 dark:text-surface-500 mb-4">
-        Featured
-      </h3>
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x-mandatory -mx-4 px-4">
+      <div className="flex items-center gap-3 mb-4">
+        <h3 className="text-sm font-semibold uppercase tracking-wider text-surface-400 dark:text-surface-500">
+          Featured
+        </h3>
+        <button
+          type="button"
+          onClick={() => setIsPlaying(!isPlaying)}
+          className="p-1.5 rounded-md text-surface-400 dark:text-surface-500 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-800 transition-colors"
+          aria-label={isPlaying ? 'Pause auto-scroll' : 'Play auto-scroll'}
+        >
+          {isPlaying ? <FaPause className="text-xs" /> : <FaPlay className="text-xs" />}
+        </button>
+      </div>
+      <div
+        ref={scrollRef}
+        onMouseEnter={() => { isHoveredRef.current = true; }}
+        onMouseLeave={() => { isHoveredRef.current = false; }}
+        className="flex gap-4 overflow-x-auto pb-4 scrollbar-hide snap-x-mandatory -mx-4 px-4"
+      >
         {featured.map((project) => (
           <motion.div
             key={project.id}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             onClick={() => onSelect(project)}
-            className="flex-shrink-0 w-72 sm:w-80 bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl overflow-hidden cursor-pointer snap-center hover:shadow-lg transition-shadow"
+            className="flex-shrink-0 w-80 sm:w-96 bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl overflow-hidden cursor-pointer snap-center hover:shadow-lg transition-shadow"
           >
-            <ProjectThumbnail project={project} className="h-36" />
-            <div className="p-4">
+            <ProjectThumbnail project={project} className="h-48" />
+            <div className="p-5">
               <span className="text-[10px] font-semibold uppercase tracking-wider text-surface-400 dark:text-surface-500">
                 {project.category}
               </span>
@@ -84,22 +130,25 @@ const FeaturedStrip: React.FC<{ onSelect: (p: Project) => void }> = ({ onSelect 
 /* ─── Carousel View ─── */
 const CarouselView: React.FC<{
   projects: Project[];
+  columns: 1 | 2 | 3;
   onSelect: (p: Project) => void;
-}> = ({ projects, onSelect }) => {
-  const [index, setIndex] = useState(0);
+}> = ({ projects, columns, onSelect }) => {
+  const [pageIndex, setPageIndex] = useState(0);
   const [direction, setDirection] = useState(0);
 
-  // Reset index when filter changes
+  const maxStart = Math.max(0, projects.length - columns);
+
+  // Reset page when filter or columns change
   useEffect(() => {
-    setIndex(0);
-  }, [projects.length]);
+    setPageIndex(0);
+  }, [projects.length, columns]);
 
   const go = useCallback(
     (dir: 1 | -1) => {
       setDirection(dir);
-      setIndex((prev) => (prev + dir + projects.length) % projects.length);
+      setPageIndex((prev) => (prev + dir + maxStart + 1) % (maxStart + 1));
     },
-    [projects.length]
+    [maxStart]
   );
 
   useEffect(() => {
@@ -113,121 +162,141 @@ const CarouselView: React.FC<{
 
   if (projects.length === 0) return null;
 
-  const project = projects[index];
+  // Get current window of projects (one card shift at a time)
+  const pageProjects = projects.slice(pageIndex, pageIndex + columns);
 
   const variants = {
-    enter: (d: number) => ({ x: d > 0 ? 300 : -300, opacity: 0 }),
-    center: { x: 0, opacity: 1 },
-    exit: (d: number) => ({ x: d > 0 ? -300 : 300, opacity: 0 }),
+    enter: (d: number) => ({ x: d > 0 ? 300 : -300 }),
+    center: { x: 0 },
+    exit: (d: number) => ({ x: d > 0 ? -300 : 300 }),
   };
+
+  const gridClass =
+    columns === 1
+      ? 'grid-cols-1 max-w-2xl mx-auto'
+      : columns === 2
+        ? 'grid-cols-1 md:grid-cols-2'
+        : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3';
 
   return (
     <div className="flex flex-col items-center">
-      <div className="relative w-full max-w-2xl">
+      <div className={`relative w-full ${columns === 1 ? 'max-w-2xl' : ''}`}>
         {/* Nav arrows */}
         <button
           type="button"
           onClick={() => go(-1)}
-          className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 sm:-translate-x-12 z-10 p-2.5 rounded-full bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:border-surface-400 dark:hover:border-surface-500 shadow-sm transition-all"
-          aria-label="Previous project"
+          className={`absolute ${columns === 1 ? 'left-0' : '-left-4 sm:-left-12'} top-1/2 -translate-y-1/2 ${columns === 1 ? '-translate-x-4 sm:-translate-x-12' : ''} z-10 p-2.5 rounded-full bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:border-surface-400 dark:hover:border-surface-500 shadow-sm transition-all`}
+          aria-label="Previous page"
         >
           <FaChevronLeft className="text-sm" />
         </button>
         <button
           type="button"
           onClick={() => go(1)}
-          className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 sm:translate-x-12 z-10 p-2.5 rounded-full bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:border-surface-400 dark:hover:border-surface-500 shadow-sm transition-all"
-          aria-label="Next project"
+          className={`absolute ${columns === 1 ? 'right-0' : '-right-4 sm:-right-12'} top-1/2 -translate-y-1/2 ${columns === 1 ? 'translate-x-4 sm:translate-x-12' : ''} z-10 p-2.5 rounded-full bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 text-surface-500 dark:text-surface-400 hover:text-surface-900 dark:hover:text-white hover:border-surface-400 dark:hover:border-surface-500 shadow-sm transition-all`}
+          aria-label="Next page"
         >
           <FaChevronRight className="text-sm" />
         </button>
 
-        {/* Card */}
-        <div className="overflow-hidden rounded-xl min-h-[420px]">
+        {/* Cards Grid */}
+        <div className={`overflow-hidden rounded-xl ${columns === 1 ? 'min-h-[420px]' : 'min-h-[480px]'}`}>
           <AnimatePresence mode="wait" custom={direction}>
-            <motion.article
-              key={project.id}
+            <motion.div
+              key={pageIndex}
               custom={direction}
               variants={variants}
               initial="enter"
               animate="center"
               exit="exit"
               transition={{ duration: 0.3, ease: 'easeInOut' }}
-              onClick={() => onSelect(project)}
-              className="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl overflow-hidden hover:shadow-lg dark:hover:border-surface-600 transition-shadow cursor-pointer"
+              className={`grid ${gridClass} gap-6`}
             >
-              <ProjectThumbnail project={project} className="h-56" />
-              <div className="p-6 sm:p-8">
-                <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-surface-400 mb-2">
-                  {project.category}
-                </span>
-                <h3 className="text-xl font-bold text-surface-900 dark:text-white mb-3">
-                  {project.title}
-                </h3>
-                <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-4">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {project.technologies.map((tech) => (
-                    <span
-                      key={tech}
-                      className="px-2 py-0.5 bg-surface-50 dark:bg-surface-700 text-surface-600 dark:text-surface-300 rounded text-[11px] font-medium border border-surface-100 dark:border-surface-600"
-                    >
-                      {tech}
+              {pageProjects.map((project) => (
+                <article
+                  key={project.id}
+                  onClick={() => onSelect(project)}
+                  className="bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-xl overflow-hidden hover:shadow-lg dark:hover:border-surface-600 transition-shadow cursor-pointer"
+                >
+                  <ProjectThumbnail project={project} className="h-44" />
+                  <div className="p-5">
+                    <span className="inline-block text-[10px] font-semibold uppercase tracking-wider text-surface-400 mb-2">
+                      {project.category}
                     </span>
-                  ))}
-                </div>
-                <div className="flex items-center gap-3 pt-4 border-t border-surface-100 dark:border-surface-700">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 dark:hover:text-white transition-colors"
-                  >
-                    <FaGithub className="text-sm" />
-                    Code
-                  </a>
-                  {project.liveUrl && (
-                    <a
-                      href={project.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-primary-600 transition-colors"
-                    >
-                      <FaExternalLinkAlt className="text-[10px]" />
-                      Live Demo
-                    </a>
-                  )}
-                </div>
-              </div>
-            </motion.article>
+                    <h3 className="text-base font-bold text-surface-900 dark:text-white mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed mb-3 line-clamp-3">
+                      {project.description}
+                    </p>
+                    <div className="flex flex-wrap gap-1.5 mb-3">
+                      {project.technologies.slice(0, 4).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2 py-0.5 bg-surface-50 dark:bg-surface-700 text-surface-600 dark:text-surface-300 rounded text-[11px] font-medium border border-surface-100 dark:border-surface-600"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 4 && (
+                        <span className="px-2 py-0.5 text-surface-400 text-[11px]">
+                          +{project.technologies.length - 4}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3 pt-3 border-t border-surface-100 dark:border-surface-700">
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 dark:hover:text-white transition-colors"
+                      >
+                        <FaGithub className="text-sm" />
+                        Code
+                      </a>
+                      {project.liveUrl && (
+                        <a
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          onClick={(e) => e.stopPropagation()}
+                          className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-primary-600 transition-colors"
+                        >
+                          <FaExternalLinkAlt className="text-[10px]" />
+                          Live Demo
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                </article>
+              ))}
+            </motion.div>
           </AnimatePresence>
         </div>
       </div>
 
       {/* Dot indicators */}
       <div className="flex items-center gap-1.5 mt-6">
-        {projects.map((p, i) => (
+        {Array.from({ length: maxStart + 1 }).map((_, i) => (
           <button
-            key={p.id}
+            key={i}
             type="button"
             onClick={() => {
-              setDirection(i > index ? 1 : -1);
-              setIndex(i);
+              setDirection(i > pageIndex ? 1 : -1);
+              setPageIndex(i);
             }}
             className={`rounded-full transition-all duration-200 ${
-              i === index
+              i === pageIndex
                 ? 'w-6 h-2 bg-surface-900 dark:bg-white'
                 : 'w-2 h-2 bg-surface-300 dark:bg-surface-600 hover:bg-surface-400 dark:hover:bg-surface-500'
             }`}
-            aria-label={`Go to project ${i + 1}`}
+            aria-label={`Go to position ${i + 1}`}
           />
         ))}
       </div>
       <p className="text-xs text-surface-400 mt-3">
-        {index + 1} of {projects.length}
+        {pageIndex + 1}&ndash;{Math.min(pageIndex + columns, projects.length)} of {projects.length}
       </p>
     </div>
   );
@@ -245,19 +314,22 @@ const TableView: React.FC<{
       <table className="w-full text-left">
         <thead>
           <tr className="bg-surface-50 dark:bg-surface-800 border-b border-surface-200 dark:border-surface-700">
-            <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-surface-400">
-              Title
+            <th className="px-5 py-4 text-[11px] font-semibold uppercase tracking-wider text-surface-400">
+              Preview
             </th>
-            <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-surface-400 hidden sm:table-cell">
-              Category
+            <th className="px-5 py-4 text-[11px] font-semibold uppercase tracking-wider text-surface-400">
+              Project
             </th>
-            <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-surface-400 hidden md:table-cell">
+            <th className="px-5 py-4 text-[11px] font-semibold uppercase tracking-wider text-surface-400 hidden md:table-cell">
               Description
             </th>
-            <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-surface-400 hidden lg:table-cell">
+            <th className="px-5 py-4 text-[11px] font-semibold uppercase tracking-wider text-surface-400 hidden lg:table-cell">
+              Features
+            </th>
+            <th className="px-5 py-4 text-[11px] font-semibold uppercase tracking-wider text-surface-400 hidden xl:table-cell">
               Technologies
             </th>
-            <th className="px-4 py-3 text-[11px] font-semibold uppercase tracking-wider text-surface-400 text-right">
+            <th className="px-5 py-4 text-[11px] font-semibold uppercase tracking-wider text-surface-400 text-right">
               Links
             </th>
           </tr>
@@ -269,49 +341,63 @@ const TableView: React.FC<{
               onClick={() => onSelect(project)}
               className="border-b border-surface-100 dark:border-surface-800 last:border-b-0 hover:bg-surface-50 dark:hover:bg-surface-800/50 cursor-pointer transition-colors"
             >
-              <td className="px-4 py-3">
-                <span className="text-sm font-semibold text-surface-900 dark:text-white">
-                  {project.title}
-                </span>
+              <td className="px-5 py-6">
+                <ProjectThumbnail
+                  project={project}
+                  className="w-48 h-32 rounded-lg flex-shrink-0"
+                />
               </td>
-              <td className="px-4 py-3 hidden sm:table-cell">
-                <span className="text-xs text-surface-500">
-                  {project.category}
-                </span>
+              <td className="px-5 py-6">
+                <div>
+                  <span className="text-sm font-semibold text-surface-900 dark:text-white block">
+                    {project.title}
+                  </span>
+                  <span className="text-xs text-surface-400 dark:text-surface-500 mt-0.5 block">
+                    {project.category}
+                  </span>
+                </div>
               </td>
-              <td className="px-4 py-3 hidden md:table-cell max-w-xs">
-                <p className="text-xs text-surface-500 leading-relaxed line-clamp-2">
+              <td className="px-5 py-6 hidden md:table-cell max-w-md">
+                <p className="text-sm text-surface-500 dark:text-surface-400 leading-relaxed">
                   {project.description}
                 </p>
               </td>
-              <td className="px-4 py-3 hidden lg:table-cell">
-                <div className="flex flex-wrap gap-1">
-                  {project.technologies.slice(0, 3).map((tech) => (
+              <td className="px-5 py-6 hidden lg:table-cell">
+                <ul className="space-y-1">
+                  {project.features.map((feature) => (
+                    <li
+                      key={feature}
+                      className="text-xs text-surface-500 dark:text-surface-400 flex items-start gap-1.5"
+                    >
+                      <span className="w-1 h-1 rounded-full bg-surface-400 flex-shrink-0 mt-1.5" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </td>
+              <td className="px-5 py-6 hidden xl:table-cell">
+                <div className="flex flex-wrap gap-1.5 max-w-xs">
+                  {project.technologies.map((tech) => (
                     <span
                       key={tech}
-                      className="px-1.5 py-0.5 bg-surface-100 dark:bg-surface-700 text-surface-600 dark:text-surface-300 rounded text-[10px] font-medium"
+                      className="px-2 py-0.5 bg-surface-100 dark:bg-surface-700 text-surface-600 dark:text-surface-300 rounded text-[11px] font-medium"
                     >
                       {tech}
                     </span>
                   ))}
-                  {project.technologies.length > 3 && (
-                    <span className="px-1.5 py-0.5 text-surface-400 text-[10px]">
-                      +{project.technologies.length - 3}
-                    </span>
-                  )}
                 </div>
               </td>
-              <td className="px-4 py-3 text-right">
-                <div className="flex items-center justify-end gap-2">
+              <td className="px-5 py-6 text-right">
+                <div className="flex items-center justify-end gap-3">
                   <a
                     href={project.githubUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={(e) => e.stopPropagation()}
-                    className="p-1.5 rounded text-surface-400 hover:text-surface-900 dark:hover:text-white transition-colors"
+                    className="p-2 rounded-lg text-surface-400 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-700 transition-colors"
                     aria-label={`${project.title} source code`}
                   >
-                    <FaGithub className="text-sm" />
+                    <FaGithub className="text-base" />
                   </a>
                   {project.liveUrl && (
                     <a
@@ -319,10 +405,10 @@ const TableView: React.FC<{
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={(e) => e.stopPropagation()}
-                      className="p-1.5 rounded text-surface-400 hover:text-primary-600 transition-colors"
+                      className="p-2 rounded-lg text-surface-400 hover:text-primary-600 hover:bg-primary-50 dark:hover:bg-primary-900/20 transition-colors"
                       aria-label={`${project.title} live demo`}
                     >
-                      <FaExternalLinkAlt className="text-[11px]" />
+                      <FaExternalLinkAlt className="text-xs" />
                     </a>
                   )}
                 </div>
@@ -441,6 +527,7 @@ const Projects: React.FC = () => {
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [viewMode, setViewMode] = useState<ViewMode>('grid');
   const [columnsPerRow, setColumnsPerRow] = useState<ColumnsPerRow>(3);
+  const [carouselColumns, setCarouselColumns] = useState<1 | 2 | 3>(3);
 
   useEffect(() => {
     if (selectedProject) {
@@ -537,7 +624,7 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
 
-                {/* Columns picker (grid only) */}
+                {/* Columns picker (grid) */}
                 {viewMode === 'grid' && (
                   <div className="inline-flex items-center bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-lg p-0.5 ml-1">
                     {([2, 3, 4] as ColumnsPerRow[]).map((n) => (
@@ -547,6 +634,27 @@ const Projects: React.FC = () => {
                         onClick={() => setColumnsPerRow(n)}
                         className={`px-2.5 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ${
                           columnsPerRow === n
+                            ? 'bg-surface-900 dark:bg-white text-white dark:text-surface-900 shadow-sm'
+                            : 'text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200'
+                        }`}
+                        aria-label={`${n} columns`}
+                      >
+                        {n}
+                      </button>
+                    ))}
+                  </div>
+                )}
+
+                {/* Columns picker (carousel) */}
+                {viewMode === 'carousel' && (
+                  <div className="inline-flex items-center bg-white dark:bg-surface-800 border border-surface-200 dark:border-surface-700 rounded-lg p-0.5 ml-1">
+                    {([1, 2, 3] as const).map((n) => (
+                      <button
+                        key={n}
+                        type="button"
+                        onClick={() => setCarouselColumns(n)}
+                        className={`px-2.5 py-1.5 rounded-md text-xs font-medium transition-all duration-200 ${
+                          carouselColumns === n
                             ? 'bg-surface-900 dark:bg-white text-white dark:text-surface-900 shadow-sm'
                             : 'text-surface-500 dark:text-surface-400 hover:text-surface-700 dark:hover:text-surface-200'
                         }`}
@@ -596,6 +704,7 @@ const Projects: React.FC = () => {
               {viewMode === 'carousel' && (
                 <CarouselView
                   projects={filteredProjects}
+                  columns={carouselColumns}
                   onSelect={setSelectedProject}
                 />
               )}
@@ -659,13 +768,37 @@ const Projects: React.FC = () => {
                 </div>
 
                 <p className="text-sm text-surface-600 dark:text-surface-400 leading-relaxed mb-6">
-                  {selectedProject.description}
+                  {selectedProject.readmeHighlights?.overview || selectedProject.description}
                 </p>
+
+                {selectedProject.readmeHighlights?.highlights && selectedProject.readmeHighlights.highlights.length > 0 && (
+                  <div className="mb-6">
+                    <h4 className="text-xs font-semibold uppercase tracking-wider text-surface-400 mb-3">
+                      Highlights
+                    </h4>
+                    <ul className="space-y-2">
+                      {selectedProject.readmeHighlights.highlights.map((highlight) => (
+                        <li
+                          key={highlight}
+                          className="text-sm text-surface-600 dark:text-surface-400 flex items-start gap-2 leading-relaxed"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary-500 flex-shrink-0 mt-1.5" />
+                          {highlight}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
 
                 <div className="mb-6">
                   <h4 className="text-xs font-semibold uppercase tracking-wider text-surface-400 mb-3">
                     Technologies
                   </h4>
+                  {selectedProject.readmeHighlights?.techDetails && (
+                    <p className="text-xs text-surface-500 dark:text-surface-400 leading-relaxed mb-3">
+                      {selectedProject.readmeHighlights.techDetails}
+                    </p>
+                  )}
                   <div className="flex flex-wrap gap-2">
                     {selectedProject.technologies.map((tech) => (
                       <span

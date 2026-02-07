@@ -12,7 +12,7 @@ Personal portfolio showcasing 25 full-stack projects built with React, Next.js, 
 |-------|-------------|
 | Framework | React 18, TypeScript |
 | Styling | Tailwind CSS 3, Inter font, Dark Mode |
-| Animation | Framer Motion, Parallax Scroll Effects |
+| Animation | Framer Motion, Parallax Scroll Effects, Auto-scroll Featured Strip |
 | Email | EmailJS |
 | Build | Create React App |
 | Deploy | GitHub Pages |
@@ -114,7 +114,7 @@ src/
 │   ├── Navbar.tsx        # Fixed navigation with scroll detection
 │   ├── Hero.tsx          # Dark-themed landing section with parallax
 │   ├── About.tsx         # Skills organized by domain
-│   ├── Projects.tsx      # Multi-view projects (Grid, Carousel, Table)
+│   ├── Projects.tsx      # Multi-view projects (Grid, Carousel, Table) with README highlights
 │   ├── Donation.tsx      # Support section (Stripe, BTC, ETH)
 │   ├── Contact.tsx       # EmailJS contact form
 │   ├── Footer.tsx        # Site footer
@@ -124,7 +124,7 @@ src/
 ├── types/
 │   └── index.ts          # TypeScript interfaces
 ├── utils/
-│   ├── constants.ts      # Project data (25 projects), social links
+│   ├── constants.ts      # Project data (25 projects), social links, README highlights
 │   └── scroll.ts         # Smooth scroll utility
 ├── App.tsx               # Root component with theme toggle
 ├── index.tsx             # Entry point
@@ -140,6 +140,10 @@ src/
 - **Responsive** — Mobile-first with sm/md/lg breakpoints
 - **Apple-style parallax** — Smooth scroll effects using Framer Motion useScroll/useTransform
 - **Dark/Light mode** — Theme toggle with localStorage persistence
+- **Enriched project modals** — README highlights, tech details, and key features from each repo
+- **Multi-view projects** — Grid (2/3/4 columns), Carousel (1/2/3 columns, single-card navigation), and expanded Table view with large thumbnails
+- **Auto-scrolling featured strip** — Featured projects auto-advance with pause-on-hover and play/stop toggle
+- **Centered responsive navbar** — Three-column layout: brand left, nav centered, theme toggle right
 
 ## Support
 

@@ -67,6 +67,20 @@ export const PROJECTS: Project[] = [
       'Algorithm Visualizations',
       'Real-time Code Execution',
     ],
+    readmeHighlights: {
+      overview: 'An interactive learning platform for mastering 25 programming languages through hands-on practice, featuring thousands of problems across language methods, algorithm patterns, frontend frameworks, and Building Blocks exercises with interactive visualizations.',
+      highlights: [
+        'Thousands of problems across 25 languages including JavaScript, Python, Java, C++, Go, Ruby, Rust, Swift, Kotlin, and more',
+        '460 frontend training problems across React, Angular, Vue, and Native JavaScript with 616+ UI patterns',
+        '170-problem algorithm pattern quiz for LeetCode-style pattern recognition',
+        'Building Blocks: 35 structured algorithm exercises per language with Learn/Practice modes and interactive visualizations',
+        'AI Exercise Tutor powered by WebLLM (Llama-3.1-8B) running fully in-browser with no API keys',
+        'AI Mock Interview with 72 algorithm problems and 28 system design questions',
+        '13,995 unit tests (Vitest) validating all 460 frontend drill samples',
+        'Beginner Mode filter with ~270 curated fundamental problems across all languages',
+      ],
+      techDetails: 'Next.js 16 (App Router) with React 19, TypeScript 5, Tailwind CSS 4, Monaco Editor, Playwright E2E, Vitest, Zustand/localStorage for state, and WebLLM for offline AI.',
+    },
   },
   {
     id: 2,
@@ -83,6 +97,18 @@ export const PROJECTS: Project[] = [
       'Real Movie Posters',
       'Responsive Dark Theme',
     ],
+    readmeHighlights: {
+      overview: 'A modern streaming platform with a Netflix/Disney+ inspired interface featuring movie browsing, horizontal scrolling carousels, and a hero section with backdrop images. Deployed on AWS Amplify with global CDN.',
+      highlights: [
+        'Deployed on AWS Amplify with global CDN and worldwide distribution',
+        'Diverse movie collection spanning Action/Adventure, Comedy, Drama, Sci-Fi/Fantasy with 20+ curated films',
+        'Real movie posters from OMDb, TMDB, and Wikimedia with automatic fallback to styled placeholders',
+        'Fixed navbar with scroll-triggered background and smooth transitions',
+        'Full-screen hero section with gradient overlay for text readability',
+        'Horizontal scrolling carousels with arrow navigation and Netflix-style hover animations',
+      ],
+      techDetails: 'Next.js 15 with React 19, TypeScript, Tailwind CSS, and Lucide React icons. Component-based architecture with modular Hero, Navbar, and MovieCarousel components.',
+    },
   },
   {
     id: 3,
@@ -99,6 +125,17 @@ export const PROJECTS: Project[] = [
       'Contact Forms',
       'SEO Optimized',
     ],
+    readmeHighlights: {
+      overview: 'Professional car sales website built with Hugo static site generator for GitLab Pages. Features vehicle inventory with detailed listings and multi-language support including English, French, and Persian with RTL layout.',
+      highlights: [
+        'Hugo static site generator for fast page loads and SEO optimization',
+        'Multi-language support: English, French, and Persian (RTL)',
+        'Vehicle inventory with detailed specifications and pricing',
+        'Contact forms for dealer inquiries',
+        'Deployed on GitLab Pages with CI/CD pipeline',
+      ],
+      techDetails: 'Hugo static site generator with Go templating, CSS3 for styling, and GitLab Pages for deployment with multi-language i18n configuration.',
+    },
   },
   {
     id: 4,
@@ -115,6 +152,19 @@ export const PROJECTS: Project[] = [
       'Search & Filter',
       'Mobile-First Design',
     ],
+    readmeHighlights: {
+      overview: 'A comprehensive e-commerce platform for computer hardware offering a premium shopping experience with 8+ product categories, advanced search, and cart management. Deployed on Azure Static Web Apps with global CDN.',
+      highlights: [
+        '8+ categories: Processors, Graphics Cards, Storage, Memory, Motherboards, Cooling, Power Supplies, and Cases',
+        'Advanced search with real-time filtering by name, category, and description',
+        'Shopping cart with quantity management and real-time price calculation',
+        'Star rating system for customer reviews',
+        'Azure Static Web Apps deployment with HTTPS and CI/CD on git push',
+        'SEO optimized with meta tags and structured data',
+        'PWA-ready with Progressive Web App capabilities',
+      ],
+      techDetails: 'SvelteKit 2.0 with TypeScript 5.0, Tailwind CSS 3.3.5, and Lucide Svelte icons. Static site generation with full TypeScript implementation.',
+    },
   },
   {
     id: 5,
@@ -131,6 +181,18 @@ export const PROJECTS: Project[] = [
       'Interactive Visualizations',
       'Static Data Architecture',
     ],
+    readmeHighlights: {
+      overview: 'A comprehensive ML analysis dashboard for the 20 Newsgroups dataset (18,846 documents across 20 categories), featuring advanced hyperparameter tuning with Grid Search CV and multi-algorithm comparison with interactive visualizations.',
+      highlights: [
+        'Top performer: LightGBM at 92.1% accuracy with 2.3s training time',
+        'Dataset: 18,846 documents, 4,876 unique words, TF-IDF with unigrams/bigrams',
+        'Pre-computed results for instant loading with no computational delays',
+        'Interactive confusion matrices and multi-class ROC curves with AUC scores',
+        'Performance: First Contentful Paint <1.5s, bundle size <500KB gzipped',
+        'Hyperparameter optimization with cross-validation results visualization',
+      ],
+      techDetails: 'Next.js 14 (App Router) with React 18, TypeScript, Material-UI 5, and Chart.js. Python 3.8+ backend with Scikit-learn, XGBoost/LightGBM. Static data served via API routes for optimal performance.',
+    },
   },
   {
     id: 6,
@@ -147,6 +209,18 @@ export const PROJECTS: Project[] = [
       'Performance Badges',
       'Study Recommendations',
     ],
+    readmeHighlights: {
+      overview: 'Interactive learning and mnemonic quiz application for MLI precourse material, helping users master complex concepts through quizzes and powerful memory aids with 5 categories and comprehensive progress tracking.',
+      highlights: [
+        'Smart mnemonics: SHAPE, DOT, MEAN for NumPy; CRUD, GROUP for Pandas; CLEAR, SMART for Prompt Engineering',
+        'Study Mode with confidence-based ratings and localStorage persistence',
+        'Progress tracking with quiz history, performance analytics, visual charts, and achievements',
+        'Dedicated mnemonics reference page with explanations and study tips',
+        'Real-time progress bars, question navigation, and animated results',
+        'No environment variables required - progress stored in browser localStorage',
+      ],
+      techDetails: 'Next.js 15 with React 19, TypeScript, and Tailwind CSS 4 with custom gradients/animations. React hooks with localStorage for state persistence.',
+    },
   },
   {
     id: 7,
@@ -163,6 +237,18 @@ export const PROJECTS: Project[] = [
       'Event Management',
       'Program Showcase',
     ],
+    readmeHighlights: {
+      overview: 'Responsive charity website built with Gatsby featuring donation systems, volunteer portals, event management, and program showcases with excellent Lighthouse performance scores.',
+      highlights: [
+        'Gatsby static site generator for blazing-fast performance',
+        'Donation system with multiple payment options',
+        'Volunteer portal for sign-ups and management',
+        'Event management with calendar and registration',
+        'Program showcase pages with detailed descriptions',
+        'Deployed on Digital Ocean App Platform',
+      ],
+      techDetails: 'Gatsby with React, GraphQL data layer, and Digital Ocean App Platform deployment. SEO-optimized with structured data and social meta tags.',
+    },
   },
   {
     id: 8,
@@ -179,6 +265,18 @@ export const PROJECTS: Project[] = [
       'URL-Based Search Routing',
       'Debounced Filtering',
     ],
+    readmeHighlights: {
+      overview: 'A modern historical events search application with a Google-like interface, featuring 37,860+ events from 300 B.C. to 2012 with advanced autocomplete, intelligent citation parsing, and URL-based routing.',
+      highlights: [
+        '37,860+ historical events spanning from 300 B.C. to 2012',
+        'Google-like autocomplete with debounced search (300ms) and instant results',
+        'URL routing for search queries with browser back/forward navigation support',
+        'Intelligent citation parsing: supports cite web/news/book/journal/magazine formats',
+        'HTML entity decoding for special characters',
+        'Smart pagination: client-side with 20 items per page and responsive controls',
+      ],
+      techDetails: 'Next.js 15 with TypeScript 5.0, Tailwind CSS 3.3, and React Hooks. Next.js API Routes for serverless endpoints with local db.json for data storage.',
+    },
   },
   {
     id: 9,
@@ -195,6 +293,18 @@ export const PROJECTS: Project[] = [
       'Character-based Learning',
       '30+ AI/ML Topics',
     ],
+    readmeHighlights: {
+      overview: 'A comprehensive Next.js application for learning AI and machine learning through interactive character-based mnemonics, memory frameworks, and quizzes covering 30+ sections across all major AI/ML topics.',
+      highlights: [
+        'Character-based learning with 8 personified ML algorithms (Simple Sam, Robust Robert, eXtreme Xavier, etc.)',
+        'Memory frameworks: RCCA, LRXS, LRSN for categorizing and remembering algorithms',
+        '1000+ quiz questions across 10+ categories with customizable question count',
+        'Complete coverage: Data Splitting, Epochs, Feature Selection, NLP, Deep Learning, and more',
+        'Glass morphism design with dark mode support and smooth animations',
+        '199 kB First Load JS bundle with 5 static pages on Vercel',
+      ],
+      techDetails: 'Next.js 15.4.4 with App Router, TypeScript 5, and Tailwind CSS 3.4.0. React Hooks for state management with full accessibility and keyboard navigation.',
+    },
   },
   {
     id: 10,
@@ -211,6 +321,18 @@ export const PROJECTS: Project[] = [
       'Auto-scroll',
       'Dark Theme',
     ],
+    readmeHighlights: {
+      overview: 'A modern, responsive grocery list application with a clean, intuitive dark-themed interface featuring smart validation to prevent duplicates, one-click item removal, and auto-scroll.',
+      highlights: [
+        'Smart validation prevents adding duplicate items',
+        'One-click item deletion with no confirmation needed',
+        'Auto-scroll automatically scrolls to show newly added items',
+        'Dark color scheme: teal green background, maroon accents, white text',
+        'Responsive: desktop side-by-side, tablet stacked, mobile compact layouts',
+        'Adapted from original A-Very-Nice-Grocery-List repository',
+      ],
+      techDetails: 'Next.js 15 (App Router) with React 19 and TypeScript 5. Component structure: App, Input, List, ListItems, ClientOnly wrapper. Custom CSS3 styling.',
+    },
   },
   {
     id: 11,
@@ -227,6 +349,17 @@ export const PROJECTS: Project[] = [
       'Image Galleries',
       'Status Filtering',
     ],
+    readmeHighlights: {
+      overview: 'Comprehensive real estate website built with Angular 17 standalone components, showcasing luxury properties with advanced multi-criteria search and responsive design optimized for all devices.',
+      highlights: [
+        'Angular 17 standalone components with TypeScript for type-safe development',
+        'Advanced filtering by location, price range, property type, bedrooms/bathrooms, and status',
+        'Bundle size ~69KB gzipped with Lighthouse score 95+ across all metrics',
+        'Comprehensive property data model with coordinates, agent info, and 6 images per listing',
+        'Deployed on Surge.sh with CDN distribution for fast global loading (< 2 seconds)',
+      ],
+      techDetails: 'Angular 17 standalone components, TypeScript, production deployment on Surge.sh with optimized bundles, minified code, and CDN distribution.',
+    },
   },
   {
     id: 12,
@@ -243,6 +376,17 @@ export const PROJECTS: Project[] = [
       'Responsive Design',
       'State Management',
     ],
+    readmeHighlights: {
+      overview: 'Modern furniture e-commerce store built with Vue.js 3 Composition API and deployed on Render. Features shopping cart with real-time updates, product filtering, and Pinia state management.',
+      highlights: [
+        'Vue.js 3 Composition API with Vite 4 for lightning-fast builds',
+        'Pinia 2 store managing cart state and product catalog with real-time updates',
+        'Search, category filtering, price range filtering, and sorting by name/price',
+        'Responsive product grid with sidebar cart and real-time total calculation',
+        'Complete product data model with dimensions, colors, stock status, and features',
+      ],
+      techDetails: 'Vue.js 3 Composition API, Vite 4, Tailwind CSS 3, Vue Router 4 for routing, and Pinia 2 for centralized state management. Deployed on Render.',
+    },
   },
   {
     id: 13,
@@ -259,6 +403,17 @@ export const PROJECTS: Project[] = [
       'Legal Resources',
       'Consultation Booking',
     ],
+    readmeHighlights: {
+      overview: 'Professional law firm website built with Astro.js and Tailwind CSS, deployed on Netlify with comprehensive practice area coverage, attorney profiles, and legal resources.',
+      highlights: [
+        'Astro.js static site generator for fast, SEO-friendly pages with server-side rendering',
+        '6 practice areas: Business, Real Estate, Family, Civil Litigation, Estate Planning, Criminal Defense',
+        'Professional dark theme with responsive mobile-first design',
+        'Automatic deployments from Git repository on Netlify',
+        'Legal resources section with forms, articles, and educational content',
+      ],
+      techDetails: 'Astro static site generator, Tailwind CSS utility-first framework, deployed on Netlify with automatic Git-based deployments and SSR for SEO.',
+    },
   },
   {
     id: 14,
@@ -275,6 +430,18 @@ export const PROJECTS: Project[] = [
       'Firebase Authentication',
       'Real-time Reviews',
     ],
+    readmeHighlights: {
+      overview: 'Restaurant rating application built with Angular 17 and Firebase, featuring secure authentication, real-time Firestore synchronization, and a 5-star rating system with comprehensive reviews.',
+      highlights: [
+        'Firebase: Firestore for real-time data, Authentication for secure login, Hosting for deployment',
+        '10 sample restaurants with realistic data across multiple cuisines and price ranges',
+        'Comprehensive security with Firestore rules, XSS protection, and role-based permissions',
+        'Advanced filtering by cuisine, location, price range with real-time debounced search',
+        'Automated scripts for Firebase configuration, database seeding, and security deployment',
+        'Material Design components with loading states and error handling',
+      ],
+      techDetails: 'Angular 17 standalone components, Firebase (Firestore, Auth, Hosting), RxJS Observables for state, Tailwind CSS with Angular Material.',
+    },
   },
   {
     id: 15,
@@ -291,6 +458,18 @@ export const PROJECTS: Project[] = [
       'Interactive Gameplay',
       'Modern UI',
     ],
+    readmeHighlights: {
+      overview: 'Interactive Sudoku game with three difficulty levels featuring real-time validation against solutions, visual feedback, and auto-solve functionality with keyboard controls.',
+      highlights: [
+        'Pre-defined puzzles with correct solutions for validation',
+        'Real-time validation with immediate feedback on correct/incorrect moves',
+        'Visual feedback: highlighted cells, error indicators, completion celebration',
+        'Full keyboard: type 1-9 to fill, Backspace/Delete/0 to clear',
+        'Modern gradient UI with smooth animations',
+        'Express server serving React static build on Heroku',
+      ],
+      techDetails: 'React 18 frontend, Express.js backend server, Webpack 5 bundling, deployed on Heroku with production build at port 5006.',
+    },
   },
   {
     id: 16,
@@ -307,6 +486,18 @@ export const PROJECTS: Project[] = [
       '12 Rule Categories',
       'Progress Tracking',
     ],
+    readmeHighlights: {
+      overview: 'Interactive memorization app for Google\'s 43 Rules of Machine Learning Engineering with three learning modes, progress tracking, dark mode, and category-based filtering across 4 ML phases.',
+      highlights: [
+        'Complete database of all 43 rules organized into 4 phases (Pre-ML, Phase I, II, III)',
+        '12 category filters including Feature Engineering, Monitoring/Debugging, Model Evaluation',
+        'Three modes: Browse (expandable cards), Study (sequential), Flashcard (randomized shuffle)',
+        'Progress tracking with visual progress bars and card navigation',
+        'Search across rule titles and descriptions with phase indicator badges',
+        'Dark mode with automatic theme switching',
+      ],
+      techDetails: 'Next.js 15 App Router for SSR, TypeScript, Tailwind CSS with dark mode, deployed on Vercel with static site generation.',
+    },
   },
   {
     id: 17,
@@ -323,6 +514,18 @@ export const PROJECTS: Project[] = [
       'Personalized Learning',
       'ASL Alphabet Guide',
     ],
+    readmeHighlights: {
+      overview: 'Real-time AI-powered sign language learning app using MediaPipe Hands for computer vision. Teaches users to spell their name in ASL with personalized, letter-by-letter instruction and instant AI feedback.',
+      highlights: [
+        'MediaPipe Hands API with 21-point hand tracking and 3D coordinate analysis',
+        'Advanced finger state detection with circle-based recognition and stability validation',
+        'Complete ASL alphabet reference guide with visual hand sign images for all 26 letters',
+        'Real-time visual feedback with hand positioning guides, progress bars, and achievements',
+        'Full-screen mode with YouTube-style button for immersive learning',
+        'No external environment variables required - works out of the box',
+      ],
+      techDetails: 'Next.js 15.4.5 (App Router) with React 19, TypeScript 5, Tailwind CSS, MediaPipe Hands for computer vision, and custom ASL pattern matching algorithms.',
+    },
   },
   {
     id: 18,
@@ -339,6 +542,18 @@ export const PROJECTS: Project[] = [
       '60 Quiz Questions',
       'Dark Mode',
     ],
+    readmeHighlights: {
+      overview: 'Comprehensive system design learning platform with 50 study materials, 40 core concepts, and 60 interactive quiz questions. Includes advanced progress tracking, dark mode, and multi-level filtering for interview preparation.',
+      highlights: [
+        '50 study materials covering load balancing, microservices, blockchain, ML infrastructure, chaos engineering',
+        '40 core concepts: CAP theorem, consistent hashing, Raft consensus, CQRS, saga pattern, zero trust',
+        '60 quiz questions across 3 difficulty levels with 11 category filters',
+        'Advanced progress tracking with study time tracking, streak monitoring, and localStorage persistence',
+        'Lighthouse score 95+ with FCP < 1.5s and LCP < 2.5s',
+        'Privacy-focused: no external analytics, local storage only, offline capability',
+      ],
+      techDetails: 'Next.js 15 App Router for SSR, React 19, TypeScript, Tailwind CSS with custom CSS variables for dark mode, Context API for theme management.',
+    },
   },
   {
     id: 19,
@@ -355,6 +570,18 @@ export const PROJECTS: Project[] = [
       'WCAG 2.1 AA',
       'Dark Mode',
     ],
+    readmeHighlights: {
+      overview: 'Production-ready collection of 90+ modern React UI patterns and components with enterprise-grade architecture, 100% TypeScript coverage, and WCAG 2.1 AA accessibility compliance.',
+      highlights: [
+        '90 production-ready components with professional code quality',
+        '50,000+ lines of clean code with zero TypeScript errors',
+        '100% responsive design with mobile-first approach',
+        'Interactive event calendar with drag-and-drop, advanced data tables with sorting/filtering',
+        '9/10 production readiness score with full accessibility compliance',
+        'Lighthouse: Performance 95+, Accessibility 100, Best Practices 100, SEO 100',
+      ],
+      techDetails: 'Next.js 15 App Router with Server Components, React 19, TypeScript 5.6 strict, Tailwind CSS 3.4. Optimized for Core Web Vitals (LCP < 2.5s, FID < 100ms, CLS < 0.1).',
+    },
   },
   {
     id: 20,
@@ -370,6 +597,19 @@ export const PROJECTS: Project[] = [
       '56+ Test Suite',
       'Syntax Highlighting',
     ],
+    readmeHighlights: {
+      overview: 'Professional React TypeScript code sandbox designed for coding interviews with built-in timer, live preview, and comprehensive testing suite featuring glassmorphism UI and BEM methodology.',
+      highlights: [
+        'Interview timer with localStorage persistence through page refreshes',
+        'Live code preview with hot reload and resizable panels',
+        '56+ comprehensive tests: unit, integration, accessibility, and performance',
+        'Dual styling: BEM CSS methodology and Tailwind CSS utility classes',
+        'Professional syntax highlighting with Prism.js TypeScript/JSX support',
+        'Diverse querying strategies demonstrating multiple testing approaches',
+        'Clean slate browser preview with no external CSS for interviews',
+      ],
+      techDetails: 'React 18 with TypeScript and Create React App. Jest and React Testing Library with multiple querying strategies. BEM CSS architecture with optional Tailwind integration.',
+    },
   },
   {
     id: 21,
@@ -386,6 +626,18 @@ export const PROJECTS: Project[] = [
       'Privacy-First Design',
       'Multi-API Support',
     ],
+    readmeHighlights: {
+      overview: 'AI-powered privacy protection tool using multi-layer PII detection and pixelation. 7-layer architecture combining computer vision, OCR, pattern matching, specialized detection, LLM verification, and ensemble analysis for 95-99% accuracy.',
+      highlights: [
+        '7-layer detection: computer vision, OCR, pattern matching, specialized detection, LLM verification, ensemble analysis, obscuring',
+        'Detects 30+ PII types: credit cards with Luhn validation, government IDs, medical records, IP addresses, crypto wallets',
+        '15+ credit card formats with context-aware validation',
+        'Detection accuracy: 85-95% pattern matching, 90-98% LLM verification, 95-99% combined',
+        'Performance: small images (<1MB) in 1-3s, large images (5-10MB) in 8-15s',
+        'Real-time statistics dashboard with progress tracking and advanced configuration',
+      ],
+      techDetails: 'Next.js 15.4.6 with React 19 and TypeScript 5. Tesseract.js for OCR, TensorFlow.js for CV, Workers AI (Llama 3.1 8B) for LLM verification. Enhanced Sobel edge detection with contour analysis.',
+    },
   },
   {
     id: 22,
@@ -402,6 +654,20 @@ export const PROJECTS: Project[] = [
       'High Score Tracking',
       'Mobile-First',
     ],
+    readmeHighlights: {
+      overview: 'Modern responsive implementation of the classic Snake game with 60fps smooth gameplay, zero input lag, and cross-platform compatibility featuring touch-friendly mobile interface.',
+      highlights: [
+        '60fps smooth animation with optimized rendering',
+        'Persistent high scores using localStorage',
+        'Mobile-first design with touch controls and responsive breakpoints',
+        'Custom hooks for reusable game logic, keyboard controls, auto-pause, and mobile detection',
+        'Modular components: GameBoard, GameHeader, GameControls, GameOverlay',
+        'Error boundaries for graceful error handling',
+        'Dual keyboard controls: arrow keys and WASD',
+        'JetBrains Mono font with hardware-accelerated animations',
+      ],
+      techDetails: 'React 19, TypeScript 5.7.2, Tailwind CSS 4.1, Vite 6.3.5. Radix UI primitives for accessibility, Phosphor Icons. Optimized game loop with useCallback and efficient state management.',
+    },
   },
   {
     id: 23,
@@ -418,6 +684,19 @@ export const PROJECTS: Project[] = [
       'AI Mentor Guidance',
       'Automated Scoring',
     ],
+    readmeHighlights: {
+      overview: 'Interactive detective game with 121 production incident scenarios teaching real-world backend debugging. AI-powered mentor using Llama 3.1 8B for Socratic guidance with two-phase LLM-evaluated diagnosis.',
+      highlights: [
+        '121 cases across 11 categories: Core Backend, AWS, Databases, Message Queues, Kubernetes, Auth, Monitoring, Runtimes, Load Balancing, Resilience, DevOps',
+        'Progressive clue reveal: metrics, logs, code snippets, config files, engineer testimonies',
+        'AI Detective Claude mentor provides Socratic questions without revealing answers',
+        'Two-phase diagnosis scored 0-100 by LLM',
+        'Difficulty levels: Junior, Mid, Senior, Principal',
+        'SSE streaming for real-time chat on Cloudflare Workers',
+        'Vanilla HTML/JS/CSS with no framework for zero-config deployment',
+      ],
+      techDetails: 'Cloudflare Workers with TypeScript, Workers AI (Llama 3.1 8B), SSE streaming. Vanilla JavaScript frontend with detective noir theme, Lucide icons, and Prism.js syntax highlighting.',
+    },
   },
   {
     id: 24,
@@ -434,6 +713,19 @@ export const PROJECTS: Project[] = [
       'Monaco Editor',
       'Sandboxed Execution',
     ],
+    readmeHighlights: {
+      overview: 'Production-grade LeetCode-style learning platform with 155+ JavaScript/TypeScript challenges across 19 categories featuring Monaco Editor with sandboxed execution and comprehensive progress tracking.',
+      highlights: [
+        '155+ problems: JS basics, arrays, async/promises, TypeScript, functional programming, design patterns, algorithms',
+        '140K+ lines of code with 40+ test files',
+        'Monaco Editor: syntax highlighting, IntelliSense, auto-completion, multiple themes',
+        'Sandboxed execution with detailed error reporting, stack traces, and performance timing',
+        'Progress: persistent localStorage, streak tracking, real-time dashboard',
+        'Security: sandboxed execution, DOMPurify sanitization, timeout protection, XSS prevention',
+        'WCAG 2.1 AA accessibility compliance',
+      ],
+      techDetails: 'Next.js 16 App Router with React 19, TypeScript 5.9, Tailwind CSS 4.0. Monaco Editor, Jest/React Testing Library, Biome linter. Vercel-optimized deployment.',
+    },
   },
   {
     id: 25,
@@ -450,5 +742,17 @@ export const PROJECTS: Project[] = [
       'Browser API Integration',
       'Canvas & Media',
     ],
+    readmeHighlights: {
+      overview: 'Modern React implementation of Wes Bos\'s JavaScript30 course, transforming 30 vanilla JS projects into type-safe React components with spec-driven development and automated CI/CD.',
+      highlights: [
+        '30 interactive projects: drum kit, analog clock, video player, webcam, speech recognition, geolocation, canvas drawing',
+        'Spec-Driven Development (SDD) with structured specifications',
+        'Full TypeScript strict mode with comprehensive type definitions',
+        'Web APIs: DOM, Canvas, WebRTC, Geolocation, Speech Recognition/Synthesis, LocalStorage, Media APIs',
+        'Automated CI/CD pipeline with linting, type checking, build verification, staged deployments',
+        'Performance: code splitting, lazy loading, Next.js Image optimization, Server Components',
+      ],
+      techDetails: 'Next.js 16 App Router with Server Components, React 19, TypeScript 5, Tailwind CSS 4. Modular component architecture with Biome linter and Vercel deployment.',
+    },
   },
 ];
