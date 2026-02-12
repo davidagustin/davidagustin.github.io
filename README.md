@@ -1,6 +1,6 @@
 # David Agustin — Portfolio
 
-Personal portfolio showcasing 25 full-stack projects built with React, Next.js, Angular, Vue, SvelteKit, Python, and AI/ML technologies. Deployed across 10+ cloud platforms.
+Personal portfolio showcasing 26 full-stack projects built with React, Next.js, Angular, Vue, SvelteKit, Python, and AI/ML technologies. Deployed across 10+ cloud platforms.
 
 **Live:** [davidagustin.github.io](https://davidagustin.github.io)
 
@@ -27,9 +27,10 @@ Personal portfolio showcasing 25 full-stack projects built with React, Next.js, 
 | [Coding Tricks Practice](https://coding-tricks-practice.vercel.app) | Next.js, TypeScript, Monaco Editor | 155+ LeetCode-style challenges across 19 categories |
 | [UI Patterns React](https://ui-patterns-react.vercel.app/) | Next.js 15, React 19, TypeScript 5.6 | 90+ production-ready components, WCAG 2.1 AA |
 | [System Design Practice](https://system-design-practice.vercel.app/) | Next.js 15, React 19, TypeScript | 50 study topics, 40 concepts, 60 quizzes |
+| [TypeCode](https://typing-app.app-production.workers.dev/) | React 19, TypeScript, Cloudflare Workers | Precision typing practice across 12 programming languages |
 | [React 30](https://react-30-nu.vercel.app) | Next.js 16, React 19, TypeScript | 30 vanilla JS projects rebuilt as modern React |
 
-[View all 25 projects on the live site.](https://davidagustin.github.io/#projects)
+[View all 26 projects on the live site.](https://davidagustin.github.io/#projects)
 
 ## All Projects
 
@@ -43,6 +44,7 @@ Personal portfolio showcasing 25 full-stack projects built with React, Next.js, 
 | Rules of ML | Next.js 15, TypeScript | [Live](https://rules-of-machine-learning.vercel.app/) · [GitHub](https://github.com/davidagustin/rules-of-machine-learning) |
 | Sign Language Learning | Next.js 15, MediaPipe, React 19 | [Live](https://spell-your-name.vercel.app/) · [GitHub](https://github.com/davidagustin/spell-your-name) |
 | Coding Tricks Practice | Next.js, TypeScript, Monaco Editor | [Live](https://coding-tricks-practice.vercel.app) · [GitHub](https://github.com/davidagustin/coding-tricks-practice) |
+| TypeCode | React 19, TypeScript 5.9, Cloudflare Workers | [Live](https://typing-app.app-production.workers.dev/) · [GitHub](https://github.com/davidagustin/typing-app) |
 | React 30 | React 19, TypeScript, Framer Motion | [Live](https://react-30-nu.vercel.app) · [GitHub](https://github.com/davidagustin/react-30) |
 
 ### AI/ML
@@ -121,7 +123,7 @@ src/
 ├── types/
 │   └── index.ts          # TypeScript interfaces
 ├── utils/
-│   ├── constants.ts      # Project data (25 projects), social links, README highlights
+│   ├── constants.ts      # Project data (26 projects), social links, README highlights
 │   └── scroll.ts         # Smooth scroll utility
 ├── App.tsx               # Root component with theme toggle
 ├── index.tsx             # Entry point

@@ -755,4 +755,32 @@ export const PROJECTS: Project[] = [
       techDetails: 'Next.js 16 App Router with Server Components, React 19, TypeScript 5, Tailwind CSS 4. Modular component architecture with Biome linter and Vercel deployment.',
     },
   },
+  {
+    id: 26,
+    title: 'TypeCode',
+    description:
+      'Precision typing practice application for programmers. Type syntactically correct code across 12 languages with real-time WPM and accuracy tracking. Features a pure reducer-based typing engine, language-aware comment auto-completion, custom code upload with drag-and-drop, and edge deployment on Cloudflare Workers.',
+    technologies: ['React 19', 'TypeScript 5.9', 'React Router 7', 'Tailwind CSS 4', 'Vite 6', 'Cloudflare Workers'],
+    githubUrl: 'https://github.com/davidagustin/typing-app',
+    liveUrl: 'https://typing-app.app-production.workers.dev/',
+    category: 'Education',
+    features: [
+      '12 Language Lessons',
+      'Real-time WPM Tracking',
+      'Custom Code Upload',
+      'Smart Auto-Completion',
+    ],
+    readmeHighlights: {
+      overview: 'A precision typing practice app for programmers featuring 12 built-in code lessons, real-time keystroke metrics, custom code upload, and language-aware auto-completion. Zero external UI or state libraries with only 3 production dependencies.',
+      highlights: [
+        '12 built-in lessons: JavaScript, TypeScript, Python, Rust, Go, Java, C, C++, Ruby, Swift, CSS, Kotlin',
+        'Pure reducer-based typing engine with deterministic state transitions and character-by-character verification',
+        'Language-aware comment detection auto-skips //, #, --, /* */ lines with smart exclusions for shebangs and preprocessor directives',
+        'Custom code upload with drag-and-drop, auto-detection for 20+ file extensions, and localStorage persistence',
+        'Real-time stats: WPM, accuracy rate, correct/incorrect keystrokes with performance rating system',
+        'Edge deployment on Cloudflare Workers for global low-latency with SSR via React Router 7',
+      ],
+      techDetails: 'React 19 with React Router 7 full-stack framework, TypeScript 5.9, Tailwind CSS 4, Vite 6. Cloudflare Workers edge deployment with SSR. Zero external UI/state libraries — only 3 production dependencies.',
+    },
+  },
 ];
