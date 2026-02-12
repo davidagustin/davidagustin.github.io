@@ -116,7 +116,6 @@ src/
 │   ├── Hero.tsx          # Dark-themed landing section with parallax
 │   ├── About.tsx         # Skills organized by domain
 │   ├── Projects.tsx      # Multi-view projects (Grid, Carousel, Table) with README highlights
-│   ├── Donation.tsx      # Support section (Stripe, BTC, ETH)
 │   ├── Contact.tsx       # EmailJS contact form
 │   ├── Footer.tsx        # Site footer
 │   └── Snackbar.tsx      # Toast notifications

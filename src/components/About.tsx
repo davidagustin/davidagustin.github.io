@@ -1,6 +1,7 @@
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { useEffect, useRef, useState } from 'react';
 import type React from 'react';
+import { PROJECTS } from '../utils/constants';
 
 /* ------------------------------------------------------------------ */
 /*  Animated counter – numbers count up when scrolled into view        */
@@ -71,11 +72,12 @@ const About: React.FC = () => {
       items: [
         'Node.js',
         'Express',
+        'Fastify',
         'Python',
         'Firebase',
         'REST APIs',
-        'MongoDB',
         'PostgreSQL',
+        'Redis',
       ],
     },
     {
@@ -98,9 +100,9 @@ const About: React.FC = () => {
 
   /* ---- stats data ---- */
   const stats: { value: number; suffix: string; label: string }[] = [
-    { value: 25, suffix: '', label: 'Projects' },
+    { value: PROJECTS.length, suffix: '', label: 'Projects' },
     { value: 50, suffix: '+', label: 'Technologies' },
-    { value: 8, suffix: '+', label: 'Platforms' },
+    { value: 10, suffix: '+', label: 'Platforms' },
   ];
 
   /* ---- refs for scroll-linked parallax ---- */
@@ -167,7 +169,7 @@ const About: React.FC = () => {
           >
             <p className="text-surface-600 dark:text-surface-400 leading-relaxed mb-6">
               I build modern web applications using React, Next.js, Node.js, Python,
-              and AI/ML frameworks. With 25 deployed projects spanning e-commerce
+              and AI/ML frameworks. With {PROJECTS.length} deployed projects spanning e-commerce
               platforms, educational tools, ML dashboards, and interactive games, I
               focus on creating clean, performant, and accessible experiences.
             </p>

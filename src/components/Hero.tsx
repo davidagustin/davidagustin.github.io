@@ -1,4 +1,4 @@
-import { SOCIAL_LINKS } from '../utils/constants';
+import { PROJECTS, SOCIAL_LINKS } from '../utils/constants';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import type React from 'react';
@@ -102,7 +102,7 @@ const Hero: React.FC = () => {
             >
               Building modern web applications with React, Next.js, and AI/ML.{' '}
               <span className="text-surface-300">
-                25 projects deployed across 8+ cloud platforms.
+                {PROJECTS.length} projects deployed across 10+ cloud platforms.
               </span>
             </motion.p>
 
