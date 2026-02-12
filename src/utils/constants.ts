@@ -783,4 +783,32 @@ export const PROJECTS: Project[] = [
       techDetails: 'React 19 with React Router 7 full-stack framework, TypeScript 5.9, Tailwind CSS 4, Vite 6. Cloudflare Workers edge deployment with SSR. Zero external UI/state libraries — only 3 production dependencies.',
     },
   },
+  {
+    id: 27,
+    title: 'Game Room',
+    description:
+      'Real-time multiplayer game platform with Tic-Tac-Toe and Chess. Turborepo monorepo with an Expo React Native client, Fastify 5 server, and shared game logic package. Features Socket.IO rooms for sub-100ms gameplay, dual-storage pattern (Redis ephemeral + PostgreSQL persistent), JWT auth with refresh token rotation, AI opponents with minimax/alpha-beta pruning, ELO rating system, and full CI/CD pipeline deploying via Docker to AWS.',
+    technologies: ['Expo 52', 'React Native', 'Fastify 5', 'Socket.IO', 'PostgreSQL', 'Redis', 'Terraform', 'Docker'],
+    githubUrl: 'https://github.com/davidagustin/tic-tac-toe',
+    liveUrl: 'https://game-practice-aws.com/',
+    category: 'Gaming',
+    features: [
+      'Real-time Multiplayer',
+      'Chess + Tic-Tac-Toe',
+      'AI Opponents',
+      'AWS Infrastructure',
+    ],
+    readmeHighlights: {
+      overview: 'Real-time multiplayer game platform built as a Turborepo monorepo with an Expo mobile client, Fastify server, and shared game logic kernel. Supports Tic-Tac-Toe and Chess with online multiplayer, spectator mode, lobby chat, AI opponents, ELO ratings, and full AWS infrastructure-as-code.',
+      highlights: [
+        'Polymorphic game engine registry: tttEngine and chessEngine implement a shared GameEngine interface, making new games a single-file addition',
+        'Dual-storage pattern: Redis for ephemeral state (rooms, presence, chat with 2-hour TTL) and PostgreSQL for persistent data (accounts, completed games, stats)',
+        'Typed Socket.IO events via shared ClientToServerEvents/ServerToClientEvents interfaces — payload mismatches caught at compile time',
+        'AI opponents: minimax (perfect play) for Tic-Tac-Toe, alpha-beta pruning with piece-square evaluation tables for Chess at 3 difficulty levels',
+        'JWT auth with refresh token rotation, Google OAuth, guest mode, CSRF protection, and per-room chat rate limiting via Redis sliding window',
+        'Terraform IaC (EC2, SSM, security groups), multi-stage Docker builds, and CI/CD with dynamic SSH allow-listing in GitHub Actions',
+      ],
+      techDetails: 'Turborepo 2.0 monorepo with Expo 52 (React Native 0.76), Fastify 5, Socket.IO 4.8 + Redis adapter, Prisma 5.20 (PostgreSQL 16), Zustand 4.5, chess.js, NativeWind 4.1. Terraform for AWS, Nginx reverse proxy with SSL, and GitHub Actions CI/CD.',
+    },
+  },
 ];

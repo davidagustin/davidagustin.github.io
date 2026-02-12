@@ -1,6 +1,6 @@
 # David Agustin — Portfolio
 
-Personal portfolio showcasing 26 full-stack projects built with React, Next.js, Angular, Vue, SvelteKit, Python, and AI/ML technologies. Deployed across 10+ cloud platforms.
+Personal portfolio showcasing 27 full-stack projects built with React, Next.js, Angular, Vue, SvelteKit, Python, and AI/ML technologies. Deployed across 10+ cloud platforms.
 
 **Live:** [davidagustin.github.io](https://davidagustin.github.io)
 
@@ -28,9 +28,10 @@ Personal portfolio showcasing 26 full-stack projects built with React, Next.js, 
 | [UI Patterns React](https://ui-patterns-react.vercel.app/) | Next.js 15, React 19, TypeScript 5.6 | 90+ production-ready components, WCAG 2.1 AA |
 | [System Design Practice](https://system-design-practice.vercel.app/) | Next.js 15, React 19, TypeScript | 50 study topics, 40 concepts, 60 quizzes |
 | [TypeCode](https://typing-app.app-production.workers.dev/) | React 19, TypeScript, Cloudflare Workers | Precision typing practice across 12 programming languages |
+| [Game Room](https://game-practice-aws.com/) | Expo, Fastify, Socket.IO, PostgreSQL, Redis, AWS | Real-time multiplayer Chess and Tic-Tac-Toe with AI opponents |
 | [React 30](https://react-30-nu.vercel.app) | Next.js 16, React 19, TypeScript | 30 vanilla JS projects rebuilt as modern React |
 
-[View all 26 projects on the live site.](https://davidagustin.github.io/#projects)
+[View all 27 projects on the live site.](https://davidagustin.github.io/#projects)
 
 ## All Projects
 
@@ -78,11 +79,12 @@ Personal portfolio showcasing 26 full-stack projects built with React, Next.js, 
 | Backend Engineer Detective | Node.js, Cloudflare Workers | [Live](https://backend-engineer-detective.app-production.workers.dev/) · [GitHub](https://github.com/davidagustin/backend-engineer-detective) |
 | React Interview Sandbox | React 18, TypeScript, Prism.js | [GitHub](https://github.com/davidagustin/react-interview-sandbox) |
 | Sudoku Game | React 18, Express.js, Heroku | [Live](https://heroku-sudoku-49243446e4d3.herokuapp.com/) · [GitHub](https://github.com/davidagustin/heroku-practice) |
+| Game Room | Expo 52, Fastify 5, Socket.IO, PostgreSQL, Redis, Docker, Terraform | [Live](https://game-practice-aws.com/) · [GitHub](https://github.com/davidagustin/tic-tac-toe) |
 | Classic Snake Game | React 19, TypeScript, Framer Motion | [Live](https://classic-snake-game-phi.vercel.app/) · [GitHub](https://github.com/davidagustin/classic-snake-game) |
 
 ## Cloud Platforms
 
-Vercel, AWS (Amplify), Azure (Static Web Apps), Heroku, Digital Ocean, Netlify, Render, Surge.sh, Firebase Hosting, GitLab Pages, Cloudflare Workers
+Vercel, AWS (EC2, Amplify), Azure (Static Web Apps), Heroku, Digital Ocean, Netlify, Render, Surge.sh, Firebase Hosting, GitLab Pages, Cloudflare Workers
 
 ## Local Development
 
@@ -123,7 +125,7 @@ src/
 ├── types/
 │   └── index.ts          # TypeScript interfaces
 ├── utils/
-│   ├── constants.ts      # Project data (26 projects), social links, README highlights
+│   ├── constants.ts      # Project data (27 projects), social links, README highlights
 │   └── scroll.ts         # Smooth scroll utility
 ├── App.tsx               # Root component with theme toggle
 ├── index.tsx             # Entry point
