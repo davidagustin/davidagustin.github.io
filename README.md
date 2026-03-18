@@ -1,6 +1,6 @@
 # David Agustin — Portfolio
 
-Personal portfolio showcasing 27 full-stack projects built with React, Next.js, Angular, Vue, SvelteKit, Python, and AI/ML technologies. Deployed across 10+ cloud platforms.
+Personal portfolio showcasing 28 full-stack projects built with React, Next.js, Angular, Vue, SvelteKit, Python, and AI/ML technologies. Deployed across 10+ cloud platforms.
 
 **Live:** [davidagustin.github.io](https://davidagustin.github.io)
 
@@ -31,7 +31,7 @@ Personal portfolio showcasing 27 full-stack projects built with React, Next.js, 
 | [Game Room](https://game-practice-aws.com/) | Expo, Fastify, Socket.IO, PostgreSQL, Redis, AWS | Real-time multiplayer Chess and Tic-Tac-Toe with AI opponents |
 | [React 30](https://react-30-nu.vercel.app) | Next.js 16, React 19, TypeScript | 30 vanilla JS projects rebuilt as modern React |
 
-[View all 27 projects on the live site.](https://davidagustin.github.io/#projects)
+[View all 28 projects on the live site.](https://davidagustin.github.io/#projects)
 
 ## All Projects
 
@@ -53,6 +53,11 @@ Personal portfolio showcasing 27 full-stack projects built with React, Next.js, 
 |---------|-------------|-------|
 | PIIxelate | Next.js 15, Tesseract.js, OpenAI, Anthropic | [Live](https://piixelate.vercel.app) · [GitHub](https://github.com/davidagustin/piixelate) |
 | 20 Newsgroups ML Dashboard | Next.js 15, Scikit-learn, XGBoost, LightGBM | [Live](https://machine-learning-project-theta.vercel.app) · [GitHub](https://github.com/davidagustin/machine-learning-project) |
+
+### Research
+| Project | Technologies | Links |
+|---------|-------------|-------|
+| Pickleball Research | Next.js 16, React 19, TypeScript 5, Tailwind CSS 4, Puppeteer, Cloudflare Workers | [Live](https://pickleball-research.vercel.app) |
 
 ### E-commerce & Business
 | Project | Technologies | Links |
@@ -124,7 +129,7 @@ src/
 ├── types/
 │   └── index.ts          # TypeScript interfaces
 ├── utils/
-│   ├── constants.ts      # Project data (27 projects), social links, README highlights
+│   ├── constants.ts      # Project data (28 projects), social links, README highlights
 │   └── scroll.ts         # Smooth scroll utility
 ├── App.tsx               # Root component with theme toggle
 ├── index.tsx             # Entry point
