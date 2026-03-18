@@ -246,16 +246,18 @@ const CarouselView: React.FC<{
                     )}
                   </div>
                   <div className="flex items-center gap-3 pt-3 border-t border-surface-100 dark:border-surface-700">
-                    <a
-                      href={project.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onClick={(e) => e.stopPropagation()}
-                      className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 dark:hover:text-white transition-colors"
-                    >
-                      <FaGithub className="text-sm" />
-                      Code
-                    </a>
+                    {project.githubUrl && (
+                      <a
+                        href={project.githubUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onClick={(e) => e.stopPropagation()}
+                        className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 dark:hover:text-white transition-colors"
+                      >
+                        <FaGithub className="text-sm" />
+                        Code
+                      </a>
+                    )}
                     {project.liveUrl && (
                       <a
                         href={project.liveUrl}
@@ -388,16 +390,18 @@ const TableView: React.FC<{
               </td>
               <td className="px-5 py-6 text-right">
                 <div className="flex items-center justify-end gap-3">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    onClick={(e) => e.stopPropagation()}
-                    className="p-2 rounded-lg text-surface-400 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-700 transition-colors"
-                    aria-label={`${project.title} source code`}
-                  >
-                    <FaGithub className="text-base" />
-                  </a>
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="p-2 rounded-lg text-surface-400 hover:text-surface-900 dark:hover:text-white hover:bg-surface-100 dark:hover:bg-surface-700 transition-colors"
+                      aria-label={`${project.title} source code`}
+                    >
+                      <FaGithub className="text-base" />
+                    </a>
+                  )}
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
@@ -489,16 +493,18 @@ const GridView: React.FC<{
             </ul>
 
             <div className="flex items-center gap-3 pt-4 border-t border-surface-100 dark:border-surface-700">
-              <a
-                href={project.githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 dark:hover:text-white transition-colors"
-              >
-                <FaGithub className="text-sm" />
-                Code
-              </a>
+              {project.githubUrl && (
+                <a
+                  href={project.githubUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()}
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-surface-500 hover:text-surface-900 dark:hover:text-white transition-colors"
+                >
+                  <FaGithub className="text-sm" />
+                  Code
+                </a>
+              )}
               {project.liveUrl && (
                 <a
                   href={project.liveUrl}
@@ -828,15 +834,17 @@ const Projects: React.FC = () => {
                 </div>
 
                 <div className="flex flex-wrap items-center gap-3 pt-6 border-t border-surface-100 dark:border-surface-800">
-                  <a
-                    href={selectedProject.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-surface-900 dark:bg-white text-white dark:text-surface-900 rounded-lg text-sm font-medium hover:bg-surface-800 dark:hover:bg-surface-100 transition-colors"
-                  >
-                    <FaGithub />
-                    View Code
-                  </a>
+                  {selectedProject.githubUrl && (
+                    <a
+                      href={selectedProject.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 bg-surface-900 dark:bg-white text-white dark:text-surface-900 rounded-lg text-sm font-medium hover:bg-surface-800 dark:hover:bg-surface-100 transition-colors"
+                    >
+                      <FaGithub />
+                      View Code
+                    </a>
+                  )}
                   {selectedProject.liveUrl && (
                     <a
                       href={selectedProject.liveUrl}

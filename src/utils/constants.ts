@@ -813,4 +813,38 @@ export const PROJECTS: Project[] = [
       techDetails: 'Turborepo 2.0 monorepo with Expo 52 (React Native 0.76), Fastify 5, Socket.IO 4.8 + Redis adapter, Prisma 5.20 (PostgreSQL 16), Zustand 4.5, chess.js, NativeWind 4.1. Terraform for AWS, Nginx reverse proxy with SSL, and GitHub Actions CI/CD.',
     },
   },
+  {
+    id: 28,
+    title: 'Pickleball Research',
+    description:
+      'The most comprehensive pickleball research platform on the web. 31 interactive pages covering 587 paddles, 160+ pro athletes, 130+ drills, 16 illustrated plays, live PPA tournament data, a tactical whiteboard, paddle physics simulator, paddle builder with 3D rendering, strategy decision trees, and a 46,000-line digital magazine. All data visualizations are hand-coded SVG with zero charting libraries.',
+    technologies: ['Next.js 16', 'React 19', 'TypeScript 5', 'Tailwind CSS 4', 'Puppeteer', 'Cloudflare Workers'],
+    githubUrl: '',
+    liveUrl: 'https://pickleball-research.vercel.app',
+    category: 'Research',
+    features: [
+      '587 Paddle Database',
+      '160+ Pro Athletes',
+      '130+ Drills Library',
+      'Live Tournament Data',
+      'Tactical Whiteboard',
+      'Paddle Physics Lab',
+    ],
+    readmeHighlights: {
+      overview: 'The most comprehensive pickleball research platform — every shot, technique, pro player, paddle dimension, drill, and strategy in one place. 31 interactive pages with 100,000+ lines of code, custom SVG visualizations, and live PPA Tour data.',
+      highlights: [
+        '587 paddles from 36+ brands with card/table/radar views, multi-axis filters, and side-by-side comparison',
+        '160+ PPA pro athlete profiles with DUPR, ELO, win rates, archetype classification, and gear data',
+        '130+ drills across 11 categories with difficulty filters, impact ratings, video links, and save-to-collection',
+        'Interactive paddle lab with clock-face weight simulator, real-time physics (swing wt, twist wt, balance), and 3D rotation',
+        'Paddle builder: design from scratch with core/face/construction options, 6-axis performance scoring, and player fit analysis',
+        'Tactical whiteboard with drag-and-drop players, 7 drawing tools, shot stamps, and undo/redo',
+        '16 illustrated playbook plays with animated SVG court diagrams and movement paths',
+        'Live PPA tournament data with match tickers, brackets, rankings across 6 categories, and event schedules',
+        '46,000-line interactive digital magazine (Pickleball 101) with collapsible TOC and dual view modes',
+        'Strategy decision tree engine with branching shot-selection and confidence percentages',
+      ],
+      techDetails: 'Next.js 16 App Router with React 19, TypeScript 5, Tailwind CSS 4. Puppeteer data collection scripts, PPA Tour API proxy with in-memory caching, custom SVG visualizations (zero charting libraries), localStorage persistence with CSV import/export. Deployed on Cloudflare Workers via OpenNextJS adapter.',
+    },
+  },
 ];
