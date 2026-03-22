@@ -819,7 +819,7 @@ export const PROJECTS: Project[] = [
     description:
       'The most comprehensive pickleball research platform — 51 pages, 1,014 paddles, 266 pro athletes, 130+ drills, and a 46,458-line interactive magazine. Built with Next.js 16, React 19, TypeScript, Tailwind CSS v4, and 15+ cloud services.',
     technologies: ['Next.js 16', 'React 19', 'TypeScript', 'Tailwind CSS v4', 'Supabase', 'Pinecone', 'Typesense', 'tRPC', 'Upstash Redis', 'BetterAuth', 'PostHog', 'Sentry', 'Axiom', 'Trigger.dev', 'Cloudinary', 'Vitest', 'Playwright', 'Storybook', 'Biome'],
-    githubUrl: 'https://github.com/davidagustin/pickleball-research',
+    githubUrl: '',
     liveUrl: 'https://pickleball-research.com',
     category: 'Research',
     features: [
