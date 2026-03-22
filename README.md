@@ -57,7 +57,7 @@ Personal portfolio showcasing 28 full-stack projects built with React, Next.js, 
 ### Research
 | Project | Technologies | Links |
 |---------|-------------|-------|
-| Pickleball Research | Next.js 16, React 19, TypeScript 5, Tailwind CSS 4, Puppeteer, Cloudflare Workers | [Live](https://pickleball-research.vercel.app) |
+| Pickleball Research | Next.js 16, React 19, TypeScript 5, Tailwind CSS v4, Supabase, Pinecone, Typesense, Trigger.dev | [Live](https://pickleball-research.com) |
 
 ### E-commerce & Business
 | Project | Technologies | Links |
